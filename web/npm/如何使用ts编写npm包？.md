@@ -4,9 +4,9 @@
 - ui 使用`vue-cli`创建，使用`vue`框架，使用`javascript`编写
 - lib 使用`npm init`创建的npm包，使用`javascript`编写
 
-在过去使用`npm init ${path}`，将本地的`lib`添加作为本地的`ui`的dependency pakcage。在构建`ui`时可以读取`lib`的最新改动，这给我带来了比较好的体验。
+在过去使用`npm install ${path}`，将本地的`lib`添加作为本地的`ui`的dependency pakcage。在构建`ui`时可以读取`lib`的最新改动，使用起来不错。
 
-但是，随着项目重构，需要将`lib`切换为使用`typescript`编写，这属于我的知识盲区。
+但是，因为项目重构，需要将`lib`切换为使用`typescript`编写，这属于我的知识盲区。
 
 # 记录
 在Google查了许多资料后，以及实际尝试，最终实现了helloworld，这里记录下来。
@@ -88,7 +88,6 @@ tsc
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build" : "tsc"
@@ -114,7 +113,7 @@ tsc
 # 总结
 本文基于实际项目需求，记录了如何使用`typescript`来编写一个npm包，并作为其它由npm管理的javascript编写的web项目使用。
 
-npm包，typescript，以及其它许多前端脚手架都是由`cli`驱动，由配置文件记录的使用模型，对文档和搜索引擎的依赖较大。
+npm，typescript，以及其它许多前端脚手架都是由`cli`驱动，由配置文件记录信息的使用模型，对文档和搜索引擎的依赖较大。
 
 # Refs
 [Step by step: Building and publishing an NPM Typescript package](https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c)
