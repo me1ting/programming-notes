@@ -105,15 +105,27 @@ tsc
 - `"main": "dist/index.js"`，指定包的入口文件
 - `"build" : "tsc"`，映射执行`npm run build`时的实际指令
 
-## 使用模式
+## 使用该包
+在ui项目中，我们首先导入该包作为依赖（这里假设两个项目位于同一个父目录下）：
+```
+npm install ../lib2
+```
+在代码中使用：
+```js
+import helloworld from lib2;
+
+helloworld();
+```
+
+## 使用模式的改变
 相比于重构前，现有的使用模式增加了一个步骤：每次我们编辑完`lib2`项目后，需要使用`npm run build`来生成最终的`javascript`包，才能被`ui`项目使用。
 
 这是因为，在当前架构下，`ui`项目对于`lib2`项目使用了`typescript`是无感知的，`ui`项目只依赖于`lib2`项目的构建结果。
 
 # 总结
-本文基于实际项目需求，记录了如何使用`typescript`来编写一个npm包，并作为其它由npm管理的javascript编写的web项目使用。
+本文基于实际项目需求，记录了如何使用`typescript`来编写一个npm包，然后作为其它npm包的依赖被使用。
 
-npm，typescript，以及其它许多前端脚手架都是由`cli`驱动，由配置文件记录信息的使用模型，对文档和搜索引擎的依赖较大。
+npm，typescript，以及其它许多前端脚手架都是采用由`cli`驱动，由配置文件记录信息的使用模型，对文档和搜索引擎的依赖较大。
 
 # Refs
 [Step by step: Building and publishing an NPM Typescript package](https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c)
