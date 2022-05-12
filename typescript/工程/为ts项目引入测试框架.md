@@ -97,5 +97,7 @@ testTranslateTypeLine();
 本文记录了在typescript中使用`jest`进行单元测试的第一步，更多使用技巧有待进一步了解。
 
 # refs
+
 [document: get started with typescript](https://jestjs.io/docs/getting-started#using-typescript)
+
 [personal blog: How to Test TypeScript with Jest](https://medium.com/nerd-for-tech/testing-typescript-with-jest-290eaee9479d)
