@@ -33,7 +33,7 @@ preset: 'ts-jest',
   },
 ```
 
-这个参数保证我们可以通过`npm run test`来执行测试命令。
+这个参数保证我们可以通过`npm run test`/`npm test`来执行测试命令。
 
 ## 单元测试
 一般情况下，typescript项目的组织结构为：
@@ -45,8 +45,6 @@ preset: 'ts-jest',
 src/service/demo.service.ts //被测试文件
 test/service/demo.service.test.ts //测试文件
 ```
-
-默认情况下，命令`npm run build`会执行`jest`，会读取`test`路径下的所有`.test.ts`后缀结尾的文件，并执行。
 
 个人习惯采取如下的风格来组织测试代码：
 ```ts
@@ -92,6 +90,19 @@ function testTranslateTypeLine() {
 testTranslateBaseType();
 testTranslateTypeLine();
 ```
+
+## 测试命令
+在前面，我们将`npm test`映射到`jest`，执行`npm test`等价于执行`jest`，后续表述中将使用`npm test`而非`jest`。
+>只有初次安装jest才自动将`jest`添加到当前命令行path，后续想要直接执行`jest`需要手动设置path，或者全局安装jest。
+
+`npm test`会执行所有测试用例。
+
+如果我们想要只测试特定文件，可以将文件名/glob模式添加到测试命令后面：
+```
+npm test a.test.ts
+npm test service/*
+```
+
 
 # 总结
 本文记录了在typescript中使用`jest`进行单元测试的第一步，更多使用技巧有待进一步了解。
