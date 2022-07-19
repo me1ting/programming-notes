@@ -16,6 +16,7 @@ WPF居然没有原生的数字输入框，这是一个让我吃惊但又不得�
 
 ## 在`PreviewTextInput`事件中检查输入
 大多数教程都推荐在`PreviewTextInput`事件中检查输入：
+
 xaml
 ```xml
 <TextBox input:InputMethod.IsInputMethodEnabled="False" PreviewTextInput="NumberValidationOnPreviewTextInput"/>
@@ -35,6 +36,7 @@ private void NumberValidationOnPreviewTextInput(object sender, TextCompositionEv
 
 ## 在`PreviewKeyDown`事件中检查输入
 大多数教程也会使用到`PreviewKeyDown`事件，但是过于严格，这里只使用该方法阻止空格的输入：
+
 xaml
 ```xml
 <TextBox input:InputMethod.IsInputMethodEnabled="False" PreviewTextInput="NumberValidationOnPreviewTextInput" PreviewKeyDown="NumberValidationOnPreviewKeyDown"/>
@@ -69,7 +71,7 @@ private void NumberValidationOnPasting(object sender, DataObjectPastingEventArgs
         if (!IsNumberic(text))
         { e.CancelCommand(); }
     }
-            else { e.CancelCommand(); }
+    else { e.CancelCommand(); }
 }
 
 private bool IsNumberic(string _string)
