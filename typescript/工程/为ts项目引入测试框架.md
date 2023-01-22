@@ -1,5 +1,5 @@
 # 简介
-本文介绍如何给一个简单的typescript项目添加单元测试。
+本文介绍如何给一个typescript项目添加单元测试。
 
 # jest
 ## 安装
@@ -7,15 +7,27 @@
 
 首先需要安装jest，以及jest对typescript的相关支持：
 ```bash
+#npm
 npm install --save-dev jest
 npm install --save-dev ts-jest
 npm install --save-dev @types/jest
+
+# yarn
+yarn add --dev jest
+yarn add --dev ts-jest
+yarn add --dev @jest/globals
 ```
+
+>注意，除了jest其余支持都有相关的替代选项，具体细节参考[文档](https://jestjs.io/docs/getting-started)。
 
 ## 初始化
 使用`cli`进行初始化：
 ```bash
+# npm
 jest --init
+
+# yarn
+yarn jest --init
 ```
 根据提示进行选择，选项都很简单，不懂就保持默认。
 
