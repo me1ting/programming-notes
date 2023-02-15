@@ -18,8 +18,8 @@ cd demo-preoject
 yarn init
 ```
 
-## 更新项目使用的yarn到稳定版本
-推荐将`yarn`更新到稳定版本：
+## 添加项目级别的yarn
+强烈推荐使用项目级别的yarn，这里使用稳定版本：
 ```bash
 yarn set version stable
 ```
@@ -28,20 +28,28 @@ yarn set version stable
 ### （可选）配置网络
 在局域网中使用包管理器是一个巨大的挑战，特别是`node.js`环境下，因为`node.js`的许多包只是一个壳，实际安装还需要访问网络，这个过程是不受`npm`或`yarn`控制的。
 
-首先，我们需要修改配置文件`.yarnrc.yml`，让`yarn`使用代理：
+我们需要分别设置`yarn`使用代理和下载`electron`时使用代理，两者都是可选的。
+
+修改配置文件`.yarnrc.yml`，让`yarn`使用代理：
 ```yml
-yarnPath: .yarn/releases/yarn-3.2.3.cjs
 httpProxy: "http://localhost:1081"
 httpsProxy: "http://localhost:1081"
 ```
 
-其次，我们需要设置相关[环境变量](https://www.electronjs.org/zh/docs/latest/tutorial/installation#%E4%BB%A3%E7%90%86)，使得`electron`的安装工具使用代理：
+设置相关[环境变量](https://www.electronjs.org/zh/docs/latest/tutorial/installation#%E4%BB%A3%E7%90%86)，使得`electron`的安装工具使用代理：
 
+linux/macos:
 ```bash
 export ELECTRON_GET_USE_PROXY=1 && export GLOBAL_AGENT_HTTP_PROXY=http://127.0.0.1:1081 && export GLOBAL_AGENT_HTTPS_PROXY=http://127.0.0.1:1081
 ```
+windows:
+```ps
+$env:ELECTRON_GET_USE_PROXY=1
+$env:GLOBAL_AGENT_HTTP_PROXY="http://127.0.0.1:1081"
+$env:GLOBAL_AGENT_HTTPS_PROXY="http://127.0.0.1:1081"
+```
 
-*注意的是，这里的代理存在兼容性问题，我自己写的http代理就存在这个问题，最好使用privoxy来提供代理服务*
+*注意的是，这里的代理存在兼容性问题，我自己写的http代理就存在这个问题，推荐使用privoxy来提供代理服务*
 
 最后我们使用`yarn`来执行安装：
 
@@ -85,3 +93,6 @@ yarn add --dev electron
 ```
 
 执行`yarn start`，预期将执行一个最基础的electron程序。
+
+# 补充
+更推荐使用[Electron Forge](https://electronforge.io/)来搭建脚手架，下载Electron时可能需要配置代理。
