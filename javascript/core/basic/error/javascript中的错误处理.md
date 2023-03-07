@@ -1,5 +1,5 @@
 # 概览
-ECMA-262 v3就添加了`try-catch`语法，但这个语法对于我而言是很陌生的，事实上前端项目用到错误处理的地方并不多，在前端工程化和异步函数引入后，错误处理的使用需求才多了起来。
+ECMA-262 v3就添加了`try-catch`语法，但这个语法对于我而言是很陌生的，事实上在早期前端项目用到错误处理的地方并不多，在前端工程化和异步函数引入后，错误处理的使用需求才多了起来。
 
 # 语法细节
 
@@ -29,4 +29,5 @@ ES预定义了一些错误类型，来供ES和应用开发者使用：
 
 # Refs
 《JavaScript高级程序设计》v4 第21章 错误处理与调试
-[MDN try..catch](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)
+
+[MDN: try..catch](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)
