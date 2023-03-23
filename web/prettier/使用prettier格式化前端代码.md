@@ -1,0 +1,33 @@
+# 简单介绍下prettier
+[prettier](https://prettier.io/)是前端工具链的一个重要角色，负责前端相关的代码(`.js`,`.ts`...)、配置(`config.ts``yaml`,`json`...)、文档(`markdown`...)的格式化。
+
+# 安装
+使用`npm`或`yarn`等包管理器，以开发依赖的方式进行[安装](https://prettier.io/docs/en/install.html).
+
+# 使用
+## 配置
+和其它前端工具类似，prettier也是基于配置文件的设置方式。prettier有两个配置文件：
+
+- `.prettierrc.json`，配置详情文件，除了`json`，还支持其他多种配置格式
+- `.prettierignore`，定义哪些目录或文件需要跳过格式化，`.gitignore`中跳过的目录需要复制一份到该文件
+
+prettier的预设选项需要修改后才能使用，参考[定制代码风格](./%E5%AE%9A%E5%88%B6%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC.md)。
+
+## 命令
+主要有两个命令：
+
+`npx prettier --write .` 格式化并保存，`.`指当前目录
+
+`npx prettier --check .` 检查格式问题，并输出到console
+
+可以将其添加到`package.json`中，如：
+```
+  "scripts": {
+    //...
+    "format": "prettier --write ."
+  },
+```
+这样，可以使用`npm run format`或`yarn format`来直接执行格式化命令。
+
+# 高级：编辑器集成和git集成
+//TODO
