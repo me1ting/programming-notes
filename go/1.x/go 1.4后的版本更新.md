@@ -1,6 +1,6 @@
 # 前言
 
-《TGPL》是学习Go，以及作为文档的一本好书，但其基于Go 1.4版本编写，存在时效性问题。本文记录了Go 1.4版本后，**语法**和**工具链**的重要变更。
+《TGPL》是学习Go，以及作为文档的一本好书，但其基于Go 1.4版本。本文记录了Go 1.4版本后，**语法**和**工具链**的重要变更。
 
 # 1.5
 
@@ -8,11 +8,9 @@
 
 Go从本版本开始完全支持[内部包](https://docs.google.com/document/d/1e8kOo3r51b2BWtTs_1uADIA5djfXhPT36s6eHVRIvaU/edit)。
 
-在Go的之前使用模型中，包并不具备任何访问权限的控制。而内部包提供了局部的`包级别`访问权限：
+在Go的之前使用模型中，包并不提供任何访问权限的控制。而内部包提供了局部的`包级别`访问权限：
 
 *`$GOPATH/src/mypkg/internal/foo`只能被`$GOPATH/src/mypkg`包访问*
-
-
 
 # 1.9
 
@@ -45,14 +43,6 @@ type T1 = T2
 ## 模块
 
 模块功能已经成熟，[迁移指南](https://blog.golang.org/migrating-to-go-modules)
-
-
-
-# 1.17
-
-少量改进，见[更新说明](https://go.dev/doc/go1.17#language)
-
-
 
 # 1.18
 
