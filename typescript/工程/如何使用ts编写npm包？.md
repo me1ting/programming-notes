@@ -1,26 +1,18 @@
-# 背景介绍
-有一个web个人项目，由两部分组成：
+# 目标
+如何使用TypeScript编写库，可供TypeScirpt和JavaScript使用，并且上传到 npmjs.com 中。
 
-- ui 使用`vue-cli`创建，使用`vue`框架，使用`javascript`编写
-- lib 使用`npm init`创建的npm包，使用`javascript`编写
-
-在过去使用`npm install ${path}`，将本地的`lib`添加作为本地的`ui`的dependency pakcage。在构建`ui`时可以读取`lib`的最新改动，使用起来不错。
-
-但是，因为项目重构，需要将`lib`切换为使用`typescript`编写，这属于我的知识盲区。
-
-# 记录
-在Google查了许多资料后，以及实际尝试，最终实现了helloworld，这里记录下来。
-
+# 步骤
 ## 创建目录
-创建目录（这里使用lib2指代pakcage，实际情况按需修改）：
+创建目录（这里使用`my-package`表示包名，实际情况按需修改）：
 ```bash
-mkdir lib2
-cd lib2
+mkdir my-package
+cd my-package
 ```
 
-## 初始化npm包
+## 初始化包
+### npm
 初始化npm包：
-```json
+```bash
 npm init -y
 ```
 *参数 `-y` 表示根据上下文，自动填充一些信息，如根据文件夹名称推测包名称*
@@ -28,7 +20,7 @@ npm init -y
 此时，会生成一个`package.json`文件，它是npm的核心配置文件，内容大致为：
 ```json
 {
-  "name": "lib2",
+  "name": "my-package",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -40,16 +32,32 @@ npm init -y
 }
 ```
 
+### yarn
+初始化：
+```bash
+yarn init -2
+```
+默认开启了pnp，建议[关闭](https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored)，同时在`.yarnrc.yml`中添加：
+```
+nodeLinker: node-modules
+```
+
 ## 安装typescript
 本地安装typescript作为开发阶段依赖：
 ```bash
+# npm
 npm i typescript --save-dev
+# yarn
+yarn add typescript -D
 ```
 
 ## 初始化typescript项目
 初始化typescript项目：
 ```bash
+# npm
 npx tsc --init
+# yarn
+yarn tsc --init
 ```
 此时，会生成一个`tsconfig.json`文件，它是typescript的唯一配置文件，内容大致为：
 ```json
@@ -57,15 +65,16 @@ npx tsc --init
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "outDir": "./dist",
+    "declaration": true,// 新增，生成typescript类型声明文件
+    "outDir": "dist",// 新增，自定义编译输出目录
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,                                      
     "skipLibCheck": true                                
-  }
+  },
+  "include": ["src/**/*"]//新增，定义源文件
 }
 ```
-上面的`outDir`是我们唯一手动添加的参数，目的是将javascript生成结果单独保存。
 
 ## 编写入口文件
 创建`src/index.ts`，并写入helloworld：
@@ -75,57 +84,55 @@ export function helloworld() {
 }
 ```
 
-使用`tsc`编译包：
-```bash
-tsc
-```
-
 ## 修改包配置文件
 修改包配置文件：
 ```json
 {
-  "name": "exporter-of-exile-cn-translator",
+  "name": "my-package",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "lib/index.js",//修改，指定包的入口文件
+  "types": "lib/index.d.ts",//新增，供typescript使用的类型文件
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "tsc"
+    "build" : "tsc"//新增，映射执行`npm run build`时的实际指令
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.6.4"
-  }
+  },
+  "files": ["lib/**/*"]//指定包所包含的文件
 }
 ```
-我们添加了两个配置信息：
+实际项目不会使用`tsc`而是使用`rollup`之类的构建工具，因为前端项目往往面临众多兼容性问题。
 
-- `"main": "dist/index.js"`，指定包的入口文件
-- `"build" : "tsc"`，映射执行`npm run build`时的实际指令
-
-## 使用该包
-在ui项目中，我们首先导入该包作为依赖（这里假设两个项目位于同一个父目录下）：
+## 发布
 ```
-npm install ../lib2
-```
-在代码中使用：
-```js
-import helloworld from lib2;
-
-helloworld();
+npm run build //先编译再发布
+npm login
+npm publish
 ```
 
-## 使用模式的改变
-相比于重构前，现有的使用模式增加了一个步骤：每次我们编辑完`lib2`项目后，需要使用`npm run build`来生成最终的`javascript`包，才能被`ui`项目使用。
+# 优化
+上面步骤包含了最基本的流程，但是在真实项目中，我们还需要更多的东西，如：
 
-这是因为，在当前架构下，`ui`项目对于`lib2`项目使用了`typescript`是无感知的，`ui`项目只依赖于`lib2`项目的构建结果。
+- eslint，检查代码
+- prettier，格式化代码
+- jest，测试
+- 自动化command
+- rollup，构建结果
 
-# 总结
-本文基于实际项目需求，记录了如何使用`typescript`来编写一个npm包，然后作为其它npm包的依赖被使用。
+可以参考相关工具的详细笔记。
 
-npm，typescript，以及其它许多前端脚手架都是采用由`cli`驱动，由配置文件记录信息的使用模型，对文档和搜索引擎的依赖较大。
+## typescript-eslint
+[typescript-eslint](https://typescript-eslint.io/getting-started)是`eslint`的typescript支持。
 
-# Refs
-[Step by step: Building and publishing an NPM Typescript package](https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c)
+>个人的体验是，eslint对于typescript项目来说不太适用。
+
+## prettier
+[安装](https://prettier.io/docs/en/install.html) prettier 以及 [集成](https://prettier.io/docs/en/integrating-with-linters.html) eslint
+
+## jest
+...

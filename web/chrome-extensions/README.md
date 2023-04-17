@@ -11,21 +11,21 @@ Chrome扩展是一个`web应用`，具体来讲，是一个使用`zip`格式压�
 
 # manifest.json
 
-扩展的元信息文件，包括扩展的元信息（项目名称、描述、版本……）、内容的声明、权限的声明……
+扩展的元信息文件，包括扩展的元信息（项目名称、描述、版本……）、内容声明、权限声明……
 
 # 后台脚本
 
-//more
+在后台执行的，基于消息的异步执行器。
+
+由于内容脚本无法执行CORS请求，需要使用后台脚本来执行CORS请求。
 
 # 内容脚本
 
-Chrome允许扩展注入javascript,css文件到匹配路径下的所有页面，继而在交互、逻辑上影响目标页面。
+Chrome允许扩展注入javascript,css文件到匹配路径下的所有页面，从而在交互、逻辑上影响目标页面。
 
 # 选项页面
 
-扩展拥有的完整的web页面，它可以被用来配置选项（因此称为选项页面），也可以被用来承载复杂的Web应用，这取决于你的需求。
-
-//more
+扩展拥有的独立web页面，它可以被用来配置选项，也可以被用来承载应用。
 
 # 界面元素
 
@@ -33,5 +33,5 @@ Chrome为扩展提供了一些交互元素。比如，在点击菜单栏中的�
 
 # 参考
 
-扩展入门简介 https://developer.chrome.com/docs/extensions/mv3/getstarted/
+[extensions v3](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
 

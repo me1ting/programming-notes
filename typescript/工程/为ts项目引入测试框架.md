@@ -13,9 +13,7 @@ npm install --save-dev ts-jest
 npm install --save-dev @types/jest
 
 # yarn
-yarn add --dev jest
-yarn add --dev ts-jest
-yarn add --dev @jest/globals
+yarn add --dev jest ts-jest @types/jest
 ```
 
 >注意，除了jest其余支持都有相关的替代选项，具体细节参考[文档](https://jestjs.io/docs/getting-started)。
@@ -48,15 +46,7 @@ preset: 'ts-jest',
 这个参数保证我们可以通过`npm run test`/`npm test`来执行测试命令。
 
 ## 单元测试
-一般情况下，typescript项目的组织结构为：
-- src 存储源码
-- test 存储测试代码
-
-在测试文件夹中，创建与被测试文件相同路径下的相似名称的文件，以`.test.ts`作为后缀：
-```
-src/service/demo.service.ts //被测试文件
-test/service/demo.service.test.ts //测试文件
-```
+默认情况下,jest将`**/__tests__/**`下的文件当作测试文件，测试文件一般以`.test.ts`作为后缀。
 
 个人习惯采取如下的风格来组织测试代码：
 ```ts
@@ -81,7 +71,7 @@ function testTranslateBaseType() {
             expect(service.translateBaseType(zh)).toBe(en);
         });
     }
-}
+}();
 
 function testTranslateTypeLine() {
     let testcases = [
@@ -97,17 +87,11 @@ function testTranslateTypeLine() {
             expect(service.translateTypeLine(zh)).toBe(en);
         });
     }
-}
-
-testTranslateBaseType();
-testTranslateTypeLine();
+}();
 ```
 
 ## 测试命令
-在前面，我们将`npm test`映射到`jest`，执行`npm test`等价于执行`jest`，后续表述中将使用`npm test`而非`jest`。
->只有初次安装jest才自动将`jest`添加到当前命令行path，后续想要直接执行`jest`需要手动设置path，或者全局安装jest。
-
-`npm test`会执行所有测试用例。
+在前面，我们将`npm test`映射到`jest`，执行`npm test`就可以进行测试。
 
 如果我们想要只测试特定文件，可以将文件名/glob模式添加到测试命令后面：
 ```
