@@ -12,4 +12,4 @@
 
 CommonJS与ES Module的兼容性依然是一个黑洞，虽然存在一些解决方案，但没有一个简单、兼容性足够的方案，目前我强制所有项目使用`Module`模式，但是在使用第三方依赖时或多或少会存在一些问题。
 
-对于拆分文件的项目，不要使用`tsc`而应当使用`rollup`之类的构建工具，`tsc`只是简单的将`.ts`翻译为`.js`，而且在import路径中丢失`.js`后缀，导致其它项目将该项目作为库时，会找不到引用路径的问题。这个问题是新手最容易遇到的坑，可以在stackoverflow上看到类似的问题：[如何在TypeScript编译时给import路径添加`.js`后缀](https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat)
+对于拆分文件的项目，不要使用`tsc`而应当使用`rollup`之类的构建工具，`tsc`只是简单的将`.ts`翻译为`.js`，而且在import路径中丢失`.js`后缀，导致其它项目将该项目作为库时，会遇到找不到引用路径的问题。这个问题是新手最容易遇到的坑，可以在stackoverflow上看到类似的问题：[如何在TypeScript编译时给import路径添加`.js`后缀](https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat)

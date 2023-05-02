@@ -64,7 +64,7 @@ yarn tsc --init
 {
   "compilerOptions": {
     "target": "es2016",
-    "module": "commonjs",
+    "module": "ES6",
     "declaration": true,// 新增，生成typescript类型声明文件
     "outDir": "dist",// 新增，自定义编译输出目录
     "esModuleInterop": true,
@@ -89,12 +89,11 @@ export function helloworld() {
 ```json
 {
   "name": "my-package",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "lib/index.js",//修改，指定包的入口文件
-  "types": "lib/index.d.ts",//新增，供typescript使用的类型文件
+  "main": "dist/index.js",//修改，指定包的入口文件
+  "types": "dist/index.d.ts",//新增，供typescript使用的类型文件
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build" : "tsc"//新增，映射执行`npm run build`时的实际指令
   },
   "keywords": [],
@@ -103,7 +102,7 @@ export function helloworld() {
   "devDependencies": {
     "typescript": "^4.6.4"
   },
-  "files": ["lib/**/*"]//指定包所包含的文件
+  "files": ["dist/**/*"]//指定包所包含的文件
 }
 ```
 实际项目不会使用`tsc`而是使用`rollup`之类的构建工具，因为前端项目往往面临众多兼容性问题。
