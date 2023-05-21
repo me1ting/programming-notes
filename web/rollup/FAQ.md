@@ -23,3 +23,6 @@ export default {
 [官方文档](https://rollupjs.org/troubleshooting/#warning-treating-module-as-external-dependency)
 
 有些模块被解析为外部模块，如果确实想编译为一个文件，需要使用`@rollup/plugin-node-resolve`插件。
+
+# minify
+`terser`是目前（2023）前端minify的主流解决方案，需要安装[@rollup/plugin-terser](https://www.npmjs.com/package/@rollup/plugin-terser)插件。

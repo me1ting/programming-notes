@@ -1,11 +1,9 @@
 # 简介
-本文介绍如何给一个typescript项目添加单元测试。
+本文介绍如何使用jest给typescript项目进行单元测试。
 
-# jest
-## 安装
-在Google的帮助下，我选择了[jest](https://jestjs.io/)这款测试框架。
+# 安装
 
-首先需要安装jest，以及jest对typescript的相关支持：
+首先需要安装[jest](https://jestjs.io/)，以及jest对typescript的相关支持：
 ```bash
 #npm
 npm install --save-dev jest
@@ -18,7 +16,7 @@ yarn add --dev jest ts-jest @types/jest
 
 >注意，除了jest其余支持都有相关的替代选项，具体细节参考[文档](https://jestjs.io/docs/getting-started)。
 
-## 初始化
+# 初始化
 使用`cli`进行初始化：
 ```bash
 # npm
@@ -93,7 +91,7 @@ let service = new BaseTypeService(provider);
 ## 测试命令
 在前面，我们将`npm test`映射到`jest`，执行`npm test`就可以进行测试。
 
-如果我们想要只测试特定文件，可以将文件名/glob模式添加到测试命令后面：
+如果我们想要只测试特定文件，可以指定文件名或glob匹配：
 ```
 npm test a.test.ts
 npm test service/*
