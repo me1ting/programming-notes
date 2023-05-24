@@ -1,7 +1,5 @@
 # 前言
-WPF居然没有原生的数字输入框，这是一个让我吃惊但又不得不接受的事实。
-
-在实现一个数字框时，自己查阅了许多资料，很多复制粘贴的资料并不靠谱。
+WPF没有原生的数字输入框，在实现一个数字框时，自己查阅了许多资料，很多复制粘贴的资料并不靠谱。
 
 下面介绍自己经过实践校验后的有效步骤。
 
@@ -93,4 +91,5 @@ private bool IsNumberic(string _string)
 
 # Refs
 https://www.codetd.com/article/9459639
+
 https://www.cnblogs.com/yiyan127/p/wpf-numberictextbox.html

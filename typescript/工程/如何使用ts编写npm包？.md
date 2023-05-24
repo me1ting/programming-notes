@@ -1,5 +1,5 @@
 # 目标
-如何使用TypeScript编写库，可供TypeScirpt和JavaScript使用，并且上传到 npmjs.com 中。
+使用TypeScript编写库，可供TypeScirpt和JavaScript使用，并且上传到 npmjs.com 中。
 
 # 步骤
 ## 创建目录
@@ -117,21 +117,13 @@ npm publish
 # 优化
 上面步骤包含了最基本的流程，但是在真实项目中，我们还需要更多的东西，如：
 
-- eslint，检查代码
+- eslint，检查代码，个人认为其在typescript项目中的意义不大
 - prettier，格式化代码
-- jest，测试
+- jest，最流行的js/ts测试框架，但目前不支持esm，vitest是jest在esm时代的替代品
 - 自动化command
-- rollup，构建结果
+- rollup，自定义构建
+- esm，js模块官方解决方案
 
 可以参考相关工具的详细笔记。
 
-## typescript-eslint
-[typescript-eslint](https://typescript-eslint.io/getting-started)是`eslint`的typescript支持。
-
->个人的体验是，eslint对于typescript项目来说不太适用。
-
-## prettier
-[安装](https://prettier.io/docs/en/install.html) prettier 以及 [集成](https://prettier.io/docs/en/integrating-with-linters.html) eslint
-
-## jest
-...
+这里有我目前使用的完整项目模板：[ts-module-template](https://github.com/me1ting/ts-module-template)

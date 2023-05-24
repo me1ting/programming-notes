@@ -1,5 +1,6 @@
 # 状态栏
 [一个不错的handbook](https://wpf-tutorial.com/common-interface-controls/statusbar-control/)
+
 [官方文档](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.primitives.statusbar?view=windowsdesktop-6.0)
 
 使用经验：
