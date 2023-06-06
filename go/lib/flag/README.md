@@ -1,14 +1,18 @@
 # flag
-[flag](https://golang.org/pkg/flag/)是Go自带的一个命令行解析器，功能谈不上强大，但勉强够用。
+
+[flag](https://golang.org/pkg/flag/)是Go自带的一个命令行参数解析器，功能谈不上强大，但勉强够用。
 
 # fullname与shortname
+
 形如下面的命令行使用方式，其中v是shortname,version是fullname：
+
 ```
 xxx -v
 xxx --version
 ```
 
 在flag中并不存在这样的高级功能，可以模拟为：
+
 ```go
 var version boolean
 
@@ -21,8 +25,10 @@ func init() {
 }
 ```
 
-# 值语法
+# 语法
+
 flag对于以下格式都是支持的：
+
 ```
 -flag //布尔值
 -count=x
@@ -32,7 +38,9 @@ flag对于以下格式都是支持的：
 ```
 
 # 自定义Usage
-flag采取`默认全局单例`的设计模式，自定义Usage采用如下方式：
+
+flag采取`默认全局单例`的设计模式，可以通过修改全局单例来实现自定义usage：
+
 ```go
 	f := flag.CommandLine
 

@@ -1,8 +1,11 @@
 # heap
+
 [container/heap](https://golang.org/pkg/container/heap/)标准库提供对`heap`这一数据结构的支持。
 
 # 使用方式
+
 `heap`的使用方式类似`sort`包，`heap`定义了一个堆的抽象接口：
+
 ```go
 type Interface interface {
     sort.Interface
@@ -14,6 +17,7 @@ type Interface interface {
 ```
 
 然后定义了一些操作堆的函数：
+
 ```go
 func Fix(h Interface, i int)//修复堆中的特定位置。
 func Init(h Interface)//初始化构建堆序。
@@ -23,6 +27,7 @@ func Remove(h Interface, i int) interface{}
 ```
 
 **目标类型需要实现该接口，并使用heap提供的函数来操作堆**：
+
 ```go
 h := &IntHeap{2, 1, 5}//创建堆
 heap.Init(h)//初始化有初始化元素的堆

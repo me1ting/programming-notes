@@ -1,10 +1,12 @@
-# 场景
+# http.FileServer踩坑记录
+
+## 问题
 
 需要实现一个简单的static web server，因此使用`http.FileServer`。
 
-但是在更新web时，发现页面使用的是缓存而始终没法加载最新的web文件。
+但是在更新web内容时，发现页面使用的是缓存而始终没法加载最新的web文件。
 
-# 分析
+## 分析
 
 使用chrome开发者工具会发现，服务端首次返回的响应类似如下：
 
@@ -20,26 +22,26 @@ Date: Mon, 24 Jul 2017 17:29:32 GMT
 
 后续请求时会直接使用缓存，而不对服务端进行访问。
 
-经过复习http缓存知识后，得知在这情况下，浏览器使用的是[启发式缓存](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#heuristic_caching)，等价于`Cache-Control: must-revalidate`，由于服务端没有返回缓存失效时间，失效时间是由浏览器自己计算的。
+经过复习http缓存知识后，得知在这情况下，浏览器使用的是[启发式缓存](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#heuristic_caching)，等价于`Cache-Control: must-revalidate`，由于服务端没有返回缓存失效时间，失效时间由浏览器自己计算的。
 
-刷新和强制刷新会要求浏览器验证缓存的有效性，但是对于js和css等资源文件是无效的。
+刷新和强制刷新（ctrl+f5）会要求浏览器验证缓存的有效性，但是这个方法对js和css等资源文件无效的。
 
-# 解决
+## 解决
 
-不要使用启发式缓存，根据实际情况显式设置缓存策略。
+覆盖默认的启发式缓存行为，根据实际情况显式设置缓存策略。
 
-如果服务端是放在nginx等反向代理之后，那么在`http.Server`处理之前关闭禁用cache，由反向代理提供cache：
+如果服务端是放在nginx等反向代理之后，那么禁用cache，由反向代理提供cache：
 
 ```go
 w.Header().Set("Cache-Control", "no-store")
 ```
 
-如果客户端直接暴露http服务，那么就要遵循基本的http缓存实践：
+如果客户端直接暴露http服务，那么就要遵循基本的http缓存实践规范：
 
-- http页面不缓存（`Cache-Control: no-store`），或者必须检查缓存（`Cache-Control: no-cache`），配合`Last-Modified`头（http.Server自动设置）或者`ETag`头（需要自己设置）
-- js,css之类的资源文件可以使用`Cache-Control: must-revalidate`，但是必须添加版本信息/hash到文件名称或者请求参数中。资源文件也可以采用`检查缓存`策略。
+- http页面不缓存（`Cache-Control: no-store`）。或者检查缓存（`Cache-Control: no-cache`），配合`Last-Modified`头（http.Server自动设置）或者`ETag`头（需要自己设置）使用。
+- js,css之类的资源文件可以使用缓存（`Cache-Control: must-revalidate`），但是必须添加版本信息/hash到文件名称或者请求参数中。对于资源文件，也可以采用`检查缓存`策略。
 
-# 附录：demo
+## 附录：demo
 
 一个使用ETag检查缓存策略的FileServer：
 
