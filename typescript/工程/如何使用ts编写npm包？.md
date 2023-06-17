@@ -1,23 +1,32 @@
 # 目标
-使用TypeScript编写库，可供TypeScirpt和JavaScript使用，并且上传到 npmjs.com 中。
+
+使用TypeScript编写库，可供TypeScript和JavaScript使用，并且上传到[npmjs](npmjs.com)中。
 
 # 步骤
+
 ## 创建目录
+
 创建目录（这里使用`my-package`表示包名，实际情况按需修改）：
+
 ```bash
 mkdir my-package
 cd my-package
 ```
 
 ## 初始化包
-### npm
-初始化npm包：
+
+### npm/pnpm
+
+初始化命令：
+
 ```bash
 npm init -y
 ```
+
 *参数 `-y` 表示根据上下文，自动填充一些信息，如根据文件夹名称推测包名称*
 
 此时，会生成一个`package.json`文件，它是npm的核心配置文件，内容大致为：
+
 ```json
 {
   "name": "my-package",
@@ -33,17 +42,23 @@ npm init -y
 ```
 
 ### yarn
-初始化：
+
+初始化命令：
+
 ```bash
 yarn init -2
 ```
+
 默认开启了pnp，建议[关闭](https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored)，同时在`.yarnrc.yml`中添加：
+
 ```
 nodeLinker: node-modules
 ```
 
 ## 安装typescript
+
 本地安装typescript作为开发阶段依赖：
+
 ```bash
 # npm
 npm i typescript --save-dev
@@ -52,14 +67,18 @@ yarn add typescript -D
 ```
 
 ## 初始化typescript项目
+
 初始化typescript项目：
+
 ```bash
 # npm
 npx tsc --init
 # yarn
 yarn tsc --init
 ```
+
 此时，会生成一个`tsconfig.json`文件，它是typescript的唯一配置文件，内容大致为：
+
 ```json
 {
   "compilerOptions": {
@@ -77,7 +96,9 @@ yarn tsc --init
 ```
 
 ## 编写入口文件
+
 创建`src/index.ts`，并写入helloworld：
+
 ```typescript
 export function helloworld() {
     console.log("hello world");
@@ -85,7 +106,9 @@ export function helloworld() {
 ```
 
 ## 修改包配置文件
+
 修改包配置文件：
+
 ```json
 {
   "name": "my-package",
@@ -105,9 +128,11 @@ export function helloworld() {
   "files": ["dist/**/*"]//指定包所包含的文件
 }
 ```
+
 实际项目不会使用`tsc`而是使用`rollup`之类的构建工具，因为前端项目往往面临众多兼容性问题。
 
 ## 发布
+
 ```
 npm run build //先编译再发布
 npm login
@@ -115,6 +140,7 @@ npm publish
 ```
 
 # 优化
+
 上面步骤包含了最基本的流程，但是在真实项目中，我们还需要更多的东西，如：
 
 - eslint，检查代码，个人认为其在typescript项目中的意义不大

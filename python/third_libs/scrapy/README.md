@@ -1,18 +1,21 @@
 # 简介
-[overview](https://docs.scrapy.org/en/latest/intro/overview.html)
 
-[scrapy](https://scrapy.org/)是一款优秀的python平台下的爬虫框架，这类框架的特点是针对爬虫这一需求提供了**完整的一框架服务**，而非单纯的使用http请求、网页解析...等等离散的功能。
+[scrapy](https://scrapy.org/)是一款优秀的python平台下的爬虫框架，针对爬虫这一需求提供了**完整的框架服务**，而非单纯的使用http请求、网页解析...等等离散的功能。
 
 按照它的说明一步一步做就可以了。这里简单记录一下自己的步骤，以便以后使用时快速入门，而不需要重复阅读文档。
+
 # 安装
+
 [install](https://docs.scrapy.org/en/latest/intro/install.html)
 
 推荐使用[虚拟环境](https://docs.python.org/zh-cn/3/library/venv.html)
+
 ```
 python -m venv example-spider
 ```
 
 在虚拟环境中使用pip安装（可以根据需要设置代理环境变量），注意的是scrapy对于python版本存在要求。
+
 ```
 cd example-spider
 # 启动虚拟环境（不同操作系统脚本所在文件夹不同）
@@ -21,6 +24,7 @@ pip install scrapy
 ```
 
 ## tutorial
+
 [tutorial](https://docs.scrapy.org/en/latest/intro/tutorial.html)
 
 ```
@@ -60,26 +64,35 @@ class QuotesSpider(scrapy.Spider):
 # 使用
 
 ## 选择器
+
 [selector](https://docs.scrapy.org/en/latest/topics/selectors.html#using-selectors)
 
 `parse`过程用于解析文档并提取有效信息。scrapy自带选择器，基于`lxml`，总体上功能比较羸弱。因此完全可以使用第三方工具，比如BeautifulSoup。
 
 # FAQ
+
 ## 文件下载
+
 [media-pipeline](https://docs.scrapy.org/en/latest/topics/media-pipeline.html)
 
 图片下载依赖于项目[Pillow](https://pillow.readthedocs.io/en/latest/installation.html)
+
 ## 伪装
+
 设置header，关闭`robots.txt`检测。
 
 ## 代理
 
 ## 数据库访问
+
 [mongodb pipeline](https://docs.scrapy.org/en/latest/topics/item-pipeline.html#write-items-to-mongodb)
 
 # 问题
+
 ## 压缩问题
+
 通过header头请求服务器对返回的响应压缩，这是chrome的默认情况：
+
 ```
 'Accept-Encoding': 'gzip, deflate, br'
 ```
