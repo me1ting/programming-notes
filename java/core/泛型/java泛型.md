@@ -43,7 +43,7 @@ public class Pair<T>{//类型变量
 
 一般使用E(表示集合元素),K,V(表示键值对),T,U,S表示任意类型。
 
-**(3). 泛型方法**
+**(2). 泛型方法**
 
 泛型方法同样引入了类型变量和类型参数（与泛型类中的方法区分）。
 
@@ -86,9 +86,7 @@ public static <T extends Comparable & Serializable> T min(T[] a){...}
 @SuppressWarnings("unchecked")
 ```
 
-  
-
-## 泛型的缺陷
+## (Java)泛型的缺陷
 
 因为Java泛型采取擦除机制，导致泛型存在以下局限性：
 
@@ -182,4 +180,4 @@ public static <T> boolean hasNulls(Pair<?> p)...
 
 ## 参考资料
 
-<<Java核心技术 卷1>>v9 第12章 泛型程序设计
+《Java核心技术 卷1》v10 12. 泛型程序设计

@@ -1,6 +1,6 @@
 # 如何将不可比较类型作为map的key
 
-map只允许将可比较类型（`function`,`slice`,`map`）作为key，那么当我们确实需要将不可比较类型作为key时，比如[这道leetcode题](https://leetcode.cn/problems/equal-row-and-column-pairs/submissions/)，应该怎么做？
+map只允许将可比较类型（基本数据类型,`function`,`slice`,`map`）作为key，那么当我们确实需要将不可比较类型作为key时，比如[这道leetcode题](https://leetcode.cn/problems/equal-row-and-column-pairs/submissions/)，应该怎么做？
 
 ## 将其转换为可比较类型
 
@@ -26,7 +26,7 @@ map只允许将可比较类型（`function`,`slice`,`map`）作为key，那么�
 - 查找操作：key-->hashCode-->map-->container-->entry-->val
 - 插入操作：key-->hashCode-->map-->container-->entry
 
-我们只需要实现`hashCode`,`equals`,`container`上部分，因此很简单。
+我们只需要实现`hashCode`,`equals`,`container`，因此很简单。
 
 这个办法可以用来答题，但是存在一个严重的问题：map的resize是根据container的个数来实现的，而非基于元素的个数实现的，这导致这个hashmap实际上“超载了”，导致性能下降。
 

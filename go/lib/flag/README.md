@@ -1,61 +1,19 @@
-# flag
+# 命令行解析器
 
-[flag](https://golang.org/pkg/flag/)是Go自带的一个命令行参数解析器，功能谈不上强大，但勉强够用。
+## flag
 
-# fullname与shortname
+[flag](https://golang.org/pkg/flag/)是Go自带的一个命令行参数解析器，功能勉强够用。 
 
-形如下面的命令行使用方式，其中v是shortname,version是fullname：
+**对于应用开发，建议使用功能更加丰富的第三方命令行参数解析器。**
 
-```
-xxx -v
-xxx --version
-```
+## cobra
 
-在flag中并不存在这样的高级功能，可以模拟为：
+[cobra](https://github.com/spf13/cobra)是Go目前使用最多的第三方命令行解析器。
 
-```go
-var version boolean
+## kinpin
 
-func init() {
-	const (
-		version_usage         = "print version"
-	)
-	flag.StringVar(&version, "version", false, version_usage)
-	flag.StringVar(&version, "v", false, version_usage+" (shorthand)")
-}
-```
+[kingpin](https://github.com/alecthomas/kingpin)一个已经在2015年停止版本更新的过时的命令行解析器。
 
-# 语法
+## kong
 
-flag对于以下格式都是支持的：
-
-```
--flag //布尔值
--count=x
--count x
---count=x
---count x
-```
-
-# 自定义Usage
-
-flag采取`默认全局单例`的设计模式，可以通过修改全局单例来实现自定义usage：
-
-```go
-	f := flag.CommandLine
-
-	f.Usage = func() {
-		fmt.Fprintf(f.Output(), "Welcome to trojan-go %s\n", version.VERSION)
-		if f.Name() == "" {
-			fmt.Fprintf(f.Output(), "Usage:\n")
-		} else {
-			fmt.Fprintf(f.Output(), "Usage of %s:\n", f.Name())
-		}
-		fmt.Fprintf(flag.CommandLine.Output(), `options:
--c [ --config ] CONFIG (=config.json) specify config file
--h [ --help ]                         print help message
--l [ --log ] LOG                      specify log file location
--t [ --test ]                         test config file
--v [ --version ]                      print version and build info
-`)
-```
+[kong](https://github.com/alecthomas/kong)是kinpin作者后续推出的一款新的命令行解析器。
