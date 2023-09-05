@@ -12,7 +12,22 @@
 
 使用命令`flutter doctor`检查flutter sdk的状态。注意：
 
-- `[X] Windows Version (Unable to confirm if installed Windows version is 10 or greater)` 检测方法不兼容非英文语言包导致错误
+- `[X] Windows Version (Unable to confirm if installed Windows version is 10 or greater)` 检测方法不兼容非英文语言包而显示错误，实际上没有错误
 - `X HTTP host "https://maven.google.com/" is not reachable.` 无法访问Google导致错误
 
 这两个问题不用处理。
+
+## 更新
+
+国内网络需要设置代理：
+
+```powershell
+$Env:HTTP_PROXY = "http://127.0.0.1:1081"
+$Env:HTTPS_PROXY = "http://127.0.0.1:1081"
+```
+
+然后执行更新：
+
+```
+flutter upgrade
+```
