@@ -28,6 +28,7 @@ $Env:HTTPS_PROXY = "http://127.0.0.1:1081"
 
 然后执行更新：
 
-```
+```powershell
+cd C:\flutter
 flutter upgrade
 ```

@@ -6,10 +6,6 @@
 
 flutter提供`dart:ffi`库来支持`ffi`编程，提供[win32 package](https://pub.dev/packages/win32)来支持更简单的调用Windows的API。
 
-## 原生UI风格
-
-略
-
 ## 自定义Windows托管应用
 
 Windows版本的Flutter应用托管在一个小型的C++应用上，与UI相关的功能包括：

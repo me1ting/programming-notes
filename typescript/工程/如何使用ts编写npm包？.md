@@ -23,7 +23,7 @@ cd my-package
 npm init -y
 ```
 
-*参数 `-y` 表示根据上下文，自动填充一些信息，如根据文件夹名称推测包名称*
+*参数 `-y` 表示根据上下文，自动填充一些信息，比如根据文件夹名称推测包名称*
 
 此时，会生成一个`package.json`文件，它是npm的核心配置文件，内容大致为：
 
@@ -129,7 +129,7 @@ export function helloworld() {
 }
 ```
 
-实际项目不会使用`tsc`而是使用`rollup`之类的构建工具，因为前端项目往往面临众多兼容性问题。
+实际项目不会使用`tsc`而是使用`rollup`之类的构建工具，这是因为前端项目往往面临众多兼容性问题。
 
 ## 发布
 
@@ -146,7 +146,6 @@ npm publish
 - eslint，检查代码，个人认为其在typescript项目中的意义不大
 - prettier，格式化代码
 - jest，最流行的js/ts测试框架，但目前不支持esm，vitest是jest在esm时代的替代品
-- 自动化command
 - rollup，自定义构建
 - esm，js模块官方解决方案
 

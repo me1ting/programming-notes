@@ -1,4 +1,5 @@
-# 前言
+# 使用pm2管理nodejs程序
+
 最近接触了nodejs编程，编写了一个简单的express后台服务，但是程序总是无故的down掉。
 
 ```
@@ -6,6 +7,7 @@ nuhup node dist/index.js &
 ```
 
 使用网上教程，添加了异常拦截代码：
+
 ```js
 process.on('uncaughtException', err => {
     console.log('caught uncaught exception: ' + err)
@@ -16,11 +18,14 @@ process.on('uncaughtException', err => {
 
 在进一步搜索后，我选择了`pm2`这一款软件，来管理nodejs程序。它可以解决nodejs服务down掉的问题。
 
-# 安装
+## 安装
+
 按照 [quickstart](https://pm2.keymetrics.io/docs/usage/quick-start/) 进行安装。
 
-# 简单的命令
+## 简单的命令
+
 更多命令参考 quickstart 页面
+
 ```bash
 # 启动服务
 pm2 start app.js
@@ -29,11 +34,18 @@ pm2 reload app_name/id
 # 关闭服务
 pm2 stop app_name/id
 ```
+
 查看服务：
+
 ```bash
 pm2 ls
 ```
-显示日志：
+
+日志：
+
 ```bash
 pm2 logs
+pm2 logs --lines 100 # 限制显示行数
+pm2 flush appName|appId # 清空特定app的日志
+pm2 flush # 清空所有日志
 ```
