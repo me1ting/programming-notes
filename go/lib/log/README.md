@@ -42,7 +42,7 @@ log.Printf("[http] %s -> %s: %s\n", conn.RemoteAddr(), conn.LocalAddr(), err)
 输出：
 
 ```
-2021/01/02 13:00:37 [http] 127.0.0.1:62796 >-< registry.npmjs.org:443
+2021/01/02 13:00:37 [http] 127.0.0.1:62796 -> registry.npmjs.org:443
 ```
 
 这样的方式存在明显的缺点：

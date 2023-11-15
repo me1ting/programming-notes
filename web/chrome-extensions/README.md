@@ -1,17 +1,17 @@
 # 概述
 
-Chrome Extension由Web技术（html,css,javascript）提供支撑，其组成部分包括：
+Chrome Extension由Web技术（html,css,javascript）驱动，其组成部分包括：
 
 - [background scripts](https://developer.chrome.com/docs/extensions/mv3/background_pages/) 后台脚本
 - [content scripts](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) 内容脚本
 - [options page](https://developer.chrome.com/docs/extensions/mv3/options/) 选项页面
 -  [UI elements](https://developer.chrome.com/docs/extensions/mv3/user_interface/) 界面元素（比如popup）
 
-Chrome扩展是一个`web应用`，具体来讲，是一个使用`zip`格式压缩的文件夹，里面包含一个`mainifest.json`以及使用web技术编写的`组成部分`。
+Chrome扩展是一个`web应用`，具体来讲，是一个使用`zip`格式压缩的文件夹，里面包含一个`mainifest.json`以及使用Web技术编写的`组成部分`。
 
 # manifest.json
 
-扩展的元信息文件，包括扩展的元信息（项目名称、描述、版本……）、内容声明、权限声明……
+元信息文件，包括扩展的元信息（项目名称、描述、版本……）、内容声明、权限声明……
 
 # 后台脚本
 
@@ -21,7 +21,7 @@ Chrome扩展是一个`web应用`，具体来讲，是一个使用`zip`格式压�
 
 # 内容脚本
 
-Chrome允许扩展注入javascript,css文件到匹配路径下的所有页面，从而在交互、逻辑上影响目标页面。
+Chrome允许扩展注入javascript,css文件到浏览页面中，从而在交互、逻辑上影响页面。
 
 # 选项页面
 
@@ -29,9 +29,9 @@ Chrome允许扩展注入javascript,css文件到匹配路径下的所有页面，
 
 # 界面元素
 
-Chrome为扩展提供了一些交互元素。比如，在点击菜单栏中的扩展图标时，会打开`popup页面`。
+Chrome为扩展提供了一些基础的交互元素。比如，在点击菜单栏中的扩展图标时，打开`popup页面`。
 
-# 参考
+# 参考资料
 
 [extensions v3](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
 

@@ -18,8 +18,6 @@ Java给线程定义了6种状态：
 
 这6种状态在`Thread.State`中定义。注意的是，正如[文档](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html)所说的，这些状态只是JVM内部状态，并不能反映系统线程的状态。
 
->These states are virtual machine states which do not reflect any operating system thread states.
-
 这6种状态中：
 
 - `阻塞` 线程等待监视器锁时的状态
@@ -104,7 +102,7 @@ class Demo {
 
 # 线程安全的集合
 
-实现线程安全的集合需要特定领域的专家来编写，在Java中，我们可以使用JUC提供的一系列线程安全集合。
+实现线程安全的集合需要领域专家来编写，在Java中，我们可以使用JUC提供的一系列线程安全集合。
 
 # Callable&Future接口
 

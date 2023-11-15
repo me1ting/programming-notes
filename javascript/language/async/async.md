@@ -44,16 +44,15 @@ function double(value, callback) {
 ## 新模型：Promise+异步函数
 
 ### Promise(ES6)
+
 ES6中首先添加了`Promise`，来对异步执行进行抽象。`Promise`是一个通用术语，它有相关的论文支持，但这并不重要，它也可以叫其它名字，比如Java中的`Future`。
 
 > 并不能完全等价，因为Promise有独特的原语来满足某些需求。
 
 `Promise`使得原本需要传递`callback`的函数，现在只需要返回`Promise`对象，由调用方自己对结果进行处理。这使得我们不再需要面对`回调地狱`，代码结构变得清晰简洁了许多。
 
-对`Pormise`的细节请参考专题。
-
-
 ### 异步函数(async/await语法)(ES8)
+
 对`Promise`的结果进行处理，依然是使用回调模式。
 
 而ES8添加的`异步函数`使得可以以同步的方式编写异步执行代码，语法上使用`async/await`。
@@ -75,7 +74,7 @@ async function foo() {}
 
 语法上，`await`只能在异步函数内使用。
 
-### 模拟协程（待验证）
+### 模拟协程
 
 `协程`是对单线程程序的并行划分，支持`Promise`（或类似抽象）与`async/await`语法的现代语言都提供了这样的抽象，但JavaScript并没有。在阅读《JavaScript高级程序设计4》时，里面较多的使用了`setTimeout`函数，从添加新的异步执行流来讲，这与`协程`并没太大区别。
 
@@ -90,9 +89,9 @@ setTimeout(task, 0);
 
 本文大致梳理了一下JavaScript的异步执行模型，从同步/异步的概念，再到JavaScript的基本执行模型，callback机制，然后是Promise抽象，异步函数（async/await语法）概念。
 
-Promise和异步函数是编程语言界当前最新的、流行的异步编程模型，理解JavaScript中的它们，也有助于学习其它语言的异步编程。
+Promise和异步函数是编程语言目前最新的、最流行的异步编程模型，理解JavaScript中的它们，也有助于学习其它语言的异步编程。
 
-# Ref
+# 参考资料
 
 《JavaScript高级程序设计4》11. 期约与异步函数
 

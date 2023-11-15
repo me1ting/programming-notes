@@ -1,8 +1,8 @@
-# map元素的就地更新
+# go为什么不支持map元素的就地更新？
 
 ## 什么是map元素的就地更新？
 
-我是在这个[博客](https://tonybai.com/2023/04/02/map-element-types-support-in-place-update/)了解到`就地更新`的概念的，更近一步的出处为[《Go Fundamentals》](https://gopherguides.com/golang-fundamentals-book)。比如：
+我是在这个[博客](https://tonybai.com/2023/04/02/map-element-types-support-in-place-update/)了解到`就地更新`的概念，更近一步的出处为[《Go Fundamentals》](https://gopherguides.com/golang-fundamentals-book)。比如：
 
 ```go
 count := map[string]int{}
@@ -10,7 +10,7 @@ count["hello"]++ //这就是就地更新
 fmt.Println(count["hello"]) //1
 ```
 
-上述例子编译得到的汇编代码，其实是获取了`count["hello"]`的地址，然后执行加1。
+上述例子编译得到的汇编代码，获取了`count["hello"]`的地址，然后执行加1。
 
 ## struct不支持就地更新
 
@@ -36,7 +36,7 @@ count["hello"] = theCount
 
 ## struct为什么不支持就地更新？
 
-相关讨论在[issue 3117](https://github.com/golang/go/issues/3117)进行，个人看了下，并没有什么关键性的因素值得关注。
+相关讨论在[issue 3117](https://github.com/golang/go/issues/3117)进行，个人看了下，并没有什么值得关注的观点。
 
 个人认为，`count["hello"]++`是可以理解的，人们预期其效果为：
 
@@ -47,19 +47,12 @@ count["hello"] += 1
 但是`count["hello"].N++`其代表的行为让人困惑：
 
 ```go
-// 理解1
-c := count["hello"]
-c.N++
-
-//理解2
 c := count["hello"]
 c.N++
 count["hello"] = c
 ```
 
-第二种理解是某些使用者想要的，但是并不直观，没有必要专门为此发明语法糖。
-
-然后，struct为值是Go的特色，但使用场景很少，一般都是使用指针，不受就地更新的限制。
+这并不值得专门为此发明一个语法糖，然后几乎没人使用。
 
 ## 总结
 

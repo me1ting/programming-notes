@@ -1,12 +1,12 @@
 # 了解Java SPI
 
-SPI是`Service Provider Interface`（服务提供者接口）的缩写，是Java原生定义的用于框架的可扩展、可替换实现的api。
+SPI是`Service Provider Interface`（服务提供者接口）的缩写，是Java提供的用于框架的可扩展、可替换实现的API。
 
 在一个典型的应用场景中，包括三部分：服务发现者、SPI协议(API)、服务提供者。
 
 ![](Pasted%20image%2020230617233049.png)
 
-服务发现者定义了`服务`，并通过SPI api自动找到位于classpath下的服务实现类，并可获得实例。
+服务发现者定义了`服务`，并通过SPI自动找到位于classpath下的服务实现类，通过反射获得实例。
 
 ## 服务发现者
 
@@ -30,7 +30,7 @@ public static void main(String[] args) {
 - 拼接`\META-INF\services\`与服务接口全类型名得到资源文件名
 - 使用`ClassLoader`读取资源文件
 - 解析资源文件得到`Provider`全类型名称
-- 根据全类型名称加载并创建无参实例
+- 根据全类型名称加载类并创建无参实例
 - 调用迭代器，循环以上过程
 
 ## 服务提供者
@@ -44,19 +44,12 @@ spi.EnglishHelloService
 
 ## 应用场景
 
-SPI api在Java 和第三方框架中广泛使用：
+SPI API在Java 和第三方框架中广泛使用：
 
-- jdbc自动加载驱动
-- Servlet3 支持Java类进行配置，使用到了SPI
+- JDBC自动加载驱动
+- Servlet3 支持使用Java类进行配置
 - 日志门面框架（log4j,logback...）自动加载日志实现
-- ...
 
-## 示例
+## 总结
 
-// TODO
-
-# 总结
-
-Java SPI是Java满足框架的可扩展、实现可替换的需求而提供的一套API，在Java中广泛引用。
-
-Java SPI依赖`\META-INF\`下的一些文件。
+Java SPI是Java为满足框架的可扩展、实现可替换的需求而提供的一套API，在Java中广泛引用。

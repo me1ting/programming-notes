@@ -26,6 +26,6 @@ Go中，值类型（包括基本类型、数组、结构体）是可比较类型
 1. 对于非nil值，只有指向相同“对象”的引用类型是`==`的
 2. 可以与`nil`进行比较
 
-# 参考链接
+# 参考资料
 
 [Go语言标准：比较运算符](https://go.dev/ref/spec#Comparison_operators)by go.dev

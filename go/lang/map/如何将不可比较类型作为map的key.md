@@ -11,13 +11,13 @@ map只允许将可比较类型（基本数据类型,`function`,`slice`,`map`）�
 - 必须保证一一对应
 - 良好的性能
 
-以`[]int`为例，如果转换为`int`，可以使用[Horner](https://en.wikipedia.org/wiki/Horner%27s_method)方法，但是无法保证一一对应。保证一一对应的一种想法是记录`hashCode`与`[]int`之间的映射，如果产生碰撞，hashCode+1，这本质是**线性探测法**。
+以`[]int`为例，如果转换为`int`，可以使用[Horner](https://en.wikipedia.org/wiki/Horner%27s_method)方法，但是无法保证一一对应。保证一一对应的一种简单想法是记录`hashCode`与`[]int`之间的映射，如果产生碰撞，hashCode+1，这本质是**线性探测法**。
 
 如果转换为string，字符串的拼接明显会导致性能问题。
 
 ## 使用“半”自定义hashmap实现
 
-这里我在解决这个leetcode问题时采用的，但是在记录这个笔记时发现问题很大，仅作参考。
+这是我在解决这个leetcode问题时采用的，但是在整理笔记时发现问题很大，仅作探讨使用。
 
 所谓“半”自定义，是指将`map`作为我们自定义hashmap的一部分，采用如下方法：
 
@@ -28,7 +28,7 @@ map只允许将可比较类型（基本数据类型,`function`,`slice`,`map`）�
 
 我们只需要实现`hashCode`,`equals`,`container`，因此很简单。
 
-这个办法可以用来答题，但是存在一个严重的问题：map的resize是根据container的个数来实现的，而非基于元素的个数实现的，这导致这个hashmap实际上“超载了”，导致性能下降。
+这个办法可以用来答题，但是存在一个严重的问题：map的resize是基于container的个数，而非基于元素的个数，这导致这个hashmap实际上“超载了”，导致性能下降。
 
 ## 自定义hashmap实现
 

@@ -16,11 +16,12 @@ Promise有三种状态：
 
 ## promise.then()
 
-`promise.then()`方法用于（*同步代码中*）**注册异步代码的执行结果的处理函数**，这些处理函数是异步执行的。
+`promise.then()`方法用于（*在同步代码中*）**注册异步代码的执行结果的处理函数**，这些处理函数是异步执行的。
 
 > 异步指的是**代码块**之间的并行执行关系，在代码块中，前后语句依然是按照同步顺序执行的。
 
 `执行结果`可能成功，也可能失败，promise.then()通常有3种使用方式：
+
 ```javascript
 const promise = doSomething();
 // 同时提供解决和拒绝的处理函数
@@ -58,6 +59,7 @@ doSomething()
 ```
 
 其对应的异步代码提供了更清晰了表达：
+
 ```javascript
 async function foo() {
   try {
@@ -70,8 +72,6 @@ async function foo() {
   }
 }
 ```
-
-
 
 # 创建Promise
 
@@ -128,6 +128,7 @@ promise.then(function(contents) {
 
 我们可以使用`then()`,`catch()`来以回调的方式处理异步执行逻辑的结果；也可以使用`await`来将异步操作嵌入同步代码中，得到异步函数。
 
-# Refs
+# 参考资料
+
 [MDN Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 [MDN 使用Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises)

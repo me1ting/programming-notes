@@ -5,14 +5,14 @@
 使用`List`接口，主要有两个实现类：
 
 - `ArrayList` 基于数组的列表
-- LinkedList 链表
+- `LinkedList` 链表
 
 ## 栈
 
-使用`Deque`接口，表示双端队列，但可以用作栈。主要有两个实现类：
+使用`Deque`接口，表示双端队列，可以用作栈。主要有两个实现类：
 
-- ArrayDeque
-- LinkedList
+- `ArrayDeque`
+- `LinkedList`
 
 ## 队列
 

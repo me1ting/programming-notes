@@ -1,8 +1,8 @@
 # heap
 
-[container/heap](https://golang.org/pkg/container/heap/)标准库提供对`heap`这一数据结构的支持。
+[container/heap](https://golang.org/pkg/container/heap/)标准库提供了对`heap`这一数据结构的支持。
 
-# 使用方式
+## 如何使用？
 
 `heap`的使用方式类似`sort`包，`heap`定义了一个堆的抽象接口：
 

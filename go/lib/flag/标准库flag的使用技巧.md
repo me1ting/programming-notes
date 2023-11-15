@@ -1,4 +1,5 @@
-# fullname与shortname
+# 标准库flag的使用技巧
+## fullname与shortname
 
 形如下面的命令行使用方式，其中v是shortname,version是fullname：
 
@@ -21,7 +22,7 @@ func init() {
 }
 ```
 
-# 语法
+## 语法
 
 flag对于以下格式都是支持的：
 
@@ -33,7 +34,7 @@ flag对于以下格式都是支持的：
 --count x
 ```
 
-# 自定义Usage
+## 自定义Usage
 
 flag采取`默认全局单例`的设计模式，可以通过修改全局单例来实现自定义usage：
 

@@ -22,9 +22,7 @@ process.on('uncaughtException', err => {
 
 按照 [quickstart](https://pm2.keymetrics.io/docs/usage/quick-start/) 进行安装。
 
-## 简单的命令
-
-更多命令参考 quickstart 页面
+## 常用命令
 
 ```bash
 # 启动服务
