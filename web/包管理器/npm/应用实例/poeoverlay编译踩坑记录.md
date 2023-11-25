@@ -1,4 +1,5 @@
 # 总览
+
 `poeoverlay`是一个electron应用，使用了`node-gyp`来编译非js或ts编写的包，这是导致它编译麻烦的主要原因。
 
 [开发者文档](https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/blob/master/DEVELOPERS.md)
@@ -8,10 +9,12 @@
 这里记录一下遇到的问题，及解决思路。
 
 # 使用文档指定的node版本
+
 文档指定的node版本为`12.18.0`，和当前的LTS版本跨度太大，应当使用文档指定的node版本（尝试使用node@1.6.x.x执行后续步骤，确实存在很大的兼容性问题）。
 
 ## npm install
 ## robotjs安装失败问题
+
 ```
 npm ERR! > robotjs@0.6.0 install
 npm ERR! > prebuild-install || node-gyp rebuild
@@ -24,6 +27,7 @@ sys; print "%s.%s.%s" % sys.version_info[:3];
 npm ERR! gyp ERR! stack   File "<string>", line 1
 npm ERR! gyp ERR! stack     import sys; print "%s.%s.%s" % sys.version_info[:3];
 ```
+
 安装robotjs@0.6.0版本失败，使用的是node-gyp@3.8.0版本，错误原因是安装代码为Python代码，却使用Python3执行。
 
 这里有几个解决思路：
@@ -35,29 +39,36 @@ npm ERR! gyp ERR! stack     import sys; print "%s.%s.%s" % sys.version_info[:3];
 不推荐使用思路1，思路2和思路3是可行的。
 
 ### 思路2
+
 在Python官网上找到Python2的安装文件，直接安装，默认不添加`path`。
 在MSVC官网上找到 MSVC2017的安装文件，安装桌面VC++开发依赖。
 
 找到`node-gyp@3.8.0`的github主页，找到[手动安装步骤](https://github.com/nodejs/node-gyp/tree/v3.8.0#option-2)。其中设置使用Python2：
+
 ```
 npm config set python "C:\Python27\python"
 ```
 
 ## openssl_fips问题
+
 ```
 npm ERR! gyp: name 'openssl_fips' is not defined while evaluating condition 'openssl_fips != ""' in binding.gyp while trying to load binding.gyp
 ```
+
 Google之后，得到解决办法：
+
 ```
 npm install --openssl_fips=''
 ```
 
 ## 更新node.js依赖的`node-gyp`版本
+
 `windows-build-tools`(包括python和msvc)是`node-gyp`包的依赖，不同的`node-gyp`版本所支持的`python`,`msvc`版本是不同的，所支持的配置选项也是不同的。
 
 node自带一个`node-gyp`，使用`npm -g install`安装的`node-gyp`只对独立的`node-gyp`命令产生作用，不影响node自带的。我们需要使用[特别的方法](https://github.com/nodejs/node-gyp/issues/2272)来覆盖掉node自带的`node-gyp`。
 
 这种方法在node16已经失效，需要使用环境变量实现：
+
 ```powershell
 npm prefix -g | % {$Env:npm_config_node_gyp = "$_\node_modules\node-gyp\bin\node-gyp.js"}
 ```
@@ -72,7 +83,9 @@ npm prefix -g | % {$Env:npm_config_node_gyp = "$_\node_modules\node-gyp\bin\node
 
 # `npm run electron:windows`
 ## heap out of memory问题
+
 使用更大的堆：
+
 ```powershell
 $env:NODE_OPTIONS="--max-old-space-size=8192"
 ```

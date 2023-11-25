@@ -1,9 +1,8 @@
-# 版本信息
+# 在ubuntu上安装mysql8
 
-系统：ubuntu 20.04
-mysql：8.0
+本文记录了在ubuntu 20.04上安装mysql8的步骤。
 
-# 安装
+## 安装
 
 按照[官方文档](https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#apt-repo-fresh-install)说明的步骤进行安装。
 
@@ -24,27 +23,22 @@ sudo apt update
 sudo apt install mysql-server
 ```
 
-# 基本命令
+## 基本命令
 
-使用`systemctl`来对mysql server进行管理，支持`stop`,`start`,`status`,`restart`命令，如：
+使用`systemctl`来对mysql server进行管理，支持`stop`,`start`,`status`,`restart`等命令，如：
 
 ```bash
 # 重启服务
 sudo systemctl restart mysql
 ```
 
-# 其他配置
+## 其他配置
 
 基于安全考虑，mysql默认只支持在`local`上使用`local`账户访问。但是在安全性要求不是很高的场景，我们可能需要远程访问。
 
->这3个local指：
->本地主机
->mysql的账户包括名称和域名两部分，域名为localhost的主机
->Non-TCP (socket file, named pipe, and shared memory) connections
-
 这需要配置以下步骤。
 
-## 允许远程访问
+### 允许远程访问
 
 首先，需要开启远程访问功能。
 
@@ -56,9 +50,7 @@ bind-address    = 0.0.0.0
 
 >`0.0.0.0`表示绑定所有网卡，根据需求，你可以绑定公网IP或者内网IP或者localhost。
 
-修改后自动生效，不需要重启服务。
-
-## 创建远程账户
+### 创建远程账户
 
 根据不同的需求，来创建需要的远程账户。下面示例创建了一个远程`root`账户，具有所有权限。
 

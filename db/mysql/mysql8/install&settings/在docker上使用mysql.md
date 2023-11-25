@@ -1,4 +1,4 @@
-# mysql在docker上的实践
+# 在docker上使用mysql
 
 ## 拉取镜像
 
@@ -8,7 +8,7 @@ docker pull mysql:8.0.35
 
 ### 镜像选择
 
-这里镜像选择包括两个方面：
+选择镜像时考虑两个方面：
 
 - mysql版本
 - 基础镜像

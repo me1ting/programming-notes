@@ -1,3 +1,3 @@
 ```
-pip install --proxy http://localhost:1081 mysql-connector-python
+pip install mysql-connector-python --proxy http://localhost:1081
 ```
