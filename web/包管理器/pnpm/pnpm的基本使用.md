@@ -17,9 +17,7 @@ corepack enable
 pnpm
 ```
 
-如果提示`在此系统上禁止运行脚本。`，是Windows默认不允许执行未签名的powshell脚本，需要修改策略。
-
-使用管理员权限执行：
+如果提示`在此系统上禁止运行脚本。`，是Windows默认不允许执行未签名的powshell脚本，使用管理员权限执行：
 
 ```powershell
 set-executionpolicy remotesigned

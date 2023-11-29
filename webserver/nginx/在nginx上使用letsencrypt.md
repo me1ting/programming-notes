@@ -1,6 +1,6 @@
-# 简介
+# 在nginx上使用letsencrypt
 
-let's encrypt是最常用的免费的https证书，nginx是常用的web服务器之一，本文记录了在nginx上使用let's encrypt的实践过程。
+let's encrypt是最常用的免费的https证书，nginx是常用的web服务器之一，本文记录了在nginx上如何使用let's encrypt。
 
 本文所使用的操作系统是ubuntu20.04。
 
@@ -11,7 +11,7 @@ let's encrypt是最常用的免费的https证书，nginx是常用的web服务器
 
 `certbot`是letsencrypt的客户端，它负责验证域名的所属、申请证书等过程。
 
-官方推荐的certbot安装方式是使用`snap`，这种方式的缺陷是它会常驻一个守护进程。
+官方推荐的certbot安装方式是使用`snap`，缺点是会常驻一个守护进程。
 
 因此推荐使用传统安装方式：
 
@@ -59,7 +59,7 @@ certbot --nginx -d example.com
 certbot --nginx -d example.com -d www.example.com
 ```
 
-执行这个命令后，会进入命令行交互，要求你提供必要的信息，设置是否将http跳转到https...
+执行这个命令后，会进入命令行交互，要求你提供必要的信息，设置是否将http重定向https...
 
 ## 自动续订
 

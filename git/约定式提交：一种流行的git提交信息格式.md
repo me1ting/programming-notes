@@ -1,0 +1,15 @@
+# 约定式提交：一种流行的git提交信息格式
+
+在开源项目中，我们会看到很多人使用如下风格的提交信息：
+
+```
+chore: change settings of git actions
+feat: support multi languages
+...
+```
+
+这种提交信息格式被称为[约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)，是Google的Angular项目的[提交指南](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)的演变，成为了一种通用的提交信息书写规范。
+
+## 规范细节
+
+官方文档已经讲解得很详细了，这里不再赘述。

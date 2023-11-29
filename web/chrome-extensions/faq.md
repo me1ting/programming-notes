@@ -19,4 +19,4 @@ chrome扩展有两种访问[cookie](https://developer.mozilla.org/en-US/docs/Web
 ## cors
 ### 内容脚本如何发起CORS请求？
 
-扩展是[无法直接发起CORS请求的](https://www.chromium.org/Home/chromium-security/extension-content-script-fetches/)，需要使用消息机制和h后台脚本来实现。
+扩展是[无法直接发起CORS请求的](https://www.chromium.org/Home/chromium-security/extension-content-script-fetches/)，需要使用消息机制和后台脚本来实现。
