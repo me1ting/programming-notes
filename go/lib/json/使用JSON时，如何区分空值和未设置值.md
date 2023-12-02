@@ -1,10 +1,10 @@
-# 官方库将标准类型的null解析为空值的问题
+# 使用JSON时，如何区分空值和未设置值
 
 逛v2的golang区时看到了这样的[问题](https://www.v2ex.com/t/975214)：
 
 ```go
 type Data struct {
-	Price int `json:"myName"`
+	Price int `json:"price"`
 }
 
 func main() {
@@ -17,16 +17,16 @@ func main() {
 // output: 0
 ```
 
-这里假设请求端传入了包含`price`的数据，约定：
+假设请求端传入了包含`price`的数据，服务端要求：
 
 - `price: 0`是有效的
 - `price: null`是非法的
 
 >price只是用来举例，这里不考虑请求端传递`price`在业务逻辑上是否合理
 
-很多编程语言的json库支持检测`price: null`的情况，但官方json库解析`price: null`与`price: 0`得到相同的结果0，而非抛出异常，且不支持检测。
+很多编程语言的json库支持区分空值和未设置值，但官方json库解析`price: null`与`price: 0`的结果均为0，不支持区分。
 
-官方json库遇到非引用类型字段的json值为null时，不做任何处理：
+从源码得知，官方json库遇到非引用类型字段的json值为null时，不做任何处理：
 
 https://cs.opensource.google/go/go/+/master:src/encoding/json/decode.go;l=895
 

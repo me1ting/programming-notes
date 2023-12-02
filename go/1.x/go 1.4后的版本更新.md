@@ -2,9 +2,9 @@
 
 《TGPL》是学习Go，以及作为文档的一本好书，但其基于Go 1.4版本。本文记录了Go 1.4版本后，**语法**和**工具链**的重要变更。
 
-# 1.5
+## 1.5
 
-## 内部包
+### 内部包
 
 Go从本版本开始完全支持[内部包](https://docs.google.com/document/d/1e8kOo3r51b2BWtTs_1uADIA5djfXhPT36s6eHVRIvaU/edit)。
 
@@ -12,9 +12,9 @@ Go从本版本开始完全支持[内部包](https://docs.google.com/document/d/1
 
 *`$GOPATH/src/mypkg/internal/foo`只能被`$GOPATH/src/mypkg`包访问*
 
-# 1.9
+## 1.9
 
-## 类型别名
+### 类型别名
 
 这是一个新的语法，[类型别名](https://go.dev/doc/go1.9#language) 是创建类型的别名，而非创建新的类型：
 
@@ -22,9 +22,9 @@ Go从本版本开始完全支持[内部包](https://docs.google.com/document/d/1
 type T1 = T2
 ```
 
-# 1.13
+## 1.13
 
-## 数字字面量
+### 数字字面量
 
 引入了新的数字字面量语法：
 
@@ -36,12 +36,41 @@ type T1 = T2
 
 - 位分离器：`1_000`
 
-# 1.14
+## 1.14
 
-## 模块
+### 模块
 
 模块功能已经成熟，[迁移指南](https://blog.golang.org/migrating-to-go-modules)
 
-# 1.18
+## 1.18
 
 添加了[泛型](https://go.dev/doc/go1.18#language)的实现。
+
+## 1.20
+
+### 语法更新
+
+1) 支持切片到数组的转换：
+
+```go
+x := make([]byte, 4)
+var array = *(*[4]byte)(x) //[4]byte
+```
+
+## 1.21
+
+### 内建函数
+
+[go1.21](https://go.dev/doc/go1.21) 增加：
+
+- `max()`
+- `min()`
+- `clear()`，`slice`清零或者`map`清空
+
+### 核心库
+
+增加：
+
+- `slog`，标准库的结构化日志实现
+- `maps`，`map`的辅助功能
+- `slices`，`slice`的辅助功能

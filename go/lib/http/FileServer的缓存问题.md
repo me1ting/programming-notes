@@ -1,10 +1,10 @@
-# http.FileServer踩坑记录
+# FileServer的缓存问题
 
 ## 遇到的问题
 
-需要实现一个简单的static web server，因此使用`http.FileServer`。
+使用`http.FileServer`失效了一个简单的static web server。
 
-但是在更新web内容时，发现页面使用的是缓存而始终没法加载最新的web文件。
+但是在更新web内容时，发现页面使用的是缓存，始终没法加载最新的web文件。
 
 ## 分析问题
 
@@ -21,7 +21,7 @@ Date: Mon, 24 Jul 2017 17:29:32 GMT
 
 后续请求时会直接使用缓存，而不对服务端进行访问。
 
-在复习http缓存知识后，得知此时浏览器使用的是[启发式缓存](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#heuristic_caching)，等价于`Cache-Control: must-revalidate`，由于服务端没有返回缓存失效时间，失效时间由浏览器自己计算的。
+在复习http缓存知识后，得知此时浏览器使用的是[启发式缓存](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#heuristic_caching)，等价于`Cache-Control: must-revalidate`，由于服务端没有返回缓存失效时间，使用浏览器自己计算的失效时间。
 
 刷新和强制刷新（ctrl+f5）会要求浏览器验证缓存的有效性，但是这个方法对js和css等资源文件无效的，而且对用户不友好。
 

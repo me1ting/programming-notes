@@ -1,4 +1,4 @@
-# 标准库flag的使用技巧
+# flag examples
 ## fullname与shortname
 
 形如下面的命令行使用方式，其中v是shortname,version是fullname：
@@ -8,7 +8,7 @@ xxx -v
 xxx --version
 ```
 
-在flag中并不存在这样的高级功能，可以模拟为：
+在flag中没有直接满足该需求的API，但可以模拟：
 
 ```go
 var version boolean
@@ -22,7 +22,7 @@ func init() {
 }
 ```
 
-## 语法
+## 参数语法
 
 flag对于以下格式都是支持的：
 
@@ -56,3 +56,7 @@ flag采取`默认全局单例`的设计模式，可以通过修改全局单例�
 -v [ --version ]                      print version and build info
 `)
 ```
+
+## 参考资料
+
+[doc: flag](https://pkg.go.dev/flag)
