@@ -12,10 +12,6 @@ vagrant是一款虚拟化解决方案，主要目标是简化**开发阶段**的
 
 以[bionic/current/bionic-server-cloudimg-amd64-vagrant.box](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-vagrant.box)为例：
 
-下载文件大小仅330M，比下载安装镜像文件小了许多。
-
-![](_v_images/20201011140144457_11969.png)
-
 解压该文件：
 
 ![](20201011140213583_18927.png)
