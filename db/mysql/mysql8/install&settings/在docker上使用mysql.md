@@ -31,7 +31,7 @@ mysql8在2023年引入了[长期服务版本和创新版本](https://dev.mysql.c
 
 ### 基础镜像选择
 
-在官方MySQL镜像中[过滤](https://hub.docker.com/_/mysql/tags?page=1&ordering=last_updated&name=8.0.35)`8.0.35`版本，目前有3种：
+在官方MySQL镜像中[过滤](https://hub.docker.com/_/mysql/tags?page=1&ordering=last_updated&name=8.0.35)`8.0.35`（本笔记记录时的最新版本）版本，目前有3种：
 
 - default(目前实际使用的是oracle)
 - oracle

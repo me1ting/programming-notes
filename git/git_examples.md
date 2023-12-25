@@ -44,3 +44,5 @@ git tag --delete tagname
 ```
 git push origin :tagname
 ```
+
+如果远程是github，可以在网页上进行删除。

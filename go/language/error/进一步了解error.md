@@ -20,7 +20,8 @@ error的基本接口时返回**一段字符串表示的错误消息**。
 
 ```go
 import errors
+import fmt
 
-# 
 errors.New("message1")
+fmt.Eprintf("message2 %v", some)
 ```

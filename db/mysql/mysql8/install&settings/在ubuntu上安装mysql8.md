@@ -1,4 +1,4 @@
-# 在ubuntu上安装mysql8
+# 在ubuntu上安装mysql
 
 本文记录了在ubuntu 20.04上安装mysql8的步骤。
 

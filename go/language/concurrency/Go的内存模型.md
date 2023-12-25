@@ -34,6 +34,19 @@ Go的`内存模型`规定了在一个 goroutine 读取共享变量时能够保�
 
 `go`语句`happens before` 其创建的 goroutine 。
 
+```go
+var a string
+
+func f() {
+	print(a)
+}
+
+func hello() {
+	a = "hello, world"// 保证该操作在f()执行之前发生
+	go f()
+}
+```
+
 退出 goroutine 不做任何同步保证。
 
 ### channel

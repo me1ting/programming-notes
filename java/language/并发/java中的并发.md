@@ -28,7 +28,7 @@ Java给线程定义了6种状态：
 
 Java中的线程可以被中断，通过调用`thread.interrupt()`实现，所在线程可以使用`isInterrupted()`来查询是否被中断。
 
-发明中断的目的，是让外部可以通知线程do something else。为了通知被阻塞的线程，会触发 `InterruptedException`。虽然《Java核心教程 卷1》说，某些I/O是不可中断的，但是由于`InterruptedException`并非`RuntimeException`的子类，因此当你真需要用到中断线程功能，并不需要担心如何识别哪些I/O是不可中断的。
+发明中断的目的，是让外部可以通知线程do something else。为了通知被阻塞的线程，会触发 `InterruptedException`。
 
 ## 线程的属性
 
