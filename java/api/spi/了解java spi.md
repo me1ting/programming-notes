@@ -4,7 +4,7 @@ SPI是`Service Provider Interface`（服务提供者接口）的缩写，是Java
 
 在一个典型的应用场景中，包括三部分：服务发现者、SPI协议(API)、服务提供者。
 
-![](Pasted%20image%2020230617233049.png)
+![](_images/Pasted%20image%2020230617233049.png)
 
 服务发现者定义了`服务`，并通过SPI自动找到位于classpath下的服务实现类，通过反射获得实例。
 

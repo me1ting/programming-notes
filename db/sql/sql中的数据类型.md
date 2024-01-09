@@ -1,12 +1,22 @@
 # SQL中的数据类型
 
-SQL标准规定了几种数据库类型，所有支持SQL标准的关系型数据库（目前市面上所有主流的关系型数据库都支持该标准）都采用了这些类型。
+SQL标准定义了一些数据类型，所有支持SQL标准的关系型数据库（目前市面上所有主流的关系型数据库都支持该标准）都采用了这些类型。
+
 ## 数值类型
 ### 整数
 
-sql中的[整数](https://dev.mysql.com/doc/refman/8.0/en/integer-types.html)与编程语言中的`整数`概念基本一致，区分长度和符号。
+|Type|Storage (Bytes)|Minimum Value Signed|Minimum Value Unsigned|Maximum Value Signed|Maximum Value Unsigned|
+|---|---|---|---|---|---|
+|`TINYINT`|1|`-128`|`0`|`127`|`255`|
+|`SMALLINT`|2|`-32768`|`0`|`32767`|`65535`|
+|`MEDIUMINT`|3|`-8388608`|`0`|`8388607`|`16777215`|
+|`INT`|4|`-2147483648`|`0`|`2147483647`|`4294967295`|
+|`BIGINT`|8|`-263`|`0`|`263-1`|`264-1`|
 
-整数默认是[有符号的](https://dev.mysql.com/doc/refman/8.0/en/integer-types.html)，需要使用额外的**标志**来声明无符号。默认情况下，无符号数的运算结果为无符号，因此除非类似`id`这样不参与算数运算的字段，**应当尽量避免使用无符号数**。
+SQL中的整数与编程语言中的`整数`概念基本一致，区分长度和符号。
+
+整数默认是[有符号的](https://dev.mysql.com/doc/refman/8.0/en/integer-types.html)，需要使用额外的标志来声明无符号。默认情况下，无符号数的运算结果为无符号，这点需要注意。
+
 ### 实数
 #### 浮点数
 
@@ -22,46 +32,43 @@ DECIMAL(5,2)
 
 如果插入数据的小数精度超过设定，会采取舍入策略，**应当避免插入超过设定精度的数值**。
 
->相比于浮点数计算存在误差，定点数计算没有误差，在需要精确精度的金融等领域使用。
+*相比于浮点数计算存在误差，定点数计算没有误差，在需要精确精度的金融等领域使用。*
 
 ## 布尔类型
 
-SQL没有规定布尔类型，习惯用`tinyint`来表示编程语言中的`boolean`类型，0表示false,非`0`表示true。
+SQL没有规定布尔类型，习惯用`tinyint(1)`来表示编程语言中的`boolean`类型，0表示false,非`0`表示true。
 
-tinyint是最小长度的整数，其长度只有8位。
 ## 字符串类型
 
-SQL中的[字符串类型](https://dev.mysql.com/doc/refman/8.0/en/string-types.html)是统称所有存储**字符序列**或**字节序列**的数据类型。
+存在不同的字符串类型是因为存在多种维度的区分：
 
-本文只关心其中常用的：char,varchar,binary,varbinary,blob,text。
-
-存在不同的“字符串类型”（准确来说是字节/字符序列类型）是因为存在多种维度的区分：
-
-- 是存储字节序列还是字符序列，char,varchar,text是用来存储字符序列的，其余3个用来存储字节序列
-- 是存储变长(variable-length)的序列还是固定长度的序列，它们在底层细节存在很多区别，其中char,binary是用来存储固定长度序列
-- 是存储较短长度序列，中等长度序列，还是较长长度的序列，其中char,binary用来存储较短长度的序列，varchar,varbinary用来存储中等长度的序列，blob,text用来存储较长长度的序列
+- 是存储变长(variable-length)的序列还是固定长度的序列，它们在底层细节存在很多区别，其中char是用来存储固定长度序列
+- 是存储较短长度序列，中等长度序列，还是较长长度的序列，其中char用来存储较短长度的序列，varchar用来存储中等长度的序列，blob用来存储较长长度的序列
 
 ### char&varchar
 
 [char](https://dev.mysql.com/doc/refman/8.0/en/char.html)用于存储较短长度的字符序列，varchar用于存储中等长度的字符序列。
 
-`var`是“variable-length”的缩写，`char`类型存储在数据库中的值是固定长度的，原始数据如果小于这个长度会被使用**空格**进行填充，同时我们应当**避免使用超过该固定长度的原始数据**。相对的varchar类型存储在数据库中的值的长度是可变的，不会进行尾部填充。
+`var`是“variable-length”的缩写，`char`类型存储在数据库中的值是固定长度的，原始数据如果小于这个长度会被使用**空格**进行填充，超过则会截断（应当避免这样做）。相对的varchar类型存储在数据库中的值的长度是可变的，不会进行尾部填充。
 
 创建表时，char与varchar都需要指定其允许的最大字符长度，varchar的最大字符长度受到行最大字节大小的限制。
 
-| —————— | char | varchar |
+|  | char | varchar |
 | --- | --- | --- |
 | 抽象意义 | 固定长度字符串 | 可变长度字符串 |
-| 长度范围 | 0~255chars | 0~65535bytes |
+| 理论长度范围 | 0~255chars | 0~65535bytes |
 | 尾部填充 | 是 | 否 |
 | 对待尾部空格 | 空格不属于数据 | 空格属于数据的一部分，会用于存储和检索 |
-| 读取 | 因为没有记录实际长度，直接删除尾部空格 | 按实际长度读取 |
+| 读取 | 因为没有记录长度，直接删除尾部空格 | 按实际长度读取 |
 | 存储前缀 | 不存储长度记录 | 使用1或2个字节存储字符串实际长度 |
 #### char的尾部填充与剥离
 
 为了保证固定长度的存储值，对不满足长度的原始数据进行了尾部填充，在使用（查询、排序、比较）时需要对尾部空格进行剥离，因此`char`类型的`实际值`是**不存在尾部空格的**。
 
 **char仅用于存储固定长度，且无尾部空格的数据，比如手机号码**。
+
+## 字节类型
+
 ### binary&varbinary
 
 [binary](https://dev.mysql.com/doc/refman/8.0/en/binary-varbinary.html)用于存储较短长度的字节序列的类型，varbinary用于存储中等长度的字节序列。
@@ -71,7 +78,7 @@ binary与varbinary的关系和char与varchar的关系很类似，不同点在于
 - binary&varbinay的长度单位是字节
 - binary使用零字节`0x00`进行填充
 
-| —————— | binary | varbinay |
+|  | binary | varbinay |
 | --- | --- | --- |
 | 抽象意义 | 固定长度字节序列 | 可变长度字节序列 |
 | 长度范围(字节单位) | 0~255bytes | 0~65535bytes |
@@ -79,6 +86,7 @@ binary与varbinary的关系和char与varchar的关系很类似，不同点在于
 | 对待尾部零字节 | 0x00不属于数据 | 0x00属于数据的一部分，会用于存储和检索 |
 | 读取 | 因为没有记录实际长度，直接删除尾部0x00 | 按实际长度读取 |
 | 存储前缀 | 不存储长度记录 | 使用1或2个字节存储长度 |
+
 ### blob&text
 
 [blob](https://dev.mysql.com/doc/refman/8.0/en/blob.html)用于存储长字节序列，text用于存储长字符序列。
@@ -88,7 +96,12 @@ binary与varbinary的关系和char与varchar的关系很类似，不同点在于
 - blob类型包括：TINYBLOB,BLOB,MEDIUMBLOB,LONGBLOB
 - text类型包括：TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT
 
-可以在[这里](https://dev.mysql.com/doc/refman/8.0/en/storage-requirements.html#data-types-storage-reqs-strings)找到不同细分类型的最大长度。
+| 类型 | 长度 |
+|---|---|
+|TINYBLOB, TINYTEXTOB|_`L`_ + 1 bytes, where _`L`_ < 28|
+|BLOB, TEXT|_`L`_ + 2 bytes, where _`L`_ < 216|
+|MEDIUMBLOB, MEDIUMTEXT|_`L`_ + 3 bytes, where _`L`_ < 224|
+|LONGBLOB, LONGTEXT|_`L`_ + 4 bytes, where _`L`_ < 232|
 
 blob,text可以提供可选长度信息，mysql会根据提供的字节长度信息匹配最合适的细分类型，[这里](https://dev.mysql.com/doc/refman/8.0/en/string-type-syntax.html)了解语法细节。
 
@@ -131,3 +144,5 @@ timestamp源自[unix时间](https://en.wikipedia.org/wiki/Unix_time)，使用有
 # 参考资料
 
 《SQL学习指南》v2 2.3 MySQL中的数据类型
+
+[doc: mysql8数据类型](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)

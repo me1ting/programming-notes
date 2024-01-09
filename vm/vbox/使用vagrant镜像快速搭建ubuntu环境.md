@@ -49,7 +49,7 @@ vagrant是一款虚拟化解决方案，主要目标是简化**开发阶段**的
 
 进入`/etc/netplan`，创建网络配置文件：
 
-`sudo vim enp8s8.yaml`
+`sudo vim enp0s8.yaml`
 
 其内容为（根据需要进行修改，建议使用固定IP）：
 
@@ -64,10 +64,10 @@ network:
       - 192.168.162.163/24
 ```
 
-重启系统：
+应用配置：
 
 ```
-sudo reboot
+sudo netplan apply
 ```
 
 ## sshd配置

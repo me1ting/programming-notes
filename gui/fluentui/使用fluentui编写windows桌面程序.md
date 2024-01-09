@@ -26,7 +26,7 @@
 
 选择fluent ui，主要有以下原因：
 
-- 面向Windows应用设计，是Windows原生风格
+- fluent ui面向Windows应用设计，是Windows原生风格
 - `react fluent ui`在MS的实际桌面产品（Teams等）中应用
 
 ## fluent ui的相关站点

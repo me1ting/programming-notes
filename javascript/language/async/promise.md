@@ -37,13 +37,14 @@ promise.then(null, failureCallback);
 `promise.catch(failureCallback)`是`promise.then(null, failureCallback)`的缩略形式。
 
 ## promise.finally()
+
 `promise.finally()`表示最终执行的代码。
 
 ## promise的链式调用
 
 `promise.then`的返回值是一个新的`Promise`对象，一些细节值得注意：
 
-- 返回一个新的Promise，**表示前一个结果处理操作的异步执行**
+- 返回一个新的Promise，**表示前一个结果处理操作的异步执行结果**
 - 新Promise的`Resolved`状态表示前一个异步操作成功（未抛出错误）
 - 新Promise的`Rejected`状态表示前一个异步操作失败（前前一个异步操作的拒绝状态未处理，或前一个异步操作抛出新的错误）
 - 也就是说，**如果未处理拒绝状态结果，那么错误会沿着链条传递**
@@ -58,7 +59,7 @@ doSomething()
 .catch(failureCallback);
 ```
 
-其对应的异步代码提供了更清晰了表达：
+其对应的`async`函数提供了更清晰了表达：
 
 ```javascript
 async function foo() {
@@ -75,7 +76,7 @@ async function foo() {
 
 # 创建Promise
 
-## 编写返回Promise的（同步）函数
+## 编写返回Promise的函数
 
 首先看一段示例代码：
 
@@ -98,9 +99,8 @@ function readFile(filename) {
 	});
 }
 
-let promise = readFile("example.txt");
 // 同时监听 fulfillment 和 rejection
-promise.then(function(contents) {
+readFile("example.txt").then(function(contents) {
 		// fulfillment
 		console.log(contents);
 	}, function(err) {
@@ -109,18 +109,44 @@ promise.then(function(contents) {
 });
 ```
 
-有一点可能难以理解：创建`Promise`时的形式参数`resolve,reject`与调用`promise.then`中的实际参数`resolve,reject`是什么关系？
+# Promise与异步函数
 
-虽然没有看过相关资料，以及底层实现，但不难以判断：
+假设我们要编写一个判断函数，初始化完成（window.main存在）：
 
-- 调用`readFile`，执行了`new Promise()`，返回了一个`Promise`对象
-- 执行`new Promise()`时，向任务队列添加了一个任务：执行该匿名函数，其实际参数`resolve,reject`将接收的实际参数`err,contents`保存在返回的`Promise`对象中
-- 调用`promise.then`向任务队列添加了一个任务：当`promise`对应的异步操作执行完成时，执行结果处理函数
-- 执行结果处理函数的实际参数为Promise对象中保存的值
+```js
+async function waitUntilPresent(getter) {
+   while (getter() === undefined) {
+      await new Promise(r => setTimeout(r, 100));//sleep 100ms
+   }
+   return getter();
+}
+```
 
-## 将结果包装为Promise
+1) async函数里面是可以使用Promise的，但是一般情况下很少这样做，除非像上面这样创建然后立即await的特例
+2) 一些场景下没法完全使用async取代手搓Promise，比如上面实现sleep功能
 
-//more
+而我们在调用上面创建的函数时，又有两种风格：
+
+```js
+/* node.js */
+const window = {};
+
+setTimeout(() => {
+   window.main = "hello";
+}, 1000);
+/* node.js */
+
+waitUntilPresent(()=>window.main).then(main => {//以回调的方式触发处理函数
+   console.log(main);
+});
+
+// 以同步代码的方式处理
+await waitUntilPresent(()=>window.main);
+console.log(window.main);
+});
+```
+
+区别在于是否阻塞当前任务。
 
 # 总结
 
