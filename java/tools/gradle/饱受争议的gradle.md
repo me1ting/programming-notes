@@ -16,7 +16,7 @@
 
 ### Make
 
-[Make](https://en.wikipedia.org/wiki/Make_(software))是Unix时代就出现的构建系统，主要用于Unix Like下 以C/C++原生项目为主的构建。
+[Make](https://en.wikipedia.org/wiki/Make_(software))是Unix时代就出现的构建系统，主要用于Unix Like下 以C/C++为主的原生项目的构建。
 
 ### Ant,Maven,Gradle
 
@@ -36,7 +36,7 @@ Gradle是Maven之后诞生的构建系统，致力于在Ant和Maven之间寻找�
 
 ### 版本变更频繁，不同版本不兼容
 
-Gradle的版本号变更很快，而且高版本不兼容低版本，当项目使用的版本不存在于当前电脑上时，需要下载100M多对应版本的Gradle，这一点对于局域网用户来说格外艰难。
+Gradle的版本号变更很快，而且高版本不兼容低版本，当项目使用的版本不存在于当前电脑上时，需要下载100M多对应版本的Gradle，这一点对于局域网用户来说很麻烦。
 
 不兼容性还体现在配置文件上，如果你更新项目的Gradle的大版本，同时需要升级配置文件。
 

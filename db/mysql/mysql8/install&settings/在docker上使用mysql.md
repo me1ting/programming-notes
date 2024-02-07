@@ -31,7 +31,7 @@ mysql8在2023年引入了[长期服务版本和创新版本](https://dev.mysql.c
 
 ### 基础镜像选择
 
-在官方MySQL镜像中[过滤](https://hub.docker.com/_/mysql/tags?page=1&ordering=last_updated&name=8.0.35)`8.0.35`（本笔记记录时的最新版本）版本，目前有3种：
+在官方MySQL镜像中[过滤](https://hub.docker.com/_/mysql/tags?page=1&ordering=last_updated&name=8.0.35)`8.0.35`（本笔记创建时8.0的最新修订）版本，目前有3种：
 
 - default(目前实际使用的是oracle)
 - oracle
@@ -71,7 +71,7 @@ log_error = /var/log/mysql/error.log
 ## 启动mysql
 
 ```
-# 1002:1002是mysql用户的uid:gid
+# 1002:1002是mysql用户的uid:gid，修改为实际的值
 # --net=host表示直接使用host的网络
 sudo docker run --user 1002:1002 --net=host --name mysql \
 -v /usr/local/docker/mysql/conf:/etc/mysql \
@@ -99,4 +99,12 @@ mysql -uroot -proot123
 CREATE USER 'root'@'%' IDENTIFIED BY 'root123' REQUIRE SSL;
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 quit
+```
+
+MySQL的密码要求如下，如果不满足密码要求会返回`ERROR 1396 (HY000)`错误：
+
+```
+长度为8~32个字符
+由大写字母、小写字母、数字、特殊字符中的任意三种组成
+特殊字符为! @#$%^&*()_+-=
 ```

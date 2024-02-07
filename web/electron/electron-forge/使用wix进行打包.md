@@ -9,6 +9,7 @@
 ```bash
 npm i --save-dev electron-wix-msi
 ```
+
 或：
 
 ```bash

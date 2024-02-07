@@ -1,10 +1,10 @@
 # Java8到Java17的新增语法
 
-为什么从Java8开始，~~因为那是我最美好的回忆~~，因为我从Java8以后就没怎么使用Java了，而Java语言本身也从Java8以后变更了更新模式（刷版本号）。
+为什么从Java8开始，因为我从Java8以后就没怎么使用Java了，而Java语言本身也从Java8以后变更了更新模式（刷版本号）。
 
-## 接口中的私有函数（java9）
+## 接口中的私有函数(java9)
 
-Java8增加了default语法从而允许对接口进行“增量更新”，接口中的`private`函数可以帮助拆分代码，也不会存在兼容性问题，合情合理。
+Java8增加了default语法从而允许对接口进行更新且不影响旧代码，接口中的`private`函数可以帮助拆分代码，也不会存在兼容性问题，合情合理。
 
 ```java
 public interface Hello {
@@ -62,7 +62,7 @@ var greetingMessage = "Hello!";
 
 ## 现代switch：switch表达式(java14)
 
-Java传统的switch语法源自于C，相比于C仅支持数字，java支持更多的值。
+Java传统的switch语法源自于C，相比于C仅支持数字，java支持更多的值类型。
 
 而Java14引入了现代的switch语法，称为`switch表达式`：
 
@@ -165,7 +165,7 @@ Java的多行字符串的换行符没有采取与平台有关，而是使用`\n`
 
 //more
 
-## 记录（java16）（//TODO）
+## 记录(java16)(TODO)
 
 ## 模式匹配(java16)
 
@@ -189,7 +189,7 @@ if (obj instanceof String s) {
 - 测试(test)
 - 创建匹配值
 
-## 密封(Sealed)类（TODO）
+## 密封(Sealed)类(TODO)
 
 
 ## 参考资料

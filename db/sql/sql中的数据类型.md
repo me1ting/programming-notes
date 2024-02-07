@@ -11,7 +11,7 @@ SQL标准定义了一些数据类型，所有支持SQL标准的关系型数据�
 |`SMALLINT`|2|`-32768`|`0`|`32767`|`65535`|
 |`MEDIUMINT`|3|`-8388608`|`0`|`8388607`|`16777215`|
 |`INT`|4|`-2147483648`|`0`|`2147483647`|`4294967295`|
-|`BIGINT`|8|`-263`|`0`|`263-1`|`264-1`|
+|`BIGINT`|8|`-2^63`|`0`|`2^63-1`|`2^64-1`|
 
 SQL中的整数与编程语言中的`整数`概念基本一致，区分长度和符号。
 
@@ -98,10 +98,10 @@ binary与varbinary的关系和char与varchar的关系很类似，不同点在于
 
 | 类型 | 长度 |
 |---|---|
-|TINYBLOB, TINYTEXTOB|_`L`_ + 1 bytes, where _`L`_ < 28|
-|BLOB, TEXT|_`L`_ + 2 bytes, where _`L`_ < 216|
-|MEDIUMBLOB, MEDIUMTEXT|_`L`_ + 3 bytes, where _`L`_ < 224|
-|LONGBLOB, LONGTEXT|_`L`_ + 4 bytes, where _`L`_ < 232|
+|TINYBLOB, TINYTEXTOB|_`L`_ + 1 bytes, where _`L`_ < $2^8$|
+|BLOB, TEXT|_`L`_ + 2 bytes, where _`L`_ < $2^{16}$|
+|MEDIUMBLOB, MEDIUMTEXT|_`L`_ + 3 bytes, where _`L`_ < $2^{24}$|
+|LONGBLOB, LONGTEXT|_`L`_ + 4 bytes, where _`L`_ < $2^{32}$|
 
 blob,text可以提供可选长度信息，mysql会根据提供的字节长度信息匹配最合适的细分类型，[这里](https://dev.mysql.com/doc/refman/8.0/en/string-type-syntax.html)了解语法细节。
 

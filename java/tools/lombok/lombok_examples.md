@@ -1,6 +1,6 @@
 # lombok examples
 
-lombok是Java的一个工具类型，负责编译时生成一些模板代码。lombok主要基于注解，需要lombok依赖库和IDE插件。
+lombok是Java的一个工具，负责编译时生成一些模板代码。lombok主要基于注解，需要lombok依赖库和IDE插件。
 
 由于很多人都使用lombok，因此存在学习的必要。
 

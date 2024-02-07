@@ -25,7 +25,7 @@ yarn add --dev electron
 ```
 ### （可选）配置代理
 
-我们需要分别设置`yarn`使用代理和下载`electron`时使用代理，两者都是可选的。
+我们需要分别设置`yarn`的代理和下载`electron`时的代理，两者都是可选的。
 
 修改配置文件`.yarnrc.yml`，让`yarn`使用代理：
 
@@ -42,7 +42,7 @@ linux/macos:
 export ELECTRON_GET_USE_PROXY=1 && export GLOBAL_AGENT_HTTP_PROXY=http://127.0.0.1:1081 && export GLOBAL_AGENT_HTTPS_PROXY=http://127.0.0.1:1081
 ```
 
-windows:
+windows(powershell):
 
 ```ps
 $env:ELECTRON_GET_USE_PROXY=1
@@ -50,12 +50,11 @@ $env:GLOBAL_AGENT_HTTP_PROXY="http://127.0.0.1:1081"
 $env:GLOBAL_AGENT_HTTPS_PROXY="http://127.0.0.1:1081"
 ```
 
-*这里存在兼容性问题，我自己写的http代理无法使用，推荐使用privoxy来提供代理服务*
 ## 填充脚手架内容
 
-最后，我们需要填充脚手架内容，并启动得到一个能正常运行的简单的electron应用。
+最后，我们需要填充脚手架内容，并启动得到一个能正常运行的简单electron应用。
 
 细节参考[tutorial](https://www.electronjs.org/zh/docs/latest/tutorial/)
-## 补充
+## 使用Electron Forge
 
-推荐使用[Electron Forge](https://electronforge.io/)来搭建脚手架。
+可以使用[Electron Forge](https://electronforge.io/)来搭建脚手架。

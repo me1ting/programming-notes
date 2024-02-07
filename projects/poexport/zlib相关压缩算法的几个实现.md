@@ -9,7 +9,7 @@
 
 # 踩坑细节
 
-pob使用的库是lua-zlib，其实际使用的是`zlib`来压缩数据，但使用的函数名是`deflate`，导致我以为它使用的是原始的deflate算法。
+pob使用的库是lua-zlib，使用的是`zlib`来压缩数据，但使用的函数名是`deflate`，导致我以为它使用的是原始的deflate算法。
 
 go的compress库，是将`deflate`算法,`zlib`实现拆分为并列的包，因此我使用`deflate`包来处理POB的数据时，会出现错误。
 
