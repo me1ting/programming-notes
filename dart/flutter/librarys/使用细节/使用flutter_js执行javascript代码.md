@@ -1,4 +1,5 @@
-# 前言
+# 使用flutter_js执行javascript代码
+## 前言
 
 个人在迁移一款electron应用到flutter中，其核心代码是typescript编写的，而且复用在了其它web项目中。
 
@@ -6,7 +7,7 @@
 
 那么如何让flutter也能调用javascript库呢？
 
-# 调研
+## 调研
 
 一开始，因为dart支持构建目标为web平台，我认为这应该是很容易实现的，但实际研究后发现并不是那样。
 
@@ -16,13 +17,13 @@ dart目前的[js互操作性](https://dart.dev/web/js-interop)只在构建目标
 
 经过google，找到了[flutter_js](https://pub.dev/packages/flutter_js)这个库，同时它还提到了一些[相关的库](https://github.com/abner/flutter_js#alternatives-and-also-why-we-think-our-library-is-better)也能干类似的事情。
 
-这些库的基本思路是通过ffi调用第三方js运行时或原生运行时（移动平台），比如`quickjs`,`v8`，`native JavascriptCore`(ios)等等。
+这些库的基本思路是通过ffi调用第三方js运行时或原生运行时（移动平台），比如`quickjs`,`v8`,`native JavascriptCore`(ios)等等。
 
-# flutter_js的使用
+## 使用flutter_js
 
 `flutter_js`的使用细节可以参考文档，这里记录自己遇到的问题和解决办法。
 
-## 如何调用复杂的脚本？
+### 如何调用复杂的脚本？
 
 `flutter_js`在[文档](https://pub.dev/packages/flutter_js)中提供了最基本的flutter调用javascript代码的示例：
 
@@ -46,21 +47,9 @@ var jsResult = jsRuntime.evaluate("""
 return jsResult.stringResult;
 ```
 
-细节可以参考：[# JavaScript with Flutter | Is it possible?](https://medium.com/@mustafatahirhussein/javascript-with-flutter-is-it-possible-c6ed53704c1b)
-
 官方文档中的[ajv](https://pub.dev/packages/flutter_js#ajv)示例的原理也是一样的，只是进行了一些封装。
 
-## 单元测试
-
-根据[说明](https://pub.dev/packages/flutter_js#unit-testing-javascript-evaluation)，我们需要先构建依赖的库文件，并将其所在路径添加到`path`中，以windows为例：
-
-```powershell
-# 可能需要管理员权限
-flutter build windows
-$env:path += ";${pwd}\build\windows\runner\Release"
-```
-
-## 传递字符串参数
+### 传递字符串参数
 
 我们是以拼接的脚本文件进行ffi调用，如何向js函数传递字符串参数？
 
@@ -93,9 +82,9 @@ print(jsonEncde("A\"B"));
 //输出："A\"B"
 ```
 
-## 传递对象参数
+### 传递对象参数
 
-我们完全可以传递object给javascript：
+我们可以传递object给javascript：
 
 ```javascript
 function rename(user){

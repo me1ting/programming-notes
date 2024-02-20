@@ -1,6 +1,6 @@
 # 了解wasm
 
-[wasm 使用感想和一些经验](https://zhuanlan.zhihu.com/p/406082905)
+[（转）wasm 使用感想和一些经验](https://zhuanlan.zhihu.com/p/406082905)
 
 ## wasm的性能
 
