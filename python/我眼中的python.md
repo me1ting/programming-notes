@@ -21,7 +21,7 @@ Java: https://docs.oracle.com/javase/8/docs/api/java/util/zip/Inflater.html
 Go: https://pkg.go.dev/compress/zlib
 Python: https://docs.python.org/zh-cn/3/library/zlib.html
 
-明显可以对比出Python的文档是多么的糟糕。
+可以看出Python的文档相比之下难以阅读。
 
 ## 我对Python的定位
 

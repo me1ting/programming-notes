@@ -234,6 +234,3 @@ public class MyServiceImpl<M extends MyBaseMapper<T>, T> extends ServiceImpl<M, 
 ## 总结
 
 本文记录了如何给MybatisPlus添加批量insert ignore操作。
-
-## 参考资料
-

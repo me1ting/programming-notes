@@ -3,7 +3,7 @@
 `graalvm native`是Java在云原生时代所做出的重大方向调整，目的是更适应容器执行环境：
 
 - 快速启动
-- 低文件大小和内存占用
+- 减小文件大小和降低内存占用
 
 本文记录了个人在Windows上的尝试记录。
 ## 前期准备
@@ -63,7 +63,7 @@ native-image -jar ./Hello.jar --no-fallback -H:Class=Hello -H:Name=hello -H:-Che
 - `-jar ./Main.jar` 源文件为jar包
 - `-H:Class=Hello` 入口Main方法所属的类
 - `-H:Name=hello` 自定义结果可执行文件的名称
-- `-H:-CheckToolchain` 不检查工具链？（不带这个参数会报错无法识别C++编译器）
+- `-H:-CheckToolchain` 不检查工具链（不带这个参数会报错无法识别C++编译器）
 
 经过一段时间编译后，会生成可执行文件hello.exe：
 

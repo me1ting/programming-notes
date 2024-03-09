@@ -174,10 +174,6 @@ jdbc:mysql://192.168.162.163:3306/learning?rewriteBatchedStatements=true
 - 开启 multi-queries（TODO）
 - 将多行预处理的更新语句重写为单行（带多个子语句的）批量更新语句
 
-## 总结
-
-本文复习了JDBC的基本原理和基本使用。
-
 ## 参考资料
 
 《Java核心技术 卷2》v9 4. 数据库编程

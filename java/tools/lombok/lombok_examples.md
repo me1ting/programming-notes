@@ -2,7 +2,7 @@
 
 lombok是Java的一个工具，负责编译时生成一些模板代码。lombok主要基于注解，需要lombok依赖库和IDE插件。
 
-由于很多人都使用lombok，因此存在学习的必要。
+由于lombok比较流行，因此存在学习的必要。
 
 ## @Getter和@Setter
 
@@ -68,7 +68,7 @@ public class User{
 
 ## @Data
 
-`@Data`是一个聚合接口，默认为所有字段生成getter和setter，生成`hashCode()`,`equals()`,`toString()`。
+`@Data`是一个聚合接口，默认为所有字段生成`getter`和`setter`，以及生成`hashCode()`,`equals()`,`toString()`。
 ## 参考资料
 
 [doc: lombok features](https://projectlombok.org/features/)

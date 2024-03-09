@@ -2,11 +2,11 @@
 
 这是v2ex上的一个[需求](https://www.v2ex.com/t/1013792#reply38)：
 
-作者所在公司提供的是web应用，但是很多客户因为各种各样的国产浏览器由于内核太旧，存在兼容性问题，即使安装了Chrome，过不久还是被流氓软件锁定默认浏览器。
+作者所在公司提供的是web应用，很多客户使用的国产浏览器由于内核太旧，存在兼容性问题，即使安装了Chrome，过不久还是被流氓软件锁定了默认浏览器。
 
 目前的解决办法是使用electron进行套壳，作者尝试使用tauri套壳，但没有成功。
 
-由于我尝试过tauri（虽然后来放弃了），因此就试着并成功解决了问题。
+由于我使用过tauri，因此就试着并成功解决了问题。
 
 ## 跳转站点
 
@@ -16,7 +16,7 @@ webview2本身是一个完备的浏览器，因此可以使用浏览器的跳转
 window.location.href = "www.google.com";
 ```
 
-另一方面，也可以使用webview的api，直接进入站点，参考该[链接](https://github.com/tauri-apps/tauri/issues/986)。
+另一方面，也可以使用webview的api，设置初始化站点，参考该[链接](https://github.com/tauri-apps/tauri/issues/986)。
 
 ## 修改header
 

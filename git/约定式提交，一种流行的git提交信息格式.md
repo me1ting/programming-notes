@@ -8,7 +8,7 @@ feat: support multi languages
 ...
 ```
 
-这种提交信息格式被称为[约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)，是Google的Angular项目的[提交指南](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)的演变成的一种通用的提交信息书写规范。
+这种提交信息格式被称为[约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)，是由Google的Angular项目的[提交指南](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)演变成的一种通用的提交信息书写规范。
 
 ## 规范细节
 

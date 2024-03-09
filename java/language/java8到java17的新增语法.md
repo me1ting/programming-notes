@@ -1,10 +1,10 @@
 # Java8到Java17的新增语法
 
-为什么从Java8开始，因为我从Java8以后就没怎么使用Java了，而Java语言本身也从Java8以后变更了更新模式（刷版本号）。
+从Java8开始，Java就变更了更新模式，后续的LTS版本包括Java11,Java17,Java21，由于Java21太新，个人决定将知识点更新至Java17。
 
 ## 接口中的私有函数(java9)
 
-Java8增加了default语法从而允许对接口进行更新且不影响旧代码，接口中的`private`函数可以帮助拆分代码，也不会存在兼容性问题，合情合理。
+Java8增加了default语法从而允许对接口进行更新且不影响旧代码，接口中的`private`函数可以帮助拆分代码，也不会存在兼容性问题。
 
 ```java
 public interface Hello {
@@ -109,7 +109,7 @@ public class Main {
           """;
         System.out.println(html);
 
-//> Task :Main.main()
+//> 输出内容：
 //          <html>
 //            <body>
 //              <p>Hello,world</p>
@@ -120,7 +120,7 @@ public class Main {
 多行字符串的特点是：
 
 - 多行
-- 允许"（只要不连续超过3个）
+- 允许内容包括`"`而不需要转义（只要不连续超过3个）
 
 相比于其它语言的多行字符串，Java版本增加了一些feature（了解）：
 
