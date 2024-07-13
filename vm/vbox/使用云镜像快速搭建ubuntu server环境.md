@@ -6,13 +6,13 @@
 
 在[下载站点](https://cloud-images.ubuntu.com/)找到我们需要的镜像文件，比如`https://cloud-images.ubuntu.com/jammy/current/`表示`ubuntu22.04`的最新构建版本，搜索并下载`.ova`镜像。
 
-![](Pasted%20image%2020231112161057.png)
+![](_images/Pasted%20image%2020231112161057.png)
 
 ## 导入镜像
 
 双击该镜像文件，vbox会识别到该文件。
 
-![](Pasted%20image%2020231112161921.png)
+![](_images/Pasted%20image%2020231112161921.png)
 
 根据自己的需要进行修改，建议：
 
@@ -33,15 +33,15 @@
 
 首先，需要确保vbox已经设置了一个Host-Only网络。在`管理->工具->网络管理器`中确保已经存在一个Host-Only网络，如果没有，那么添加一个，如果手动配置了IP地址，请同时修改DHCP服务器的网段。
 
-![](Pasted%20image%2020231112183725.png)
+![](_images/Pasted%20image%2020231112183725.png)
 
 将网卡1设置未NAT模式，然后给虚拟机添加一个host-only网络。
 
-![](Pasted%20image%2020231112170606.png)
+![](_images/Pasted%20image%2020231112170606.png)
 
 ### 显示设置
 
-![](Pasted%20image%2020231112170728.png)
+![](_images/Pasted%20image%2020231112170728.png)
 
 根据提示，选择推荐的VMSVGA显卡。
 ## 软件设置

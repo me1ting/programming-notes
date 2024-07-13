@@ -1,5 +1,0 @@
-# questions
-
-## Error: Error 403: Resource not accessible by integration
-
-表示没有访问权限，如果是组织下的项目，默认情况下github Actions没有写入权限，需要在组织的默认设置中开启权限。

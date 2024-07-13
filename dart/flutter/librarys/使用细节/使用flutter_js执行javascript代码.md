@@ -1,9 +1,9 @@
 # 使用flutter_js执行javascript代码
 ## 前言
 
-个人在迁移一款electron应用到flutter中，其核心代码是typescript编写的，而且复用在了其它web项目中。
+尝试迁移一款electron应用到flutter，其核心代码使用typescript编写，在web项目中被使用。
 
-重写核心库是不现实的，因为web项目还在用，而且我也没有时间精力和兴趣去重写并同时维护两套不同语言编写但是功能相同的库。
+因为web项目还在用，我也没有时间精力和兴趣去重写并同时维护两套不同语言编写但是功能相同的库。
 
 那么如何让flutter也能调用javascript库呢？
 
@@ -53,13 +53,15 @@ return jsResult.stringResult;
 
 我们是以拼接的脚本文件进行ffi调用，如何向js函数传递字符串参数？
 
+简单地想法是手动拼接：
+
 ```dart
 jsFile = await rootBundle.loadString("assets/js/translator.js");
 var jsResult = 
     jsRuntime.evaluate('${jsFile}hello("$name");');
 ```
 
-这是错误的，假设名字是`A"B`，那么，生成的脚本内容是：
+但这是错误的，假设名字是`A"B`，那么，生成的脚本内容是：
 
 ```js
 //省略 jsFile

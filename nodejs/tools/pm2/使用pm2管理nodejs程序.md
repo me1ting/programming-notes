@@ -16,7 +16,7 @@ process.on('uncaughtException', err => {
 
 但是依然无效，查看日志也没有任何输出。
 
-在进一步搜索后，我选择了`pm2`这一款软件，来管理nodejs程序。它可以解决nodejs服务down掉的问题。
+在进一步搜索后，我选择了`pm2`这一款软件，来管理nodejs程序。它可以解决nodejs服务未知原因down掉的问题。
 
 ## 安装
 

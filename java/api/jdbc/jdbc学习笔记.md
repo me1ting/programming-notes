@@ -14,7 +14,7 @@ JDBC是Java的通用关系型数据库访问API，由数据厂商提供底层驱
 
 ### 数据库URL
 
-JDBC使用URL来描述数据源，具体的地址格式可以在数据库官方文档或搜索引擎找到，不需要去记忆。
+JDBC使用URL来描述数据源，具体的地址格式可以在数据库官方文档或搜索引擎找到。
 
 ```
 jdbc:mysql://192.168.162.163:3306/learning
@@ -65,7 +65,7 @@ String command = "update ...";
 stat.executeUpdate(command);//返回受影响的行数
 ```
 
-`executeUpdate()`是一个通用的SQL更新方法，不仅是UPDATE，还能执行INSERT,DELETE，以及CREATE TABLE,DROP TABLE等定义语言。
+`executeUpdate()`是一个通用的SQL更新方法，不仅是UPDATE，还能执行INSERT,DELETE等数据操纵语句，以及CREATE TABLE,DROP TABLE等数据库定义语句。
 
 `executeQuery()`是查询方法，执行SELECT语句，其返回值类型为`ResultSet`，表示查询的结果集。
 
@@ -81,7 +81,7 @@ stat.executeUpdate(command);//返回受影响的行数
 
 ### PreparedStatement
 
-`预处理语句`是通过预编译来优化批量执行相似SQL语句的性能，并因为其性质成为一种防止SQL注入的方案。
+`预处理语句`是通过预编译来优化批量执行相似SQL语句的性能，而且可以防止SQL注入。
 
 JDBC提供`PreparedStatement`接口来支持预编译语句。
 
@@ -127,11 +127,10 @@ conn.releaseSavepoint(svpt);
 
 ## 批量更新
 
-如果您批量调用同一个准备好的语句，大多数 JDBC 驱动程序都会提供改进的性能。JDBC对此提供了封装。
+当批量调用同一个准备好的语句，大多数 JDBC 驱动程序都会提供改进的性能。JDBC对此提供了封装。
 
 ```java
 var stat = conn.prepareStatement("insert into user(id, name, age) values(? ,?, ?)");
-stat.addBatch("delete from user where id >= 0");// 这条语句其实是单独执行的
 stat.setIndex(2, "zhangsan");
 stat.setIndex(3, "1");
 for (var i = 0; i < 10000; i++) {
@@ -143,9 +142,23 @@ stat.executeBatch();
 
 ### 批量更新与预处理语句
 
-从API上来讲JDBC提供的接口支持在批量更新里面使用任意更新语句，但是这样做和不使用批量接口没什么区别。
+从API来讲，JDBC提供的接口支持在批量更新里面使用任意更新语句，但是这样做和不使用批量接口没什么区别。
 
-只有批量更新里面的预处理更新语句才能得到性能优化。
+```java
+```java
+var stat = conn.prepareStatement("insert into user(id, name, age) values(? ,?, ?)");
+//对比上面示例代码，多了这一行，但这条语句是单独执行的
+stat.addBatch("delete from user where id >= 0");
+stat.setIndex(2, "zhangsan");
+stat.setIndex(3, "1");
+for (var i = 0; i < 10000; i++) {
+    stat.setInt(1, i);
+    stat.addBatch();
+}
+stat.executeBatch();
+```
+
+**只有批量更新里面的预处理更新语句才能得到性能优化**。
 ### 批量更新与事务
 
 批量更新并不是与事务绑定的，只有当业务逻辑需要事务时，才使用事务来执行批量更新。
@@ -153,7 +166,7 @@ stat.executeBatch();
 
 并非所有的数据库都支持批量更新，可以通过以下方式测试：
 
-```
+```java
 System.out.println(conn().getMetaData().supportsBatchUpdates());
 ```
 
@@ -165,7 +178,7 @@ jdbc:mysql://192.168.162.163:3306/learning?rewriteBatchedStatements=true
 
 ### 批量更新的原理
 
-尚且不知批量更新是否取决于不同的数据库提供商，目前我只了解过MySQL的批量更新实现。
+目前我只了解过MySQL的批量更新实现原理，尚未考察其它数据库的实现原理。
 
 #### MySql的批量更新原理
 

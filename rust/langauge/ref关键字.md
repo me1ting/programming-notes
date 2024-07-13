@@ -1,6 +1,6 @@
 # ref关键字
 
-是在[rust.cc](https://rustcc.cn/article?id=32b64324-ed38-467e-8d27-026983faf2cc)上了解到这个关键字的，《trpl》中并没有讲解这个关键字，因为它的使用场景很少。
+我是在[rust.cc](https://rustcc.cn/article?id=32b64324-ed38-467e-8d27-026983faf2cc)上了解到这个关键字的，《trpl》中并没有讲解这个关键字，因为它的使用场景很少。
 
 ## 模式匹配
 
@@ -16,10 +16,9 @@ match maybe_name {
 // ... so it's available here!
 println!("Hello again, {}", maybe_name.unwrap_or("world".into()));
 ```
+## 其它场景（避免使用）
 
 语法上虽然允许在其它地方使用`ref`，但是最好不要这样做，**除了引起混乱并没有任何好处**。
-
-## 其它场景（避免使用）
 
 ref可以用来定义引用：
 
@@ -29,7 +28,7 @@ let ref z = x;//&i32
 let ref mut z = x; //&mut i32
 ```
 
-ref可以用在函数参数上，但会导致所有权的转移：
+ref可以用在函数参数上，但会导致所有权的转移（引起混乱）：
 
 ```rust
 fn main() {

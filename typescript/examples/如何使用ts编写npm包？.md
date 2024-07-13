@@ -134,8 +134,8 @@ export function helloworld() {
 ## 发布
 
 ```
-npm run build //先编译再发布
-npm login
+npm run build #先编译再发布
+npm login #只需要执行一次，后续会在本机保留登陆信息
 npm publish
 ```
 
@@ -145,10 +145,10 @@ npm publish
 
 - eslint，检查代码，个人认为其在typescript项目中的意义不大
 - prettier，格式化代码
-- jest，最流行的js/ts测试框架，但目前不支持esm，vitest是jest在esm时代的替代品
+- jest，最流行的js/ts测试框架，但目前对esm的支持不够完善，vitest是jest在esm时代的替代品
 - rollup，自定义构建
 - esm，js模块官方解决方案
 
-可以参考相关工具的详细笔记。
+这些工具的用途、使用参考相应的笔记。
 
 这里有我目前使用的完整项目模板：[ts-module-template](https://github.com/me1ting/ts-module-template)
