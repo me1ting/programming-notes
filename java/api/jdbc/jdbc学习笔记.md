@@ -22,7 +22,7 @@ jdbc:mysql://192.168.162.163:3306/learning
 
 ### 数据库驱动自动注册
 
-JDBC使用Java SPI这套API实现数据库驱动的自动注册。我们**只需要将数据库驱动放置在应用的CLASSPATH下**，就能自动使用它。
+JDBC使用Java SPI这套机制实现数据库驱动的自动注册。我们**只需要将数据库驱动放置在应用的CLASSPATH下**，就能自动使用它。
 
 ### Connection接口
 

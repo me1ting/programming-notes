@@ -1,1 +1,0 @@
-[Docs: How to open a message box (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/windows/how-to-open-message-box?view=netdesktop-6.0)

@@ -65,9 +65,9 @@ certbot --nginx -d example.com -d www.example.com
 
 证书的有效期是90天，到期前需要续订，这个步骤应当自动化而非手动操作。
 
-这里使用linux的`cron`功能实现自动续订。
+有多种自动化方式，这里使用linux的`cron`功能实现自动续订。
 
-首先编辑cron的配置文件：
+编辑cron的配置文件：
 
 ```bash
 crontab -e

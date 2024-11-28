@@ -41,7 +41,7 @@ Uncaught TypeError: Failed to resolve module specifier "cn-poe-translator". Rela
 - node.js支持基于文件上下文的导入路径（即本地依赖），以及支持外部依赖的导入路径，如`import axios from Axios`
 ## 方法1： 使用importmap
 
-为了支持外部依赖，浏览器提出了[importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)技术，通过映射来支持外部依赖。
+为了支持外部依赖，浏览器提出了[importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)方案，通过映射来支持外部依赖。
 
 在`index.html`中删除类似`<script type="module" ...`的导入外部依赖的语句，添加importmap：
 

@@ -38,10 +38,10 @@ x86_64-13.2.0-release-win32-seh-ucrt-rt_v11-rev1.7z
 
 这里进行说明：
 
-- i686,x86_64，一般选x86_64，两者应当都可以交叉编译
+- i686,x86_64，一般选x86_64，两者都可以用于交叉编译
 - `mcf`,`posix`,`win32`，线程模型，一般选posix，mcf是新出的，win32不太合适
-- `seh`,`dwarf`，之前还有个`sjlj`似乎被淘汰了，异常模型，这里没什么[好选的](https://github.com/brechtsanders/winlibs_mingw/issues/20)，取决于你选择的架构
-- `msvcrt`,`ucrt`，C运行时，后者只支持Win10，一般选`msvcrt`，除非追求极致性能
+- `seh`,`dwarf`，之前还有个`sjlj`被淘汰了，异常模型，这里没什么[好选的](https://github.com/brechtsanders/winlibs_mingw/issues/20)，取决于你选择的架构
+- `msvcrt`,`ucrt`，C运行时，后者只支持Win10，一般选`msvcrt`，追求极致性能可以选择后缀
 
 这里我下载了`x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z`。
 
@@ -69,7 +69,7 @@ D:/AppsInDisk/x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/../
 
 由于这个库本身并不复杂，因此我没有选择修改LuaRocks的Lua版本，而是手动链接。
 
-我们需要一个使用MinGW构建的Lua，有两种方案，lua或luajit。
+我们需要一个使用MinGW构建的Lua，有两种选择，lua或luajit。
 
 使用MinGW构建lua并没有任何官方讲解，个人基于Google找到了一个可行的方案[luawinmake](https://github.com/Tieske/luawinmake)。
 
@@ -83,4 +83,4 @@ luajit则是官方提供了编译步骤。
 >mingw32-gcc  -shared -o lfs.dll src/lfs.o D:\AppsInDisk\luajit2.1_mingw32\lua51.dll
 ```
 
-实际测试，使用MSVC x64构建的luajit中的lua51.dll也可以用来链接，但这其中原理不是我能弄清楚的。
+实际测试，使用MSVC x64构建的luajit中的lua51.dll也可以用来链接。

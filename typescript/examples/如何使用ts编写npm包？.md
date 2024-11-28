@@ -143,7 +143,7 @@ npm publish
 
 上面步骤包含了最基本的流程，但是在真实项目中，我们还需要更多的东西，如：
 
-- eslint，检查代码，个人认为其在typescript项目中的意义不大
+- eslint，检查代码
 - prettier，格式化代码
 - jest，最流行的js/ts测试框架，但目前对esm的支持不够完善，vitest是jest在esm时代的替代品
 - rollup，自定义构建

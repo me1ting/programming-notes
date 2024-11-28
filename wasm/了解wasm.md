@@ -1,9 +1,5 @@
 # 了解WASM
 
-## 前言
-
-WASM是当前一个比较火热的技术，这让我有所兴趣。另一方面，我想考察能否使用WASM来满足我的一些涉及前端的需求，因此对WASM进行了一些研究。
-
 ## WASM是什么？
 
 WASM是一套字节码，其目的是在浏览器平台上提供接近原生性能的能力。
@@ -21,9 +17,9 @@ WASM主要是在浏览器中执行，使用[JS API](https://developer.mozilla.or
 
 ## JS与WASM
 
-由于浏览器的原因，很多人可能会先入为主的以为JS和WASM关系亲密，但其实不然。
+由于浏览器的原因，开发者可能会先入为主的以为JS和WASM关系亲密，但其实不然，**浏览器只是WASM的运行平台而非开发环境**。
 
-目前最适合编译为WASM的高级编程语言有C/C++,Rust，JS并不支持编译为WASM，存在两种曲折的方案：
+目前最适合编译为WASM的高级编程语言有C/C++,Rust。JS并不支持编译为WASM，存在两种间接方案：
 
 - 使用`assemblyscript`，一种类似`TS`的编程语言来编写代码，本质上就是重写，那为何不用C/C++,Rust呢？
 - 将`quickjs`编译为`WASM`，由它来解释执行JS代码，[Figma](https://www.reddit.com/r/WebAssembly/comments/kjk7t5/comment/ggypnip/?utm_source=share&utm_medium=web2x&context=3)使用这种方案来支持插件，[WasmEdge](https://github.com/WasmEdge/WasmEdge)使用这种方式来支持JS。WASM与quickjs带来的双重性能衰减，使得这种方案并不适合需要性能的任务。

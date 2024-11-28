@@ -10,7 +10,7 @@
 
 ## 为什么不选择material ui？
 
-`material ui`是Google为Android所设计的，个人曾经使用过`Vuetify`，也去看过mui的组件，个人的看法是material ui的组件并不符合桌面（特别是Windows）使用者的使用习惯。
+`material ui`是Google为Android所设计的，个人曾经使用过`Vuetify`，也看过mui的组件，个人的看法是material ui的组件并不符合桌面（特别是Windows）使用者的使用习惯。
 
 比如`material ui`的input组件就不太适合桌面。
 

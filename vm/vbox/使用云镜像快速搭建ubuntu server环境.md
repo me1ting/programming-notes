@@ -35,7 +35,7 @@
 
 ![](_images/Pasted%20image%2020231112183725.png)
 
-将网卡1设置未NAT模式，然后给虚拟机添加一个host-only网络。
+将网卡1设置为NAT模式，然后给虚拟机添加一个host-only网络。
 
 ![](_images/Pasted%20image%2020231112170606.png)
 

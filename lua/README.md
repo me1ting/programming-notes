@@ -1,10 +1,10 @@
-# 我眼中的Lua
+# Lua简介
 
-因为项目需求而被迫学习Lua。Lua给我的第一印象很糟糕，对新人很不友好，没有免费的入门学习资料，没有官方的二进制分发和包管理器。
+[Lua](https://en.wikipedia.org/wiki/Lua_(programming_language))起源于1993年（同时代的包括Python,Java），是一门**内嵌的扩展的脚本语言**，为C/C++程序提供脚本化、动态化的扩展能力。
 
-Lua是与Python同时代诞生的脚本语言(1993vs1991)，但是从发展来看，Lua已经落下Python许多。由于缺乏一个强力的官方组织，以及LuaJIT的流行等原因，Lua目前的主要流行版本还停留在Lua 5.1(发布时间为2006.02)。
+### 相对糟糕的生态
 
-# 相关链接
+由于语言定位的关系，Lua在生态上存在很大不足，比如没有官方的二进制分发和包管理器。因为LuaJIT的流行，Lua目前的主要流行版本还停留在Lua 5.1(发布时间为2006.02)。
 
-[lua5.1 参考手册](https://www.lua.org/manual/5.1/manual.html)
+参考：[分裂的 Lua 世界](https://opensourcedoc.com/lua-programming/intro/)
 

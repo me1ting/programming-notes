@@ -8,7 +8,7 @@
 
 `构建`是指将源代码转换成产出的过程，产出可能是可执行文件、库等。
 
-构建这个概念可简单，也可复杂，它可以是本地电脑上的`go build`，也可能是用大规模集群进行分布式的构建。
+构建这个概念可简单，也可复杂，它可以是本地电脑上的`go build`，也可能是用大规模集群进行的分布式的构建。
 
 简单的构建只需要编码人员就能完成，复杂的构建需要专职的人员或团队完成，甚至需要购买商业服务（比如Gradle Enterprise）或者定制构建系统（比如Google Bazel）。
 
@@ -16,15 +16,15 @@
 
 ### Make
 
-[Make](https://en.wikipedia.org/wiki/Make_(software))是Unix时代就出现的构建系统，主要用于Unix Like下 以C/C++为主的原生项目的构建。
+[Make](https://en.wikipedia.org/wiki/Make_(software))是Unix时代就出现的构建系统，主要用于Unix Like环境下 以C/C++为主的原生项目的构建。
 
 ### Ant,Maven,Gradle
 
-Ant是 Java社区模仿Make创建的一款用于Java项目的构建系统。
+[Ant](https://en.wikipedia.org/wiki/Apache_Ant)是 Java社区模仿Make的一款用于Java项目的构建系统，其默认配置文件为`build.xml`。
 
-Maven是Ant的继承者，相比Ant其Make风格少了许多，更Java化了（抽象了许多概念，但同时灵活性不足）。
+[Maven](https://en.wikipedia.org/wiki/Apache_Maven)是Ant的继承者，相比Ant其Make风格少了许多，而且提供了仓库、外部依赖等高级概念。
 
-Ant和Maven诞生的年代是”XML泡沫“的时代，这两个工具都选择了XML作为配置文档，这也是它们今天最令人诟病的点。
+Ant和Maven诞生的年代是”XML泡沫“的时代，这两个工具都选择了XML作为配置文档，这也是它们今天最令人诟病的点之一。
 
 Gradle是Maven之后诞生的构建系统，致力于在Ant和Maven之间寻找平衡。Gradle使用Groovy DSL，后续又支持Kotlin DSL。
 
@@ -36,7 +36,7 @@ Gradle是Maven之后诞生的构建系统，致力于在Ant和Maven之间寻找�
 
 ### 版本变更频繁，不同版本不兼容
 
-Gradle的版本号变更很快，而且高版本不兼容低版本，当项目使用的版本不存在于当前电脑上时，需要下载100M多对应版本的Gradle，这一点对于局域网用户来说很麻烦。
+Gradle的版本号变更很快（1~2年更新一个主要版本），高版本不兼容低版本，当项目使用的版本不存在于当前电脑上时，需要下载100M多对应版本的Gradle，这一点对于局域网用户来说很麻烦。
 
 不兼容性还体现在配置文件上，如果你更新项目的Gradle的大版本，同时需要升级配置文件。
 

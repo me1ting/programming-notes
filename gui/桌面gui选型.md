@@ -4,7 +4,7 @@
 
 ### WebView
 
-WebView的优点是开发效率高，缺点是UI性能较差，为了保证体验需要进行优化。
+WebView的优点是开发效率高，缺点是UI性能较差，为了保证体验需要进行性能优化。
 
 #### Wails
 
@@ -14,7 +14,7 @@ Wails的一个缺点是存在报毒问题。
 
 #### Tauri
 
-基于Rust语言的WebView方案，封装的完成度比Wails高。
+基于Rust语言的WebView方案，完成度比Wails高。
 
 Tauri也存在报毒问题，但是比Wails好一点。
 
@@ -32,7 +32,7 @@ Jetbrian推出的跨平台GUI框架，基于Kotlin语言。
 
 Kotlin是Android的官方开发语言，目前最新的官方UI框架是Jetpack Compose，Compose Multiplatform其实就是Jetpack Compose在其它平台上的移植，其思路基本照抄Flutter。
 
-个人认为Compose Multiplatform并非一个值得投资的跨平台GUI框架：基于JVM，意味着在文件大小、内存占用大小上存在劣势，即使编译为native也只能弥补部分劣势。
+个人认为Compose Multiplatform并非一个值得投资的跨平台GUI框架：基于JVM，意味着在文件大小、内存占用大小上存在劣势，即使编译为Native也只能弥补部分劣势。
 
 在桌面平台上，Compose Multiplatform应用包含一个JRE(ACFun 64M,RunFlow 90M)，除JRE外的应用本体相对较大(ACFun 50M,RunFlow 110M)，内存占用较大(ACFun 300M,RunFlow 500M)。
 
@@ -86,6 +86,5 @@ DirectUI抛弃Win32控件，而是采用自绘。
 
 ## 参考资料
 
-[MS: windows开发概述](https://learn.microsoft.com/zh-cn/windows/apps/get-started)介绍了主流的WIndows官方GUI框架。
-
-[Tauri：下一代桌面应用开发框架？](https://www.51cto.com/article/720608.html)
+[MS: windows开发概述](https://learn.microsoft.com/zh-cn/windows/apps/get-started)介绍了主流的WIndows官方GUI框架。<br/>
+[Tauri：下一代桌面应用开发框架？](https://www.51cto.com/article/720608.html)<br/>

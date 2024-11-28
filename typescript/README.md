@@ -12,4 +12,4 @@
 
 一些工具链（比如jest）尚未完全支持ES Module，在使用TS with ES Module时遇到了一些问题。（后续使用vitest替代jest，解决了问题）
 
-tsc无法用于真实的项目，对于拆分文件的项目，应当使用`rollup`之类的构建工具，`tsc`只是简单的将`.ts`翻译为`.js`，而且在import路径中丢失`.js`后缀，导致其它项目将该项目作为库时，会遇到找不到引用路径的问题。这个问题是新手最容易遇到的坑，可以在stackoverflow上看到类似的问题：[如何在TypeScript编译时给import路径添加`.js`后缀](https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat)
+tsc无法用于真实的项目，对于拆分文件的项目，应当使用`rollup`之类的构建工具，`tsc`只是简单的将`.ts`翻译为`.js`，在import路径中丢失`.js`后缀，导致其它项目将该项目作为库时，会遇到找不到引用路径的问题。这个问题是新手最容易遇到的坑，可以在stackoverflow上看到类似的问题：[如何在TypeScript编译时给import路径添加`.js`后缀](https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat)

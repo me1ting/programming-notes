@@ -3,7 +3,7 @@
 ## 拉取镜像
 
 ```
-docker pull mysql:8.0.35
+docker pull mysql:8.0
 ```
 
 ### 镜像选择
@@ -54,31 +54,33 @@ sudo useradd mysql -g mysql -M -s /bin/bash
 
 ```sh
 sudo mkdir -p /usr/local/docker/mysql/conf
-sudo touch /usr/local/docker/mysql/my.cnf
+sudo touch /usr/local/docker/mysql/conf/my.cnf
 sudo mkdir -p /usr/local/docker/mysql/conf/conf.d
 sudo mkdir -p /usr/local/docker/mysql/logs
 sudo mkdir -p /usr/local/docker/mysql/data
 sudo chown -R mysql.mysql /usr/local/docker/mysql/
 ```
 
-修改`/usr/local/docker/mysql/my.cnf`，这里使用最简单的配置文件，根据实际需求修改：
+修改`/usr/local/docker/mysql/conf/my.cnf`，这里使用最简单的配置文件，根据实际需求修改：
 
 ```
 [mysqld]
-log_error = /var/log/mysql/error.log
+log_error=/var/log/mysql/error.log
+require_secure_transport=ON
 ```
 
 ## 启动mysql
 
 ```
-# 1002:1002是mysql用户的uid:gid，修改为实际的值
+# 1002:1002是mysql用户的uid:gid，使用`id mysql`查看，修改为实际的值
 # --net=host表示直接使用host的网络
+# root123 是localhost.root账户的密码，根据需要修改
 sudo docker run --user 1002:1002 --net=host --name mysql \
 -v /usr/local/docker/mysql/conf:/etc/mysql \
 -v /usr/local/docker/mysql/logs:/var/log/mysql \
 -v /usr/local/docker/mysql/data:/var/lib/mysql \
 -e MYSQL_ROOT_PASSWORD=root123 \
--d mysql:8.0.35
+-d mysql:8.0
 ```
 
 使用`ps -ef|grep mysqld`，检查启动是否成功。
@@ -88,7 +90,7 @@ sudo docker run --user 1002:1002 --net=host --name mysql \
 ```
 # 进入镜像的bash环境
 sudo docker exec -it mysql bash
-# 执行mysql客户端，root账户名是我们在-e MYSQL_ROOT_PASSWORD=root123 \中指定的
+# 执行mysql客户端，账户为root，密码为root123
 mysql -uroot -proot123
 ```
 
@@ -101,10 +103,10 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 quit
 ```
 
-MySQL的密码要求如下，如果不满足密码要求会返回`ERROR 1396 (HY000)`错误：
+MySQL的密码如果不满足[密码要求](https://dev.mysql.com/doc/refman/8.4/en/validate-password-options-variables.html)会返回`ERROR 1396 (HY000)`错误，建议：
 
 ```
 长度为8~32个字符
 由大写字母、小写字母、数字、特殊字符中的任意三种组成
-特殊字符为! @#$%^&*()_+-=
+特殊字符为~!@#$%^&*()_-+={}[]\/<>,.;?':|
 ```

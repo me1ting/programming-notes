@@ -15,6 +15,16 @@
 
 [viper](https://github.com/spf13/viper)
 
+[godotenv](https://github.com/joho/godotenv) `.env`是一些平台流行的配置文件格式，该库提供了支持
+
 ## 文本模板
 
 [templ](https://github.com/a-h/templ)
+
+## 授权
+
+[casbin](https://casbin.org/)
+
+## 认证
+
+[golang-jwt](https://github.com/golang-jwt/jwt)
