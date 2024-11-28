@@ -1,6 +1,7 @@
 # 使用Serde的几个常见问题
 
 ## 反序列化
+
 ### 自包含类型
 
 使用`Box`：
@@ -61,13 +62,13 @@ Error { path: Path { segments: [Map { key: "friends" }] }, original: Error("expe
 ```ts
 // 这里定义了一个Person类型表示人，TA有一个名字或者多个名字
 type Persion = {
-	name: string|string[],
-}
+  name: string | string[];
+};
 ```
 
 上述中的`name`就是一个Union Type。这对应Rust中的枚举类型。
 
->Rust也有C中的[Union类型](https://doc.rust-lang.org/reference/items/unions.html)，与这里讨论的Union Type不同。
+> Rust也有C中的[Union类型](https://doc.rust-lang.org/reference/items/unions.html)，与这里讨论的Union Type不同。
 
 ```rust
 #[derive(Serialize, Deserialize, Debug)]
@@ -123,4 +124,3 @@ pub enum TypeA {
 当使用HashMap映射JSON中的Object时，反序列化后再序列化，会发现键的顺序是乱序的，而一些应用可能依赖这个顺序。
 
 解决办法是使用[indexmap](https://docs.rs/indexmap/latest/indexmap/)
-

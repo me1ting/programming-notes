@@ -19,9 +19,10 @@ example/
 
 如果没有做任何处理，我们直接访问`example.com/config`地址，服务端会响应404错误。
 
->用户因为书签、刷新等原因需要直接访问这些路径
+> 用户因为书签、刷新等原因需要直接访问这些路径
 
 为了避免这种情况，服务端需要响应index.html，SPA框架会根据url自动切换页面。
+
 ### 如何让nginx支持前端路由？
 
 在nginx中，我们需要使用[try_files](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files)指令：

@@ -16,7 +16,7 @@ npm install --save-dev @types/jest
 yarn add --dev jest ts-jest @types/jest
 ```
 
->注意，除了jest其余支持都有相关的替代选项，具体细节参考[文档](https://jestjs.io/docs/getting-started)。
+> 注意，除了jest其余支持都有相关的替代选项，具体细节参考[文档](https://jestjs.io/docs/getting-started)。
 
 # 初始化
 
@@ -61,40 +61,33 @@ preset: 'ts-jest',
 import { BaseTypeProvider } from "../../src/provider/basetype.provider";
 import { BaseTypeService } from "../../src/service/basetype.service";
 
-
 let provider = new BaseTypeProvider();
 let service = new BaseTypeService(provider);
 
 (function testTranslateBaseType() {
-    let testcases = [
-        { "zh": "刚玉药剂", "en": "Corundum Flask" }
-    ]
+  let testcases = [{ zh: "刚玉药剂", en: "Corundum Flask" }];
 
-    for (let t of testcases) {
-        let zh = t["zh"];
-        let en = t["en"];
+  for (let t of testcases) {
+    let zh = t["zh"];
+    let en = t["en"];
 
-
-        test(`translate basetype: ${zh} to ${en}`, () => {
-            expect(service.translateBaseType(zh)).toBe(en);
-        });
-    }
+    test(`translate basetype: ${zh} to ${en}`, () => {
+      expect(service.translateBaseType(zh)).toBe(en);
+    });
+  }
 })();
 
 (function testTranslateTypeLine() {
-    let testcases = [
-        { "zh": "嗜血的永恒之剑", "en": "Eternal Sword" }
-    ]
+  let testcases = [{ zh: "嗜血的永恒之剑", en: "Eternal Sword" }];
 
-    for (let t of testcases) {
-        let zh = t["zh"];
-        let en = t["en"];
+  for (let t of testcases) {
+    let zh = t["zh"];
+    let en = t["en"];
 
-
-        test(`translate basetype: ${zh} to ${en}`, () => {
-            expect(service.translateTypeLine(zh)).toBe(en);
-        });
-    }
+    test(`translate basetype: ${zh} to ${en}`, () => {
+      expect(service.translateTypeLine(zh)).toBe(en);
+    });
+  }
 })();
 ```
 
@@ -108,7 +101,6 @@ let service = new BaseTypeService(provider);
 npm test a.test.ts
 npm test service/*
 ```
-
 
 # 总结
 

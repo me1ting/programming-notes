@@ -14,6 +14,3 @@
 # Ref
 
 https://docs.python.org/zh-cn/3/reference/simple_stmts.html#the-del-statement
-
-
-

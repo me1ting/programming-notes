@@ -12,8 +12,6 @@ Python中的[file](https://docs.python.org/zh-cn/3/glossary.html#term-file-objec
 
 使用完后需要关闭文件，回收资源，使用`file.close()`方法。
 
-
-
 由于可能抛出**异常**的原因，为了安全的关闭文件，python提供了类似Java中`try with resource`结构的`with as`结构：
 
 ```python

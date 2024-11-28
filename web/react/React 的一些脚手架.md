@@ -1,4 +1,5 @@
 # React的一些脚手架
+
 ## Next.js
 
 [Next.js](https://nextjs.org/) 是基于 React 的一个Web应用脚手架，其特色是：
@@ -19,7 +20,7 @@ Vercel 是美国的一家云服务公司。简单来说，Next.js 就是 Vercel 
 - 需要使用 Vercel 服务
 - 需要基于JavaScript的全栈
 
->基于 JavaScript 的全栈在创业公司使用较多，特别是国外的一些创业公司。
+> 基于 JavaScript 的全栈在创业公司使用较多，特别是国外的一些创业公司。
 
 ## T3 App
 
@@ -40,5 +41,3 @@ Vite 是 Vue 项目组开发的用于 Vue 的官方脚手架，由于存在竞�
 ## create-react-app
 
 React官方的弃子，现已不建议使用。
-
- 

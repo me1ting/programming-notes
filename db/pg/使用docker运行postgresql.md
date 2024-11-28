@@ -1,4 +1,3 @@
-
 # 使用docker运行postgresql
 
 ## 拉取镜像
@@ -39,6 +38,7 @@ docker run \
 ```
 
 以下是细节说明。
+
 ### 卷映射
 
 我们创建了pg所需的数据存储路径`/usr/local/docker/pg/data`：
@@ -49,7 +49,7 @@ sudo mkdir -p /usr/local/docker/pg/data
 
 但我们映射的却是`/usr/local/docker/pg`到`/var/lib/postgresql`，是因为我们还要在该路径下存储SSL所需的server的证书和私钥。
 
->SSL其实是旧术语，当前应当为TLS，但为了保持兼容性，postgresql的相关文档还是用SSL来说明，因此本文也采用这个习惯。
+> SSL其实是旧术语，当前应当为TLS，但为了保持兼容性，postgresql的相关文档还是用SSL来说明，因此本文也采用这个习惯。
 
 ### SSL支持
 
@@ -86,6 +86,7 @@ chmod 0600 server.key
 ```
 -e POSTGRES_PASSWORD=123456
 ```
+
 ## 参考资料
 
 [doc: postgresql docker readme](https://github.com/docker-library/docs/blob/master/postgres/README.md)<br/>

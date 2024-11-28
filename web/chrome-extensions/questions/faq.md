@@ -1,6 +1,7 @@
 # faq
 
 ## cookie
+
 ### 扩展如何访问cookie？
 
 chrome扩展有两种访问[cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)的方法：
@@ -17,6 +18,7 @@ chrome扩展有两种访问[cookie](https://developer.mozilla.org/en-US/docs/Web
 不能在内容脚本中使用（未验证），可以访问任意cookie。
 
 ## cors
+
 ### 内容脚本如何发起CORS请求？
 
 扩展是[无法直接发起CORS请求的](https://www.chromium.org/Home/chromium-security/extension-content-script-fetches/)，需要使用消息机制和后台脚本来实现。

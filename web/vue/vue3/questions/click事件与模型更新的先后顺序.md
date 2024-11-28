@@ -6,14 +6,14 @@
 
 ```vue
 <script>
-const data1 = ref(false)
+const data1 = ref(false);
 
 onMounted(async () => {
-	data1.value = localStorage.getItem("data1");
-})
+  data1.value = localStorage.getItem("data1");
+});
 </script>
 <template>
-	<input v-model="data1" type="checkbox"/>
+  <input v-model="data1" type="checkbox" />
 </template>
 ```
 
@@ -23,18 +23,18 @@ onMounted(async () => {
 
 ```vue
 <script>
-const data1 = ref(false)
+const data1 = ref(false);
 
 watch(data1, async (newValue) => {
-  localStorage.setItem("data1", newValue)
-})
+  localStorage.setItem("data1", newValue);
+});
 
 onMounted(async () => {
   data1.value = localStorage.getItem("data1");
-})
+});
 </script>
 <template>
-	<input v-model="data1" type="checkbox"/>
+  <input v-model="data1" type="checkbox" />
 </template>
 ```
 
@@ -44,23 +44,23 @@ onMounted(async () => {
 
 ```vue
 <script>
-const data1 = ref(false)
-let data1Loaded = false
+const data1 = ref(false);
+let data1Loaded = false;
 
 watch(data1, async (newValue) => {
-  if (!data1Loaded){
-    data1Loaded = true
-    return
+  if (!data1Loaded) {
+    data1Loaded = true;
+    return;
   }
-  localStorage.setItem("data1", newValue)
-})
+  localStorage.setItem("data1", newValue);
+});
 
 onMounted(async () => {
   data1.value = localStorage.getItem("data1");
-})
+});
 </script>
 <template>
-	<input v-model="data1" type="checkbox"/>
+  <input v-model="data1" type="checkbox" />
 </template>
 ```
 
@@ -87,6 +87,6 @@ onMounted(async () => {
 })
 </script>
 <template>
-	<input v-model="data1" @click="handleClick" type="checkbox"/>
+  <input v-model="data1" @click="handleClick" type="checkbox" />
 </template>
 ```

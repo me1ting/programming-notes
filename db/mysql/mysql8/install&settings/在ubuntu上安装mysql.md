@@ -48,7 +48,7 @@ sudo systemctl restart mysql
 bind-address    = 0.0.0.0
 ```
 
->`0.0.0.0`表示绑定所有网卡，根据需求，你可以绑定公网IP或者内网IP或者localhost。
+> `0.0.0.0`表示绑定所有网卡，根据需求，你可以绑定公网IP或者内网IP或者localhost。
 
 ### 创建远程账户
 

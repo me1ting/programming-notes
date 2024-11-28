@@ -16,7 +16,7 @@
 
 ### Make
 
-[Make](https://en.wikipedia.org/wiki/Make_(software))是Unix时代就出现的构建系统，主要用于Unix Like环境下 以C/C++为主的原生项目的构建。
+[Make](<https://en.wikipedia.org/wiki/Make_(software)>)是Unix时代就出现的构建系统，主要用于Unix Like环境下 以C/C++为主的原生项目的构建。
 
 ### Ant,Maven,Gradle
 

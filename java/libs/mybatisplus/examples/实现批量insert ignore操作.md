@@ -16,8 +16,8 @@
 
 ```java
 // com/example/integration/mybatisplus/MyBaseMapper.java
-public interface MyBaseMapper <T> extends BaseMapper<T> {  
-    int insertIgnore(T entity);  
+public interface MyBaseMapper <T> extends BaseMapper<T> {
+    int insertIgnore(T entity);
 }
 ```
 
@@ -129,17 +129,17 @@ public class MySqlInjector extends DefaultSqlInjector {
 
 ```java
 // come/example/config/MybatisPlusConfig.java
-@Configuration  
-@MapperScan("com.example.mapper") 
-public class MybatisPlusConfig {  
-    /**  
-     * 自定义 SqlInjector  
-     * 里面包含自定义的全局方法  
-     */  
-    @Bean  
-    public MySqlInjector mySqlInjector() {  
-        return new MySqlInjector();  
-    }  
+@Configuration
+@MapperScan("com.example.mapper")
+public class MybatisPlusConfig {
+    /**
+     * 自定义 SqlInjector
+     * 里面包含自定义的全局方法
+     */
+    @Bean
+    public MySqlInjector mySqlInjector() {
+        return new MySqlInjector();
+    }
 }
 ```
 
@@ -166,8 +166,8 @@ private UserMapper mapper;
 @Transactional(rollbackFor = Exception.class)
 public void saveIgnoreBatch(List<User> users){
 	//...
-	MybatisBatch<User> mybatisBatch = new MybatisBatch<>(this.getSqlSessionFactory(), users);  
-	MybatisBatch.Method<User> method = new MybatisBatch.Method<>(UserMapper.class);  
+	MybatisBatch<User> mybatisBatch = new MybatisBatch<>(this.getSqlSessionFactory(), users);
+	MybatisBatch.Method<User> method = new MybatisBatch.Method<>(UserMapper.class);
 	mybatisBatch.execute(method.get("insertIgnore"));
 }
 ```
@@ -231,6 +231,7 @@ public class MyServiceImpl<M extends MyBaseMapper<T>, T> extends ServiceImpl<M, 
     }
 }
 ```
+
 ## 总结
 
 本文记录了如何给MybatisPlus添加批量insert ignore操作。

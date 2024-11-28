@@ -5,7 +5,13 @@ Tampermonkey目前仅支持IIFE形式的脚本文件，不支持ES Module。
 我们需要在配置中声明使用的外部依赖：
 
 ```ts
-external: ['vue', 'cn-poe-translator', 'cn-poe-export-db', 'pob-building-creater', 'axios']
+external: [
+  "vue",
+  "cn-poe-translator",
+  "cn-poe-export-db",
+  "pob-building-creater",
+  "axios",
+];
 ```
 
 其次我们要在配置中说明输出为IIFE格式，并指定外部依赖所提供的全局变量名称：
@@ -26,7 +32,7 @@ output: {
 最终，我们构建得到如下的IIFE脚本：
 
 ```js
-(function(vue, axios2, cnPoeTranslator, Assets, pobBuildingCreater) {
+(function (vue, axios2, cnPoeTranslator, Assets, pobBuildingCreater) {
   "use strict";
   //...省略内容
 })(Vue, axios, CnPoeTranslator, CnPoeExportDb, BuildingCreater);
@@ -47,7 +53,7 @@ output: {
 // 省略部分内容
 // ==/UserScript==
 
-(function(vue, axios2, cnPoeTranslator, Assets, pobBuildingCreater) {
+(function (vue, axios2, cnPoeTranslator, Assets, pobBuildingCreater) {
   "use strict";
   //...省略内容
 })(Vue, axios, CnPoeTranslator, CnPoeExportDb, BuildingCreater);

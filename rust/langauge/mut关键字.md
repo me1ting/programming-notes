@@ -20,7 +20,7 @@ fn main() {
 ```rust
 fn main() {
     let mut a = vec![0];
-    
+
     let mut c = &a;// 虽然编译器不报错，但是这里的mut是无效的
     let d:&mut Vec<i32> = &mut a;// mut引用值的来源为mut变量或者mut引用值
     d.push(1);

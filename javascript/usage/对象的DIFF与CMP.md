@@ -42,5 +42,3 @@ JSON.stringify(person1) === JSON.stringify(person2);
 ```
 
 一些资料提到该方法，这是行不通的，因为如果字段、数组元素顺序不一致，也会导致结果不同。
-
-

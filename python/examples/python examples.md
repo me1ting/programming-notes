@@ -1,6 +1,7 @@
 # python examples
 
 ## 文件
+
 ### 路径
 
 使用`pathlib.Path`包。
@@ -23,7 +24,7 @@ print(path.parent.absolute())
 ```python
 import subprocess
 
-retcode = subprocess.call(["ls", "-l"]) 
+retcode = subprocess.call(["ls", "-l"])
 ```
 
 `subprocess.call()`提供了一个简单的API，而`subprocess.run()`满足更复杂的功能需求。

@@ -18,7 +18,7 @@ jigsaw 使用模块顶层目录下的`module-info.class`声明其导出内容和
 
 但是 jigsaw 的普及还存在漫长的道路，目前大多数项目都还没有采用。
 
->对比Go，Java的模块功能由于出现时间较晚，且其提供的功能对开发者而言不是很急迫，因此其普及速度很慢。而Go的模块提供了版本化这个必不可少的功能，因此迅速普及。
+> 对比Go，Java的模块功能由于出现时间较晚，且其提供的功能对开发者而言不是很急迫，因此其普及速度很慢。而Go的模块提供了版本化这个必不可少的功能，因此迅速普及。
 
 ### 接口中的私有函数
 
@@ -148,9 +148,9 @@ System.out.println(html);
 
 相比于其它语言的多行字符串，Java 版本增加了一些 feature （了解）：
 
-1) 可以使用 `\` 注释掉换行，内容将不包括换行符
+1. 可以使用 `\` 注释掉换行，内容将不包括换行符
 
-2) 末尾`"""`可以用来控制缩进：
+2. 末尾`"""`可以用来控制缩进：
 
 ```java
 String noIndentation = """
@@ -169,7 +169,7 @@ String noIndentation2 = """
     """;//无缩进
 ```
 
-3) 尾部空白被优化
+3. 尾部空白被优化
 
 ```java
 String noTrailingSpace = """
@@ -220,6 +220,7 @@ public record Person (String name, String address) {}
 ```
 
 从形式上来讲，这类似一个函数，但其实这是定义一个类型。
+
 ### 密封类
 
 密封类(Sealed Classes)对于类型的继承提供更精细化的控制。
@@ -229,7 +230,7 @@ public record Person (String name, String address) {}
 ```java
 public abstract sealed class Person
     permits Employee, Manager {
- 
+
     //...
 }
 ```

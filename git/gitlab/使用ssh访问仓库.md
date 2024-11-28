@@ -12,6 +12,7 @@ ssh-keygen -t ed25519 -C "gitlab"
 
 - id_ed25519 私钥
 - id_ed25519.pub 公钥
+
 ## 密钥对的存储位置和命名
 
 默认情况下，ssh的密钥对存储在`~/.ssh/`目录下，使用[默认名称](https://docs.gitlab.com/ee/user/ssh.html#see-if-you-have-an-existing-ssh-key-pair)。
@@ -47,4 +48,3 @@ ECDSA key fingerprint is SHA256:HbW3g8zUjNSksFbqTiUWPWg2Bq1x8xdGUrliXFzSnUw.
 ```
 
 这让我疑惑了一段时间，查看文档发现是要求你输入`yes`或`no`，输入yes然后点击`enter`。
-

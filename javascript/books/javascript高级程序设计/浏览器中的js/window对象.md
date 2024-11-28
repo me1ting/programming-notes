@@ -14,7 +14,7 @@ window提供了一些额外的方法（或者说全局函数）。
 
 ```js
 //需要使用如下的样板代码对u8array进行base64编码
-const code = btoa(String.fromCharCode(...compressed));// compressed的类型是u8array
+const code = btoa(String.fromCharCode(...compressed)); // compressed的类型是u8array
 ```
 
 总而言之，这是一个设计糟糕的API。

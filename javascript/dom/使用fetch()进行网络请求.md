@@ -3,13 +3,14 @@
 [fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/fetch)是`DOM`（浏览器）提供的XHR API，用来取代`XMLHttpRequest`，相比后者而言，API更加简洁，且支持`Promise`。
 
 Axios比较流行，但是一些场景可能使用原生API更容易，比如`chrome extension`这种很特殊的使用场景。
+
 ## feach函数
 
 fetch函数用于发起HTTP请求：
 
 ```js
-fetch(resource)
-fetch(resource, options)
+fetch(resource);
+fetch(resource, options);
 ```
 
 `resource` 一般使用字符串。一些常用的模式包括：

@@ -18,7 +18,7 @@ pnpm add -D @types/chrome
 Chrome API 通过全局对象`chrome`暴露API，我们并不能像使用外部依赖一样使用这些类型信息：
 
 ```ts
-import axios from Axios 
+import axios from Axios
 import chrome from chrome// 错误的，chrome并不是外部依赖
 ```
 

@@ -8,6 +8,7 @@ vagrant是一款虚拟化解决方案，主要目标是简化**开发阶段**的
 - 在windows平台上bug较多，软件的可用性并不高。
 
 但用vagrant-img来快速搭建ubuntu环境却很方便。
+
 # 下载
 
 以[bionic/current/bionic-server-cloudimg-amd64-vagrant.box](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-vagrant.box)为例：
@@ -43,6 +44,7 @@ vagrant是一款虚拟化解决方案，主要目标是简化**开发阶段**的
 网卡二设置为我们刚才设置的HOSTONLY网卡：
 
 ![](_images/20201011140819325_12587.png)
+
 # 虚拟机软件设置
 
 开启虚拟机，用户名和密码为为`vagrant`,`vagrant`

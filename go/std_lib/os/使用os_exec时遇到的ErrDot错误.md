@@ -18,6 +18,7 @@ cannot run executable found relative to current directory
 - 用户显式指定`PATH`包含`.`，如bash下执行`PATH=.:$PATH`
 
 Go开发者认为这两者都是**不安全的**（虽然我个人不太明白后者为啥不安全），因此默认情况下禁止这种行为，用户可以选择手动开启。
+
 ## 如何解决？
 
 可以从`代码`和`编译参数`两个维度解决该问题，细节参考文档，这里只做简单介绍。
@@ -43,4 +44,3 @@ if err := cmd.Run(); err != nil {
 $Env:GODEBUG = "execerrdot=0"
 go build
 ```
-

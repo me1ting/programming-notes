@@ -3,6 +3,7 @@
 由于`Rust`语言的限制，在使用tauri来实现config管理时遇到了许多问题，看了一些实现，这里以作记录。
 
 # 几个实现
+
 ## clash-verge
 
 [clash-verge](https://github.com/zzzgydi/clash-verge)是一个类似`clash for windows`的代理桌面GUI工具。
@@ -18,7 +19,7 @@ impl Config {
             clash_config: Draft::from(IClashTemp::new()),
             verge_config: Draft::from(IVerge::new()),
             profiles_config: Draft::from(IProfiles::new()),
-            runtime_config: Draft::from(IRuntime::new()), 
+            runtime_config: Draft::from(IRuntime::new()),
         })
     }
 // ...
@@ -81,6 +82,7 @@ pub struct Draft<T: Clone + ToOwned> {
 ```
 
 # 一些思考
+
 ## 配置的存储路径
 
 以Windows为例，主要有以下几种路径选择：
@@ -141,4 +143,3 @@ tauri使用的是`tokio`，在tokio的文档上对3种同步技术进行了[讨�
 因为tauri的`#[tauri::command]`必须使用在函数上，因此配置管理对象应当是“全局变量”（Rust中称为`静态变量`）(如`clash-verge`)或者“全局函数”(如`ChatGPT`)。
 
 但是默认情况下，使用`可变静态变量`是**不安全**的，需要使用`unsafe`代码，或者使用第三方库，如`once_cell`。
-

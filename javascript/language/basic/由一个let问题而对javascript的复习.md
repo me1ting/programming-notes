@@ -1,24 +1,25 @@
 # 由一个let问题而对javascript的复习
+
 ## 一个let问题
 
 在逛论坛时看到JS新手的疑惑：
 
 ```js
-function fn1 (){
-    for (let i=0;i<10;i++){
-        setTimeout(()=>console.log(i))
-    }
+function fn1() {
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => console.log(i));
+  }
 }
 
-function fn2 (){
-    let i = 0;
-    for (;i<10;i++){
-        setTimeout(()=>console.log(i))
-    }
+function fn2() {
+  let i = 0;
+  for (; i < 10; i++) {
+    setTimeout(() => console.log(i));
+  }
 }
 
-fn1()// 0 1 2 3 4 5 6 7 8 9
-fn2()// 10 10 10 10 10 10 10 10 10 10
+fn1(); // 0 1 2 3 4 5 6 7 8 9
+fn2(); // 10 10 10 10 10 10 10 10 10 10
 ```
 
 为什么两个函数输出的结果不同。
@@ -47,13 +48,13 @@ JavaScript程序是单线程执行的，采用的是事件循环模型：一个`
 本问题是一个经典的闭包编程问题，闭包在循环中捕获外部变量，导致程序的运行结果与想象中可能不一样。闭包在执行时，读取的`i`的值是`i`的当前值，而非一些用户以为的循环时的值。
 
 ```js
-function fn2 (){
-    let i = 0;// 被捕获
-    for (;i<10;i++){
-        setTimeout(()=>console.log(i))
-    }
+function fn2() {
+  let i = 0; // 被捕获
+  for (; i < 10; i++) {
+    setTimeout(() => console.log(i));
+  }
 }
-fn2()// 10 10 10 10 10 10 10 10 10 10
+fn2(); // 10 10 10 10 10 10 10 10 10 10
 ```
 
 JavaScript 采用单线程模型，因为循环中没有中断当前执行流的逻辑，因此所有`timeout`处理逻辑只有等循环结束后才能执行，此时 `i` 的值为 `10` ，所以输出`10`共 10 次。
@@ -61,17 +62,17 @@ JavaScript 采用单线程模型，因为循环中没有中断当前执行流的
 常规的解决办法是使用一个块作用域变量记录循环时的值：
 
 ```js
-function fn2 (){
-    let i = 0;
-    for (;i<10;i++){
-        let j = i;// 块作用域变量
-        setTimeout(()=>console.log(j))
-    }
+function fn2() {
+  let i = 0;
+  for (; i < 10; i++) {
+    let j = i; // 块作用域变量
+    setTimeout(() => console.log(j));
+  }
 }
-fn2() // 0 1 2 3 4 5 6 7 8 9
+fn2(); // 0 1 2 3 4 5 6 7 8 9
 ```
 
-*示例代码3*
+_示例代码3_
 
 但是上面这种解决办法是存在心智负担的，用户必须记住这是可能存在BUG的代码，必须记住怎么解决。
 
@@ -81,17 +82,17 @@ fn2() // 0 1 2 3 4 5 6 7 8 9
 
 我们可以认为，`fn1()`的输出结果所代表的执行逻辑是直观的，没有心智负担的执行模型。JavaScript将示例代码3中的解决方案作为语言层面的默认行为：
 
->“而在使用 let 声明迭代变量时，JavaScript 引擎在后台会为每个迭代循环声明一个新的迭代变量。 --《JavaScript高级教程》`
+> “而在使用 let 声明迭代变量时，JavaScript 引擎在后台会为每个迭代循环声明一个新的迭代变量。 --《JavaScript高级教程》`
 
 ```js
-function fn1 (){
-    for (let i=0;i<10;i++){
-        //每次循环捕获的 i 都是独立的
-        setTimeout(()=>console.log(i))
-    }
+function fn1() {
+  for (let i = 0; i < 10; i++) {
+    //每次循环捕获的 i 都是独立的
+    setTimeout(() => console.log(i));
+  }
 }
 
-fn1() // 0 1 2 3 4 5 6 7 8 9
+fn1(); // 0 1 2 3 4 5 6 7 8 9
 ```
 
 根据JavaScript的单线程执行模型，`setTimeout()`立即提交任务队列，但只有循环结束后才执行，顺序提交，顺序执行，顺序输出。
@@ -150,6 +151,7 @@ func main() {
 	time.Sleep(time.Second * 5) //wait goroutines end
 }
 ```
+
 ## JS的历史：var与let
 
 JavaScirpt是几天内设计并实现的一门编程语言，所以存在许多设计缺陷，在ES6中进行了许多修补。就比如使用`let`取代`var`。
@@ -173,22 +175,22 @@ JavaScript后续版本支持`async`,`await`，这使得传统的执行流可以�
 
 ```js
 const fn2 = async () => {
-    let i = 0;
-    for (; i < 10; ) {
-        setTimeout(() => console.log(i))
-        i = await plusOne(i)
-    }
-}
+  let i = 0;
+  for (; i < 10; ) {
+    setTimeout(() => console.log(i));
+    i = await plusOne(i);
+  }
+};
 
-function plusOne(n){
-    return new Promise(function(resolve, reject) {
+function plusOne(n) {
+  return new Promise(function (resolve, reject) {
     setTimeout(() => {
-        resolve(n+1)
-    },1)
-})
+      resolve(n + 1);
+    }, 1);
+  });
 }
 
-fn2() // 0 1 2 3 4 5 6 7 8 9
+fn2(); // 0 1 2 3 4 5 6 7 8 9
 ```
 
 ## 参考资料

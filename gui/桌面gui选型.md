@@ -74,7 +74,7 @@ WIndows的官方GUI开发技术历史上包括：
 - UWP（已淘汰），为引流Windows Phone而搞得一套，随着WP的消亡而消亡
 - WinUI（仅支持Windows10较新版本，详情见[链接](https://learn.microsoft.com/en-us/windows/apps/winui/)），支持C#语言或C++语言，提供了Fluent设计风格
 
-*MS基于C#版本的WinUI搞了一个跨平台GUI框架MAUI，目前看来只是一个实验项目。MS基于WinUI还搞了一个Windows React Native，同样也只是一个实验项目。*
+_MS基于C#版本的WinUI搞了一个跨平台GUI框架MAUI，目前看来只是一个实验项目。MS基于WinUI还搞了一个Windows React Native，同样也只是一个实验项目。_
 
 WPF示例：滴答清单。
 

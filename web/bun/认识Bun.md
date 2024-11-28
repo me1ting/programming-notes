@@ -7,6 +7,7 @@ Bun是基于Apple的`JavaScriptCore`虚拟机，而非Google的V8虚拟机。
 可以看到Bun包含了复杂的功能，但目前想用Bun完全取代Node.js以及相关工具链，从合作项目来讲是不现实的。
 
 但正如`pnpm`对于`npm`的渐进式取代，个人对于将`Bun`融入到个人项目的工具链中感兴趣。
+
 ## 取代TSnode
 
 Node.js 原生并不支持TS，需要使用一个第三方（非Node.js团队也非TS团队开发的）开源项目[TSnode](https://github.com/TypeStrong/ts-node)，来实现执行TS脚本。

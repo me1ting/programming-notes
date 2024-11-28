@@ -26,7 +26,7 @@ JavaScript通过**事件轮询机制**支持异步执行，语法层面使用**c
 
 ```javascript
 function double(value, callback) {
-	setTimeout(() => callback(value * 2), 1000);
+  setTimeout(() => callback(value * 2), 1000);
 }
 ```
 
@@ -39,8 +39,8 @@ function double(value, callback) {
 在JS中需要使用`setTimeout`来提交异步执行任务。
 
 ```javascript
-let task = ()=>{
-  console.log("hello world");  
+let task = () => {
+  console.log("hello world");
 };
 setTimeout(task, 0);
 //或者
@@ -83,6 +83,7 @@ async function foo() {}
 `await`关键字暂停当前的执行流，并等待一个`Pormise`关联的异步逻辑执行完成。如果Promise被兑现，那么执行流继续执行；如果Promise被拒绝，将终止该异步执行流（以抛出`Error`的方式）。
 
 语法上，`await`只能在异步函数内使用。
+
 # 总结
 
 本文大致梳理了一下JavaScript的异步执行模型，从同步/异步的概念，再到JavaScript的基本执行模型，callback机制，然后是Promise抽象，异步函数（async/await语法）概念。

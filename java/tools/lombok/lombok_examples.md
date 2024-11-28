@@ -18,6 +18,7 @@ public class GetterSetterExample {
   @Setter(AccessLevel.PROTECTED) private String name;
 }
 ```
+
 ## @with
 
 @with生成withFieldName()方法，当字段值相等时，with方法返回原对象，否则返回原对象的拷贝并设置新的字段值。
@@ -39,11 +40,11 @@ public class User {
 }
 
 void demo(){
-	User user = new User(1000L);  
-	var anotherUser = user.withId(1L);  
-	var nextUser = anotherUser.withId(1L);  
-	var nnUser = anotherUser.withId(2L);  
-	  
+	User user = new User(1000L);
+	var anotherUser = user.withId(1L);
+	var nextUser = anotherUser.withId(1L);
+	var nnUser = anotherUser.withId(2L);
+
 	System.out.printf("anotherUser == user: %b\n",anotherUser == user);  //false
 	System.out.printf("nextUser == anotherUser: %b\n",nextUser == anotherUser);  //true
 	System.out.printf("nnUser == anotherUser: %b\n",nnUser == anotherUser);  //false
@@ -69,6 +70,7 @@ public class User{
 ## @Data
 
 `@Data`是一个聚合接口，默认为所有字段生成`getter`和`setter`，以及生成`hashCode()`,`equals()`,`toString()`。
+
 ## 参考资料
 
 [doc: lombok features](https://projectlombok.org/features/)

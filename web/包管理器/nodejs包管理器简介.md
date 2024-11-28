@@ -5,6 +5,7 @@
 - npm
 - yarn
 - pnpm
+
 # npm
 
 `npm`是`nodejs`目前的官方包管理器，由三部分组成：

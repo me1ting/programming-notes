@@ -16,7 +16,7 @@ Promise有三种状态：
 
 ## promise.then()
 
-`promise.then()`方法用于（*在同步代码中*）**注册异步代码的执行结果的处理函数**，这些处理函数是异步执行的。
+`promise.then()`方法用于（_在同步代码中_）**注册异步代码的执行结果的处理函数**，这些处理函数是异步执行的。
 
 > 异步指的是**代码块**之间的并行执行关系，在代码块中，前后语句依然是按照同步顺序执行的。
 
@@ -53,10 +53,10 @@ promise.then(null, failureCallback);
 
 ```javascript
 doSomething()
-.then(result => doSomethingElse(result))// doSomethingElse 返回 newResult
-.then(newResult => doThirdThing(newResult))// doThirdThing 返回 finalResult
-.then(finalResult => console.log(`Got the final result: ${finalResult}`))
-.catch(failureCallback);
+  .then((result) => doSomethingElse(result)) // doSomethingElse 返回 newResult
+  .then((newResult) => doThirdThing(newResult)) // doThirdThing 返回 finalResult
+  .then((finalResult) => console.log(`Got the final result: ${finalResult}`))
+  .catch(failureCallback);
 ```
 
 其对应的`async`函数提供了更清晰了表达：
@@ -68,7 +68,7 @@ async function foo() {
     const newResult = await doSomethingElse(result);
     const finalResult = await doThirdThing(newResult);
     console.log(`Got the final result: ${finalResult}`);
-  } catch(error) {
+  } catch (error) {
     failureCallback(error);
   }
 }
@@ -85,28 +85,31 @@ let fs = require("fs");
 
 //对Node.js的基于回调的异步操作`fs.readFile()`的Promise封装
 function readFile(filename) {
-	return new Promise(function(resolve, reject) {
-		// 触发异步任务
-		fs.readFile(filename, { encoding: "utf8" }, function(err, contents) {
-			// 检查错误
-			if (err) {
-				reject(err);
-				return;
-			}
-			// 读取操作成功
-			resolve(contents);
-		});
-	});
+  return new Promise(function (resolve, reject) {
+    // 触发异步任务
+    fs.readFile(filename, { encoding: "utf8" }, function (err, contents) {
+      // 检查错误
+      if (err) {
+        reject(err);
+        return;
+      }
+      // 读取操作成功
+      resolve(contents);
+    });
+  });
 }
 
 // 同时监听 fulfillment 和 rejection
-readFile("example.txt").then(function(contents) {
-		// fulfillment
-		console.log(contents);
-	}, function(err) {
-		// rejection
-		console.error(err.message);
-});
+readFile("example.txt").then(
+  function (contents) {
+    // fulfillment
+    console.log(contents);
+  },
+  function (err) {
+    // rejection
+    console.error(err.message);
+  },
+);
 ```
 
 # Promise与异步函数
@@ -115,15 +118,15 @@ readFile("example.txt").then(function(contents) {
 
 ```js
 async function waitUntilPresent(getter) {
-   while (getter() === undefined) {
-      await new Promise(r => setTimeout(r, 100));//sleep 100ms
-   }
-   return getter();
+  while (getter() === undefined) {
+    await new Promise((r) => setTimeout(r, 100)); //sleep 100ms
+  }
+  return getter();
 }
 ```
 
-1) async函数里面是可以使用Promise的，但是一般情况下很少这样做，除非像上面这样创建然后立即await的特例
-2) 一些场景下没法完全使用async取代手搓Promise，比如上面实现sleep功能
+1. async函数里面是可以使用Promise的，但是一般情况下很少这样做，除非像上面这样创建然后立即await的特例
+2. 一些场景下没法完全使用async取代手搓Promise，比如上面实现sleep功能
 
 而我们在调用上面创建的函数时，又有两种风格：
 

@@ -51,7 +51,7 @@ public interface Connection{
 	Statement createStatement() throws SQLException;
 	Statement createStatement(int resultSetType, int resultSetConcurrency)
 		throws SQLException;
-	Statement createStatement(int resultSetType, int resultSetConcurrency,  
+	Statement createStatement(int resultSetType, int resultSetConcurrency,
 	                          int resultSetHoldability) throws SQLException;
 	//...
 }
@@ -144,7 +144,7 @@ stat.executeBatch();
 
 从API来讲，JDBC提供的接口支持在批量更新里面使用任意更新语句，但是这样做和不使用批量接口没什么区别。
 
-```java
+````java
 ```java
 var stat = conn.prepareStatement("insert into user(id, name, age) values(? ,?, ?)");
 //对比上面示例代码，多了这一行，但这条语句是单独执行的
@@ -156,12 +156,14 @@ for (var i = 0; i < 10000; i++) {
     stat.addBatch();
 }
 stat.executeBatch();
-```
+````
 
 **只有批量更新里面的预处理更新语句才能得到性能优化**。
+
 ### 批量更新与事务
 
 批量更新并不是与事务绑定的，只有当业务逻辑需要事务时，才使用事务来执行批量更新。
+
 ### 数据库支持
 
 并非所有的数据库都支持批量更新，可以通过以下方式测试：

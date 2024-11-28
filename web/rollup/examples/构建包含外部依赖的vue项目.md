@@ -4,8 +4,8 @@
 
 ```vue
 <script setup>
-import CnPoeTranslator from "cn-poe-translator";//外部依赖
-import CnPoeExportDb from "cn-poe-export-db";//外部依赖
+import CnPoeTranslator from "cn-poe-translator"; //外部依赖
+import CnPoeExportDb from "cn-poe-export-db"; //外部依赖
 
 const factory = new CnPoeTranslator.BasicTranslatorFactory(CnPoeExportDb);
 //...
@@ -17,14 +17,20 @@ const factory = new CnPoeTranslator.BasicTranslatorFactory(CnPoeExportDb);
 我尝试在rollup配置中指定外部依赖：
 
 ```js
-external: ['cn-poe-translator', 'cn-poe-export-db']
+external: ["cn-poe-translator", "cn-poe-export-db"];
 ```
 
 然后在index.html中声明模块：
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/cn-poe-export-db@0.1.4/dist/index.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/cn-poe-translator@0.2.8/dist/index.js"></script>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/cn-poe-export-db@0.1.4/dist/index.js"
+></script>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/cn-poe-translator@0.2.8/dist/index.js"
+></script>
 ```
 
 构建结果在浏览器执行时，会提示找不到这两个依赖。
@@ -39,6 +45,7 @@ Uncaught TypeError: Failed to resolve module specifier "cn-poe-translator". Rela
 
 - 浏览器的模块只支持基于当前域的上下文的导入路径（即本地依赖），如`/index.js`,`./index.js`,`../index.js`
 - node.js支持基于文件上下文的导入路径（即本地依赖），以及支持外部依赖的导入路径，如`import axios from Axios`
+
 ## 方法1： 使用importmap
 
 为了支持外部依赖，浏览器提出了[importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)方案，通过映射来支持外部依赖。
@@ -46,14 +53,14 @@ Uncaught TypeError: Failed to resolve module specifier "cn-poe-translator". Rela
 在`index.html`中删除类似`<script type="module" ...`的导入外部依赖的语句，添加importmap：
 
 ```html
-    <script type="importmap">
-      {
-        "imports": {
-          "cn-poe-export-db": "https://cdn.jsdelivr.net/npm/cn-poe-export-db@0.1.4/dist/index.js",
-          "cn-poe-translator": "https://cdn.jsdelivr.net/npm/cn-poe-translator@0.2.8/dist/index.js"
-        }
-      }
-    </script>
+<script type="importmap">
+  {
+    "imports": {
+      "cn-poe-export-db": "https://cdn.jsdelivr.net/npm/cn-poe-export-db@0.1.4/dist/index.js",
+      "cn-poe-translator": "https://cdn.jsdelivr.net/npm/cn-poe-translator@0.2.8/dist/index.js"
+    }
+  }
+</script>
 ```
 
 ### importmap的缺陷
@@ -66,9 +73,8 @@ importmap是一个较新的技术，根据caniuse的[查询结果](https://caniu
 
 ```js
 <script setup>
-// CnPoeTranslator and CnPoeExportDb are imported by index.html
-const factory = new CnPoeTranslator.BasicTranslatorFactory(CnPoeExportDb);
-//...
+  // CnPoeTranslator and CnPoeExportDb are imported by index.html const factory
+  = new CnPoeTranslator.BasicTranslatorFactory(CnPoeExportDb); //...
 </script>
 ```
 

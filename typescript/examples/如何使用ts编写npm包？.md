@@ -23,7 +23,7 @@ cd my-package
 npm init -y
 ```
 
-*参数 `-y` 表示根据上下文，自动填充一些信息，比如根据文件夹名称推测包名称*
+_参数 `-y` 表示根据上下文，自动填充一些信息，比如根据文件夹名称推测包名称_
 
 此时，会生成一个`package.json`文件，它是npm的核心配置文件，内容大致为：
 
@@ -33,7 +33,7 @@ npm init -y
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -84,14 +84,14 @@ yarn tsc --init
   "compilerOptions": {
     "target": "es2016",
     "module": "ES6",
-    "declaration": true,// 新增，生成typescript类型声明文件
-    "outDir": "dist",// 新增，自定义编译输出目录
+    "declaration": true, // 新增，生成typescript类型声明文件
+    "outDir": "dist", // 新增，自定义编译输出目录
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,                                      
-    "skipLibCheck": true                                
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*"]//新增，定义源文件
+  "include": ["src/**/*"] //新增，定义源文件
 }
 ```
 
@@ -101,7 +101,7 @@ yarn tsc --init
 
 ```typescript
 export function helloworld() {
-    console.log("hello world");
+  console.log("hello world");
 }
 ```
 
@@ -114,10 +114,10 @@ export function helloworld() {
   "name": "my-package",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index.js",//修改，指定包的入口文件
-  "types": "dist/index.d.ts",//新增，供typescript使用的类型文件
+  "main": "dist/index.js", //修改，指定包的入口文件
+  "types": "dist/index.d.ts", //新增，供typescript使用的类型文件
   "scripts": {
-    "build" : "tsc"//新增，映射执行`npm run build`时的实际指令
+    "build": "tsc" //新增，映射执行`npm run build`时的实际指令
   },
   "keywords": [],
   "author": "",
@@ -125,7 +125,7 @@ export function helloworld() {
   "devDependencies": {
     "typescript": "^4.6.4"
   },
-  "files": ["dist/**/*"]//指定包所包含的文件
+  "files": ["dist/**/*"] //指定包所包含的文件
 }
 ```
 

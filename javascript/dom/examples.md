@@ -1,11 +1,12 @@
 # 示例
+
 ## 元素
 
 ### 创建元素并插入
 
 ```javascript
-const newButton = document.createElement('button');
-newButton.textContent = 'Click me!';
+const newButton = document.createElement("button");
+newButton.textContent = "Click me!";
 document.body.appendChild(newButton);
 ```
 

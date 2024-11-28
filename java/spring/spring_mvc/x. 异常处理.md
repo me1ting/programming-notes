@@ -25,7 +25,7 @@ public ApiResult conflict() {
 @ExceptionHandler(IllegalStateException.class)
 public ResponseEntity<ApiResult<?>> conflict() {
 	//
-	var result = ApiResult.error(ApiCode.BadRequest.code(), null, "参数错误");  
+	var result = ApiResult.error(ApiCode.BadRequest.code(), null, "参数错误");
 	return new ResponseEntity<ApiResult<?>>(result, HttpStatus.BAD_REQUEST);
 }
 ```
@@ -40,7 +40,7 @@ publi class GlobalControllerExceptionHandler {
 	@ExceptionHandler(IllegalStateException.class)
 	public ResponseEntity<ApiResult<?>> conflict() {
 		//
-		var result = ApiResult.error(ApiCode.BadRequest.code(), null, "参数错误");  
+		var result = ApiResult.error(ApiCode.BadRequest.code(), null, "参数错误");
 		return new ResponseEntity<ApiResult<?>>(result, HttpStatus.BAD_REQUEST);
 	}
 }

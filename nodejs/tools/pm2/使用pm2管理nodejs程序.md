@@ -9,9 +9,9 @@ nuhup node dist/index.js &
 使用网上教程，添加了异常拦截代码：
 
 ```js
-process.on('uncaughtException', err => {
-    console.log('caught uncaught exception: ' + err)
-})
+process.on("uncaughtException", (err) => {
+  console.log("caught uncaught exception: " + err);
+});
 ```
 
 但是依然无效，查看日志也没有任何输出。

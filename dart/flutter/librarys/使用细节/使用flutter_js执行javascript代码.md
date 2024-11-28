@@ -1,4 +1,5 @@
 # 使用flutter_js执行javascript代码
+
 ## 前言
 
 尝试迁移一款electron应用到flutter，其核心代码使用typescript编写，在web项目中被使用。
@@ -57,7 +58,7 @@ return jsResult.stringResult;
 
 ```dart
 jsFile = await rootBundle.loadString("assets/js/translator.js");
-var jsResult = 
+var jsResult =
     jsRuntime.evaluate('${jsFile}hello("$name");');
 ```
 
@@ -73,7 +74,7 @@ hello("A"B");
 解决办法是使用`jsonEncode`函数，得到的内容是满足js语法的：
 
 ```dart
-var jsResult = 
+var jsResult =
     jsRuntime.evaluate('${jsFile}hello(jsonEncode($name));');
 ```
 
@@ -89,9 +90,9 @@ print(jsonEncde("A\"B"));
 我们可以传递object给javascript：
 
 ```javascript
-function rename(user){
-	user.name = "new name";
-	return JSON.stringify(user);
+function rename(user) {
+  user.name = "new name";
+  return JSON.stringify(user);
 }
 ```
 
@@ -100,7 +101,7 @@ function rename(user){
 ```dart
 var user = User();
 var userJson = user.toJson();
-var jsResult = 
+var jsResult =
     jsRuntime.evaluate('${jsFile}rename($userJson);');
 user = User.fromJson(jsResult);
 ```

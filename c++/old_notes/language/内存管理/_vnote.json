@@ -1,68 +1,55 @@
 {
-    "created_time": "2021-02-26T04:43:05Z",
-    "files": [
-        {
-            "attachment_folder": "",
-            "attachments": [
-            ],
-            "created_time": "2021-02-26T04:43:18Z",
-            "modified_time": "2021-02-26T04:46:34Z",
-            "name": "简介.md",
-            "tags": [
-            ]
-        },
-        {
-            "attachment_folder": "",
-            "attachments": [
-            ],
-            "created_time": "2021-02-26T04:47:14Z",
-            "modified_time": "2021-02-26T05:12:49Z",
-            "name": "new&delete.md",
-            "tags": [
-            ]
-        },
-        {
-            "attachment_folder": "",
-            "attachments": [
-            ],
-            "created_time": "2021-02-26T04:47:23Z",
-            "modified_time": "2021-02-26T05:32:04Z",
-            "name": "智能指针：shared_ptr.md",
-            "tags": [
-            ]
-        },
-        {
-            "attachment_folder": "",
-            "attachments": [
-            ],
-            "created_time": "2021-02-26T05:32:53Z",
-            "modified_time": "2021-02-26T05:34:07Z",
-            "name": "智能指针：unique_ptr.md",
-            "tags": [
-            ]
-        },
-        {
-            "attachment_folder": "",
-            "attachments": [
-            ],
-            "created_time": "2021-02-26T05:34:38Z",
-            "modified_time": "2021-02-26T05:37:59Z",
-            "name": "智能指针：weak_ptr.md",
-            "tags": [
-            ]
-        },
-        {
-            "attachment_folder": "",
-            "attachments": [
-            ],
-            "created_time": "2021-05-29T11:33:44Z",
-            "modified_time": "2021-05-29T11:45:58Z",
-            "name": "RAII.md",
-            "tags": [
-            ]
-        }
-    ],
-    "sub_directories": [
-    ],
-    "version": "1"
+  "created_time": "2021-02-26T04:43:05Z",
+  "files": [
+    {
+      "attachment_folder": "",
+      "attachments": [],
+      "created_time": "2021-02-26T04:43:18Z",
+      "modified_time": "2021-02-26T04:46:34Z",
+      "name": "简介.md",
+      "tags": []
+    },
+    {
+      "attachment_folder": "",
+      "attachments": [],
+      "created_time": "2021-02-26T04:47:14Z",
+      "modified_time": "2021-02-26T05:12:49Z",
+      "name": "new&delete.md",
+      "tags": []
+    },
+    {
+      "attachment_folder": "",
+      "attachments": [],
+      "created_time": "2021-02-26T04:47:23Z",
+      "modified_time": "2021-02-26T05:32:04Z",
+      "name": "智能指针：shared_ptr.md",
+      "tags": []
+    },
+    {
+      "attachment_folder": "",
+      "attachments": [],
+      "created_time": "2021-02-26T05:32:53Z",
+      "modified_time": "2021-02-26T05:34:07Z",
+      "name": "智能指针：unique_ptr.md",
+      "tags": []
+    },
+    {
+      "attachment_folder": "",
+      "attachments": [],
+      "created_time": "2021-02-26T05:34:38Z",
+      "modified_time": "2021-02-26T05:37:59Z",
+      "name": "智能指针：weak_ptr.md",
+      "tags": []
+    },
+    {
+      "attachment_folder": "",
+      "attachments": [],
+      "created_time": "2021-05-29T11:33:44Z",
+      "modified_time": "2021-05-29T11:45:58Z",
+      "name": "RAII.md",
+      "tags": []
+    }
+  ],
+  "sub_directories": [],
+  "version": "1"
 }

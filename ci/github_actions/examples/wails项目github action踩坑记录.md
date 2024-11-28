@@ -22,18 +22,18 @@ wails工具链需要至少 1.19以上版本，修改安装版本为`^1.20.0`解�
 由于前端文件内容是单独存放在`frontend`中的，需要额外的配置选项进行说明：
 
 ```yaml
-      # pnpm
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
-        with:
-          version: 8
-          package_json_file: frontend/package.json
-      # npm
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-          cache-dependency-path: frontend/pnpm-lock.yaml
+# pnpm
+- name: Setup pnpm
+  uses: pnpm/action-setup@v2.4.0
+  with:
+    version: 8
+    package_json_file: frontend/package.json
+# npm
+- uses: actions/setup-node@v4
+  with:
+    node-version: 18
+    cache: "pnpm"
+    cache-dependency-path: frontend/pnpm-lock.yaml
 ```
 
 ### 在编译前构建前端内容
@@ -47,12 +47,13 @@ main.go:13: pattern all:frontend/dist: no matching files found
 解决办法是在`wails build`前先把前端内容构建好：
 
 ```yaml
-      # build frontend
-      - name: build frontend
-        working-directory: frontend
-        run: |
-          pnpm install
-          pnpm build
-      # wails build
-      # ...
+# build frontend
+- name: build frontend
+  working-directory: frontend
+  run: |
+    pnpm install
+    pnpm build
+
+# wails build
+# ...
 ```

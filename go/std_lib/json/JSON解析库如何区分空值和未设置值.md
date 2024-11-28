@@ -22,7 +22,7 @@ func main() {
 - `price: 0`是有效的
 - `price: null`是非法的
 
->price只是用来举例，这里不考虑请求端传递`price`在业务逻辑上是否合理
+> price只是用来举例，这里不考虑请求端传递`price`在业务逻辑上是否合理
 
 很多编程语言的json库支持区分空值和未设置值，但官方json库解析`price: null`与`price: 0`的结果均为0，不支持区分。
 
@@ -118,6 +118,7 @@ func main() {
 ```
 
 手动检查的问题是过于繁琐。
+
 ### 使用第三方json库
 
 可以使用第三方json库，比如[go-json](https://github.com/goccy/go-json)以及[其它](https://github.com/goccy/go-json#json-library-comparison)。
@@ -145,4 +146,3 @@ func main() {
 - json携带了多余的字段（极端的检测场景）
 
 第一种情况的效果与本文讨论的问题差不多，同样可能在某些场景带来问题。
-

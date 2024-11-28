@@ -1,4 +1,5 @@
 # FAQ
+
 ## 如何关闭对html元素的转义？
 
 如果只是临时的关闭，使用：
@@ -12,6 +13,6 @@
 ```js
 // disable xml/html escape
 Mustache.escape = function (value) {
-    return value;
+  return value;
 };
 ```

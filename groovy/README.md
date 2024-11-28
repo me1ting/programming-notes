@@ -15,8 +15,8 @@
 又比如说，Groovy有自己独特的切片理解：
 
 ```groovy
-def letters = ['a', 'b', 'c', 'd']      
-assert letters[2..4] == ['C', 'd', 'e']  
+def letters = ['a', 'b', 'c', 'd']
+assert letters[2..4] == ['C', 'd', 'e']
 ```
 
 切片语法包含`end`元素，嗯，真是天才的设想。

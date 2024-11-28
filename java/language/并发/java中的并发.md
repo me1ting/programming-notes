@@ -22,7 +22,7 @@ Java给线程定义了6种状态：
 
 - `阻塞` 线程等待监视器锁时的状态
 
->为了避免歧义性，在本笔记中，除非明确使用`阻塞状态`时才表示（Thread.State中定义的）狭义的含义，否则`阻塞`一词用于描述线程/调用等待资源的状态
+> 为了避免歧义性，在本笔记中，除非明确使用`阻塞状态`时才表示（Thread.State中定义的）狭义的含义，否则`阻塞`一词用于描述线程/调用等待资源的状态
 
 ## 中断线程
 
@@ -78,11 +78,11 @@ class Demo {
 
 ## volatile域
 
-在C/C++/C#/Java中都有[volatile](https://en.wikipedia.org/wiki/Volatile_(computer_programming))关键字，但是它们的作用存在差异，这里只关注Java中的volatile关键字。
+在C/C++/C#/Java中都有[volatile](<https://en.wikipedia.org/wiki/Volatile_(computer_programming)>)关键字，但是它们的作用存在差异，这里只关注Java中的volatile关键字。
 
 在Java中，`volatile`用于修饰共享变量，保证多线程环境下共享变量的`可见性`。
 
->有关volatile的细节参考《java并发编程实战》笔记
+> 有关volatile的细节参考《java并发编程实战》笔记
 
 # 基础同步工具
 

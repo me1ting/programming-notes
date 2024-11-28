@@ -1,6 +1,7 @@
 # 搭建electron脚手架
 
 这里使用的包管理器是`yarn`。
+
 ## 初始化项目
 
 创建文件夹：
@@ -23,6 +24,7 @@ yarn init
 ```
 yarn add --dev electron
 ```
+
 ### （可选）配置代理
 
 我们需要分别设置`yarn`的代理和下载`electron`时的代理，两者都是可选的。
@@ -55,6 +57,7 @@ $env:GLOBAL_AGENT_HTTPS_PROXY="http://127.0.0.1:1081"
 最后，我们需要填充脚手架内容，并启动得到一个能正常运行的简单electron应用。
 
 细节参考[tutorial](https://www.electronjs.org/zh/docs/latest/tutorial/)
+
 ## 使用Electron Forge
 
 可以使用[Electron Forge](https://electronforge.io/)来搭建脚手架。

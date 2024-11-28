@@ -18,6 +18,7 @@
   </v-main>
 </v-app>
 ```
+
 ## 导航栏
 
 vuetify真实的还原了`material design`默认导航难用的特点（如果你使用过flutter就会明白），比如标题无法居中。
@@ -27,15 +28,24 @@ vuetify真实的还原了`material design`默认导航难用的特点（如果�
 ```html
 <v-navigation-drawer permanent disable-resize-watcher floating width="120">
   <v-list density="compact" color="primary" nav>
-    <v-list-item v-for="item in navigationList" :active="currentPath === item.href" :value="item.href"
-      :href="item.href" :key="item.href"><!--这是一个导航-->
-      <p class="text-center" :class="{ 'text-text-secondary': currentPath !== item.href }">
+    <v-list-item
+      v-for="item in navigationList"
+      :active="currentPath === item.href"
+      :value="item.href"
+      :href="item.href"
+      :key="item.href"
+      ><!--这是一个导航-->
+      <p
+        class="text-center"
+        :class="{ 'text-text-secondary': currentPath !== item.href }"
+      >
         {{ t(item.title) }}<!--自定义导航内容，而非使用预留接口-->
-      </p>
-    </v-list-item><!--甚至这个v-list都不需要，如果你想自定义一个List实现的话-->
+      </p> </v-list-item
+    ><!--甚至这个v-list都不需要，如果你想自定义一个List实现的话-->
   </v-list>
 </v-navigation-drawer>
 ```
+
 # input
 
 Vuetify提供的输入控件最大的特点是：
@@ -44,6 +54,9 @@ Vuetify提供的输入控件最大的特点是：
 - 修改采取 `回调函数`
 
 ```html
-<v-select :items="languages" :model-value="lang"
-  @update:model-value="updateLanguage"></v-select>
+<v-select
+  :items="languages"
+  :model-value="lang"
+  @update:model-value="updateLanguage"
+></v-select>
 ```

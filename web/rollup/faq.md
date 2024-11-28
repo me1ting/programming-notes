@@ -1,21 +1,21 @@
- # 常见问题
- 
- ## Path of Typescript compiler option 'outDir' must be located inside Rollup 'dir' option
- 
- `tsconfig.json`里面的`outDir`选项应当与`rollup.config.js`中单个`output`中的`dir`一致，或者位于后者的子目录。
+# 常见问题
 
- 如：
+## Path of Typescript compiler option 'outDir' must be located inside Rollup 'dir' option
 
- rollup.config.js
- 
- ```js
+`tsconfig.json`里面的`outDir`选项应当与`rollup.config.js`中单个`output`中的`dir`一致，或者位于后者的子目录。
+
+如：
+
+rollup.config.js
+
+```js
 export default {
-  input: 'src/index.ts',
+  input: "src/index.ts",
   output: {
-    dir: 'dist',
-    format: 'cjs'
+    dir: "dist",
+    format: "cjs",
   },
-  plugins: [typescript()]
+  plugins: [typescript()],
 };
 ```
 

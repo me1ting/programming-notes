@@ -87,10 +87,10 @@ fn main() {
 }
 ```
 
-需要添加以下依赖（为了避免兼容性问题，与 tauri 的依赖版本保持一致）  
+需要添加以下依赖（为了避免兼容性问题，与 tauri 的依赖版本保持一致）
 
 ```toml
-[dependencies]  
+[dependencies]
 webview2-com = "0.19.1"
 windows = "0.39.0"
 ```

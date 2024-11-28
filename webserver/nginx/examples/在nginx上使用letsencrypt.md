@@ -7,6 +7,7 @@ let's encrypt是最常用的免费的https证书，nginx是常用的web服务器
 ## 安装nginx
 
 略
+
 ## 安装certbot
 
 `certbot`是letsencrypt的客户端，它负责验证域名的所属、申请证书等过程。

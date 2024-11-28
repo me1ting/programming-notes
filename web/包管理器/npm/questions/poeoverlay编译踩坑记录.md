@@ -11,7 +11,9 @@
 ## 使用文档指定的node版本
 
 文档指定的node版本为`12.18.0`，和当前的LTS版本跨度太大，应当使用文档指定的node版本（尝试使用node@1.6.x.x执行后续步骤，确实存在很大的兼容性问题）。
+
 ## npm install
+
 ### robotjs安装失败问题
 
 ```
@@ -83,6 +85,7 @@ npm prefix -g | % {$Env:npm_config_node_gyp = "$_\node_modules\node-gyp\bin\node
 找到`8.4.1`版本所对应的[项目主页](https://github.com/nodejs/node-gyp/tree/v8.4.1)，要求`python3`的特定版本（实际测试电脑上已有的更新本也能用，但是如果后续出现编译问题，那么需要尝试降级python3），以及要求`msvc2017`。
 
 ## `npm run electron:windows`
+
 ### heap out of memory问题
 
 使用更大的堆：
